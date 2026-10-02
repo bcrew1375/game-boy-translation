@@ -1,0 +1,89 @@
+#!/usr/bin/env python3
+"""Generate the translated English font resource and optional metadata/preview."""
+
+import argparse
+import csv
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "tools"))
+
+from gb.font import (  # noqa: E402
+    ENGLISH_TILE_CHARACTERS,
+    FONT_COMPRESSED_SLOT_SIZE,
+    FONT_DECOMPRESSED_SIZE,
+    FONT_ROM_OFFSET,
+    build_english_font,
+    compress_font,
+    decompress_font,
+)
+from gb.graphics import save_tiles  # noqa: E402
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("rom", type=Path, help="original ROM used to preserve UI glyphs")
+    parser.add_argument("-o", "--output", type=Path, required=True)
+    parser.add_argument("--encoding", type=Path)
+    parser.add_argument("--preview", type=Path)
+    args = parser.parse_args()
+
+    try:
+        rom = args.rom.read_bytes()
+        original = decompress_font(
+            rom[FONT_ROM_OFFSET : FONT_ROM_OFFSET + FONT_COMPRESSED_SLOT_SIZE]
+        )
+        if len(original.data) != FONT_DECOMPRESSED_SIZE:
+            raise ValueError(
+                f"original font expands to {len(original.data)} bytes, "
+                f"expected {FONT_DECOMPRESSED_SIZE}"
+            )
+        english = build_english_font(original.data)
+        compressed = compress_font(english)
+        if decompress_font(compressed).data != english:
+            raise ValueError("English font compression round trip failed")
+        if len(compressed) > FONT_COMPRESSED_SLOT_SIZE:
+            raise ValueError(
+                f"compressed English font is {len(compressed)} bytes; "
+                f"slot is {FONT_COMPRESSED_SLOT_SIZE} bytes"
+            )
+    except (OSError, ValueError) as error:
+        parser.error(str(error))
+
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_bytes(compressed.ljust(FONT_COMPRESSED_SLOT_SIZE, b"\x00"))
+
+    if args.encoding:
+        args.encoding.parent.mkdir(parents=True, exist_ok=True)
+        with args.encoding.open("w", encoding="utf-8", newline="") as target:
+            writer = csv.writer(target, delimiter="\t", lineterminator="\n")
+            writer.writerow(["character", "stream_byte", "tile_id", "kind"])
+            for tile_id, character in sorted(ENGLISH_TILE_CHARACTERS.items()):
+                # $96-$9D are preserved because original UI code writes those
+                # tile IDs directly. Translation text uses the canonical
+                # alphabet at $01-$34 instead of duplicate character entries.
+                if 0x96 <= tile_id <= 0x9D:
+                    continue
+                writer.writerow([
+                    character,
+                    f"0x{tile_id:02X}",
+                    f"0x{tile_id:02X}",
+                    "preserved_digit" if 0x80 <= tile_id <= 0x89
+                    else "preserved_arrow" if tile_id >= 0x9E
+                    else "english",
+                ])
+
+    if args.preview:
+        save_tiles(english, args.preview, bpp=1, columns=16, scale=4, gap=1)
+
+    print(
+        f"English font: {len(compressed)} compressed bytes; "
+        f"{FONT_COMPRESSED_SLOT_SIZE - len(compressed)} bytes spare in slot."
+    )
+    print(f"Wrote {args.output} ({FONT_COMPRESSED_SLOT_SIZE} bytes including padding).")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

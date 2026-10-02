@@ -1,0 +1,85 @@
+#!/usr/bin/env python3
+"""Reject prohibited ROM-derived or generated material from the Git index."""
+
+from __future__ import annotations
+
+import re
+import subprocess
+import sys
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[2]
+BANNED_PREFIXES = (
+    "analysis/",
+    "build/",
+    "disassembly/",
+    "rom/original.gb",
+)
+BANNED_PATHS = {
+    "translation/glossary.tsv",
+    "translation/strings.tsv",
+    "translation/text_layout.tsv",
+    "tools/bin/gb-text-build",
+    "tools/bin/gb-text-catalog",
+    "tests/test_text.py",
+}
+BANNED_SUFFIXES = (
+    ".gb",
+    ".gbc",
+    ".rom",
+    ".gbs",
+    ".vgm",
+    ".wav",
+    ".sav",
+    ".s1",
+    ".o",
+    ".map",
+    ".sym",
+    ".bin",
+    ".png",
+)
+CJK = re.compile(r"[\u3040-\u30ff\u3400-\u9fff]")
+LONG_HEX_ARRAY = re.compile(r"(?:0x[0-9a-fA-F]{2}\s*,\s*){16,}")
+LONG_BYTE_ESCAPE = re.compile(r"(?:\\x[0-9a-fA-F]{2}){16,}")
+
+
+def tracked_files() -> list[str]:
+    result = subprocess.run(
+        ["git", "ls-files", "-z"], cwd=ROOT, check=True, capture_output=True
+    )
+    return [value.decode() for value in result.stdout.split(b"\x00") if value]
+
+
+def main() -> int:
+    failures = []
+    for relative in tracked_files():
+        lower = relative.lower()
+        if relative in BANNED_PATHS or any(relative.startswith(prefix) for prefix in BANNED_PREFIXES):
+            failures.append(f"prohibited path: {relative}")
+            continue
+        if lower.endswith(BANNED_SUFFIXES):
+            failures.append(f"prohibited file type: {relative}")
+            continue
+        path = ROOT / relative
+        try:
+            text = path.read_text(encoding="utf-8")
+        except (UnicodeDecodeError, OSError):
+            failures.append(f"unreviewed binary file: {relative}")
+            continue
+        if CJK.search(text):
+            failures.append(f"Japanese/CJK content requires explicit review: {relative}")
+        if LONG_HEX_ARRAY.search(text) or LONG_BYTE_ESCAPE.search(text):
+            failures.append(f"suspicious embedded byte array requires review: {relative}")
+
+    if failures:
+        print("Repository policy audit failed:", file=sys.stderr)
+        for failure in failures:
+            print(f"  - {failure}", file=sys.stderr)
+        return 1
+    print(f"Repository policy audit passed for {len(tracked_files())} tracked files.")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+import argparse, sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from gb.graphics import save_tiles
+
+p=argparse.ArgumentParser(description="Render complete Game Boy ROM banks as tile contact sheets.")
+p.add_argument("rom")
+g=p.add_mutually_exclusive_group()
+g.add_argument("--bank", type=lambda x:int(x,0), help="single ROM bank")
+g.add_argument("--all", action="store_true", help="scan all banks")
+p.add_argument("--bpp", type=int, choices=(1,2), default=2)
+p.add_argument("--columns", type=int, default=32)
+p.add_argument("--scale", type=int, default=2)
+p.add_argument("-o","--output-dir", default="analysis/tiles")
+a=p.parse_args()
+rom=Path(a.rom)
+if not rom.is_file(): p.error(f"ROM not found: {rom}")
+data=rom.read_bytes()
+banks=(len(data)+0x3fff)//0x4000
+if a.bank is not None:
+    if a.bank < 0 or a.bank >= banks: p.error(f"bank {a.bank} outside ROM (0..{banks-1})")
+    selected=[a.bank]
+else:
+    selected=range(banks)
+outdir=Path(a.output_dir)
+stride=8 if a.bpp==1 else 16
+for bank in selected:
+    chunk=data[bank*0x4000:min((bank+1)*0x4000,len(data))]
+    out=outdir/f"bank_{bank:03x}_{a.bpp}bpp.png"
+    n=save_tiles(chunk,out,a.bpp,a.columns,a.scale,0)
+    print(f"{bank:03x}: {out} ({n} tiles; tile N offset = 0x{bank*0x4000:x} + N*{stride})")

@@ -1,0 +1,79 @@
+#!/usr/bin/env python3
+"""Decode the game's bank-3 encoded text streams."""
+
+import argparse
+import sys
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "tools"))
+
+from gb.text import (  # noqa: E402
+    Bank3TextDecoder,
+    TextDecodeError,
+    load_tile_characters,
+)
+
+
+def hex_byte(value: str) -> int:
+    parsed = int(value, 0)
+    if not 0 <= parsed <= 0xFF:
+        raise argparse.ArgumentTypeError("must be a byte ($00-$FF)")
+    return parsed
+
+
+def cpu_address(value: str) -> int:
+    if ":" in value:
+        bank, address = value.split(":", 1)
+        if int(bank, 16) != 3:
+            raise argparse.ArgumentTypeError("address must be in bank 3")
+        parsed = int(address, 16)
+    else:
+        parsed = int(value, 0)
+    if not 0x4000 <= parsed <= 0x7FFF:
+        raise argparse.ArgumentTypeError("address must be $4000-$7FFF")
+    return parsed
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("rom", type=Path, help="original or byte-compatible ROM")
+    selection = parser.add_mutually_exclusive_group(required=True)
+    selection.add_argument(
+        "--message-id", type=hex_byte, help="message ID, e.g. 0x84"
+    )
+    selection.add_argument(
+        "--address", type=cpu_address, help="bank-3 stream address, e.g. 03:426E"
+    )
+    parser.add_argument(
+        "--context",
+        type=hex_byte,
+        default=0,
+        help="root context for IDs below $80 (default: 0)",
+    )
+    parser.add_argument(
+        "--font-map",
+        type=Path,
+        default=ROOT / "analysis" / "font_tiles.tsv",
+    )
+    args = parser.parse_args()
+
+    try:
+        decoder = Bank3TextDecoder(
+            args.rom.read_bytes(), load_tile_characters(args.font_map)
+        )
+        if args.message_id is not None:
+            decoded = decoder.decode_message(args.message_id, args.context)
+        else:
+            decoded = decoder.decode_pointer(args.address)
+    except (OSError, TextDecodeError, ValueError) as error:
+        parser.error(str(error))
+
+    print(f"03:{decoded.cpu_address:04X}")
+    print(decoded.text)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

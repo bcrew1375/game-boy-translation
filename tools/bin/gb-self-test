@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -uo pipefail
+fail=0
+pass(){ printf '[PASS] %s\n' "$1"; }
+bad(){ printf '[FAIL] %s\n' "$1" >&2; fail=1; }
+for c in rgbasm rgblink rgbfix rgbgfx mgbdis sameboy python3 Xvfb openbox x11vnc sleep supervisord supervisorctl; do command -v "$c" >/dev/null && pass "$c available" || bad "$c unavailable"; done
+command -v websockify >/dev/null && pass 'websockify/noVNC backend available' || bad 'websockify unavailable'
+bash -n "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/gb-desktop" && pass 'desktop manager syntax' || bad 'desktop manager syntax'
+bash -n "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/gb-desktop-service" && pass 'desktop service syntax' || bad 'desktop service syntax'
+root=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
+for c in gb-rom-info gb-offset gb-hexdump gb-verify gb-run gb-debug gb-desktop gb-font-build gb-title-graphics-build gb-translate-build; do "$root/tools/bin/$c" --help >/dev/null 2>&1 && pass "$c --help" || bad "$c --help"; done
+tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
+python3 - "$tmp/test.gb" <<'PY'
+import sys
+p=sys.argv[1]; d=bytearray(0x8000); d[0x100:0x104]=bytes([0,0xC3,0x50,1]); d[0x134:0x13B]=b'SELFTEST'; d[0x143]=0x80; d[0x147]=0; d[0x148]=0; d[0x149]=0
+open(p,'wb').write(d)
+PY
+if "$root/tools/bin/gb-rom-info" "$tmp/test.gb" >"$tmp/rom-info.json" && grep -q SELFTEST "$tmp/rom-info.json"; then
+    pass 'ROM header parser produces output'
+else
+    bad 'ROM header parser'
+fi
+[[ $("$root/tools/bin/gb-offset" 02:4000) == 0x8000 ]] && pass 'bank address conversion' || bad 'bank address conversion'
+"$root/tools/bin/gb-hexdump" "$tmp/test.gb" 00:0100 4 | grep -q '00 C3 50 01' && pass 'bank-aware hexdump' || bad 'bank-aware hexdump'
+python3 -m unittest discover -s "$root/tests" -v >/dev/null && pass 'Python analysis-tool tests' || bad 'Python analysis-tool tests'
+cp "$tmp/test.gb" "$tmp/copy.gb"; "$root/tools/bin/gb-verify" "$tmp/test.gb" "$tmp/copy.gb" >/dev/null && pass 'ROM match verification' || bad 'ROM match verification'
+printf '\1' | dd of="$tmp/copy.gb" bs=1 seek=0 conv=notrunc status=none
+if "$root/tools/bin/gb-verify" "$tmp/test.gb" "$tmp/copy.gb" >/dev/null 2>&1; then bad 'ROM mismatch detection'; else pass 'ROM mismatch detection'; fi
+(( fail == 0 )) && echo 'Environment OK' || { echo 'Environment has failures' >&2; exit 1; }

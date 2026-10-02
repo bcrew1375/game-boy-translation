@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+import argparse, sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from gb.rom import parse_bank_address, bank_address_to_offset
+from gb.graphics import save_tiles
+
+p=argparse.ArgumentParser(description="Render Game Boy ROM bytes as 8x8 tiles.")
+p.add_argument("rom")
+p.add_argument("address", help="bank:CPU-address, e.g. 04:4000")
+p.add_argument("--count", type=int, default=256, help="number of tiles (default: 256)")
+p.add_argument("--bpp", type=int, choices=(1,2), default=2)
+p.add_argument("--columns", type=int, default=16)
+p.add_argument("--scale", type=int, default=2)
+p.add_argument("-o","--output")
+a=p.parse_args()
+rom=Path(a.rom)
+if not rom.is_file(): p.error(f"ROM not found: {rom}")
+bank,addr=parse_bank_address(a.address)
+off=bank_address_to_offset(bank,addr)
+stride=8 if a.bpp==1 else 16
+data=rom.read_bytes()[off:off+a.count*stride]
+out=Path(a.output or f"analysis/tiles/bank_{bank:03x}_{addr:04x}_{a.bpp}bpp.png")
+n=save_tiles(data,out,a.bpp,a.columns,a.scale)
+print(f"Wrote {out} ({n} tiles)")
+print(f"tile N ROM offset = 0x{off:x} + N*{stride} bytes")

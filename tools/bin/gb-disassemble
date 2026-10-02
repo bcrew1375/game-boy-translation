@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+usage(){ echo 'usage: gb-disassemble ROM [OUTPUT_DIR]'; echo 'Run mgbdis and generate an RGBDS-compatible disassembly.'; }
+[[ ${1:-} == -h || ${1:-} == --help ]] && { usage; exit 0; }
+[[ $# -ge 1 ]] || { usage >&2; exit 2; }
+rom=$1; out=${2:-disassembly}
+[[ -f $rom ]] || { echo "ROM not found: $rom" >&2; exit 1; }
+mkdir -p "$out"
+exec mgbdis --output-dir "$out" --overwrite "$rom"

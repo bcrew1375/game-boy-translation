@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+import argparse, hashlib
+from pathlib import Path
+p=argparse.ArgumentParser(description='Verify two ROM images are byte-identical.')
+p.add_argument('original'); p.add_argument('rebuilt'); a=p.parse_args()
+def sha(x): return hashlib.sha256(Path(x).read_bytes()).hexdigest()
+x,y=sha(a.original),sha(a.rebuilt); print(f'Original: {x}\nRebuilt:  {y}')
+if Path(a.original).read_bytes()!=Path(a.rebuilt).read_bytes(): raise SystemExit('MISMATCH: ROMs differ')
+print('MATCH: byte-identical')

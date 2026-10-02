@@ -1,0 +1,42 @@
+{
+  "name": "Game Boy Reverse Engineering",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "remoteUser": "vscode",
+  "containerEnv": {
+    "DISPLAY": ":1",
+    "PYTHONUNBUFFERED": "1"
+  },
+  "remoteEnv": {
+    "PATH": "${containerWorkspaceFolder}/tools/bin:${containerEnv:PATH}"
+  },
+  "forwardPorts": [
+    6080
+  ],
+  "portsAttributes": {
+    "6080": {
+      "label": "Game Boy GUI (noVNC)",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "chmod +x \"${containerWorkspaceFolder}\"/tools/bin/* && \"${containerWorkspaceFolder}\"/tools/bin/gb-self-test",
+  "postStartCommand": "\"${containerWorkspaceFolder}\"/tools/bin/gb-desktop start",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "streetsidesoftware.code-spell-checker"
+      ],
+      "settings": {
+        "files.exclude": {
+          "build/**": true
+        },
+        "editor.rulers": [
+          100
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+# User-supplied and generated ROMs
+/rom/*.gb
+/rom/*.gbc
+/rom/*.rom
+/build/
+
+# Local reverse-engineering evidence. None of this is distributable source.
+/disassembly/
+/analysis/
+/translation/strings.tsv
+/translation/glossary.tsv
+/translation/text_layout.tsv
+/tools/bin/gb-text-build
+/tools/bin/gb-text-catalog
+/tests/test_text.py
+
+# Extracted/generated media and build products anywhere else
+*.gb
+*.gbc
+*.rom
+*.gbs
+*.vgm
+*.wav
+*.bin
+*.png
+*.o
+*.map
+*.sym
+*.sav
+*.s1
+
+# Language/tool caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/

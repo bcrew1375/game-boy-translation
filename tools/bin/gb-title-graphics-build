@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+"""Generate compressed English title/menu artwork and optional previews."""
+
+import argparse
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "tools"))
+
+from gb.compression import compress_resource, decompress_resource  # noqa: E402
+from gb.title_graphics import (  # noqa: E402
+    MENU_COMPRESSED_SLOT_SIZE,
+    TITLE_COMPRESSED_SLOT_SIZE,
+    build_menu_tiles,
+    build_title_tiles,
+    render_menu_preview,
+    render_title_preview,
+)
+
+
+def _write_resource(name: str, raw: bytes, slot_size: int, output: Path) -> int:
+    compressed = compress_resource(raw)
+    if decompress_resource(compressed).data != raw:
+        raise ValueError(f"{name} compression round trip failed")
+    if len(compressed) > slot_size:
+        raise ValueError(
+            f"compressed {name} is {len(compressed)} bytes; slot is {slot_size} bytes"
+        )
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_bytes(compressed.ljust(slot_size, b"\x00"))
+    print(f"{name}: {len(compressed)} compressed bytes; {slot_size - len(compressed)} spare.")
+    print(f"Wrote {output} ({slot_size} bytes including padding).")
+    return len(compressed)
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--menu-output", type=Path, required=True)
+    parser.add_argument("--title-output", type=Path, required=True)
+    parser.add_argument("--menu-preview", type=Path)
+    parser.add_argument("--title-preview", type=Path)
+    args = parser.parse_args()
+
+    menu = build_menu_tiles()
+    title = build_title_tiles()
+    try:
+        _write_resource("title menu labels", menu, MENU_COMPRESSED_SLOT_SIZE, args.menu_output)
+        _write_resource("title subtitle", title, TITLE_COMPRESSED_SLOT_SIZE, args.title_output)
+    except (OSError, ValueError) as error:
+        parser.error(str(error))
+
+    if args.menu_preview:
+        args.menu_preview.parent.mkdir(parents=True, exist_ok=True)
+        render_menu_preview(menu).save(args.menu_preview)
+    if args.title_preview:
+        args.title_preview.parent.mkdir(parents=True, exist_ok=True)
+        render_title_preview(title).save(args.title_preview)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
