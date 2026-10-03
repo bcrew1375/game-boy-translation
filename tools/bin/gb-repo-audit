@@ -3,6 +3,8 @@
 
 from __future__ import annotations
 
+import csv
+import io
 import re
 import subprocess
 import sys
@@ -16,12 +18,16 @@ BANNED_PREFIXES = (
     "disassembly/",
     "rom/",
 )
-BANNED_COMPONENTS = {"analysis", "disassembly", "local", "original"}
+BANNED_PROJECT_COMPONENTS = {"disassembly", "local", "original"}
 BANNED_BASENAMES = {"strings.tsv", "glossary.tsv", "text_layout.tsv"}
 BANNED_PATHS = {
     "tools/bin/gb-text-build",
     "tools/bin/gb-text-catalog",
     "tests/test_text.py",
+}
+STRUCTURED_CJK_PATHS = {
+    "projects/gb-db-z-gokou/analysis/font_tiles.tsv": "character",
+    "projects/gb-db-z-gokou/analysis/text_encoding.tsv": "character",
 }
 BANNED_SUFFIXES = (
     ".gb",
@@ -63,13 +69,43 @@ def prohibited_path(relative: str) -> str | None:
         return f"prohibited path: {relative}"
     if path.parts and path.parts[0] == "roms" and path.name != "README.md":
         return f"prohibited ROM input path: {relative}"
-    if "projects" in path.parts and BANNED_COMPONENTS.intersection(path.parts):
+    if "projects" in path.parts and BANNED_PROJECT_COMPONENTS.intersection(path.parts):
         return f"prohibited project-local evidence: {relative}"
+    if len(path.parts) >= 4 and path.parts[0] == "projects" and path.parts[2] == "analysis":
+        if path.parts[3] == "tiles":
+            return f"prohibited extracted project artwork: {relative}"
+        if path.name == "bank3_text_tables.tsv":
+            return f"prohibited decoded-original catalog: {relative}"
     if "projects" in path.parts and path.name in BANNED_BASENAMES:
         return f"prohibited original-language catalog: {relative}"
     if relative.lower().endswith(BANNED_SUFFIXES):
         return f"prohibited file type: {relative}"
     return None
+
+
+def valid_structured_cjk(relative: str, text: str) -> bool:
+    """Allow one reviewed CJK character per TSV row in a designated column."""
+    character_column = STRUCTURED_CJK_PATHS.get(relative)
+    if character_column is None:
+        return False
+    try:
+        rows = csv.DictReader(io.StringIO(text), delimiter="\t")
+        if rows.fieldnames is None or character_column not in rows.fieldnames:
+            return False
+        for row in rows:
+            matches = {
+                column: CJK.findall(value or "")
+                for column, value in row.items()
+                if CJK.search(value or "")
+            }
+            if matches and (
+                set(matches) != {character_column}
+                or len(matches[character_column]) != 1
+            ):
+                return False
+    except (csv.Error, TypeError):
+        return False
+    return True
 
 
 def main() -> int:
@@ -86,7 +122,7 @@ def main() -> int:
         except (UnicodeDecodeError, OSError):
             failures.append(f"unreviewed binary file: {relative}")
             continue
-        if CJK.search(text):
+        if CJK.search(text) and not valid_structured_cjk(relative, text):
             failures.append(f"Japanese/CJK content requires explicit review: {relative}")
         if LONG_HEX_ARRAY.search(text) or LONG_BYTE_ESCAPE.search(text):
             failures.append(f"suspicious embedded byte array requires review: {relative}")

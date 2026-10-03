@@ -56,7 +56,7 @@ def main() -> int:
     parser.add_argument(
         "--font-map",
         type=Path,
-        default=ROOT / "analysis" / "font_tiles.tsv",
+        default=ROOT / "projects" / "gb-db-z-gokou" / "analysis" / "font_tiles.tsv",
     )
     args = parser.parse_args()
 

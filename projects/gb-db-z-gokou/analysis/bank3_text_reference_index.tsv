@@ -1,0 +1,480 @@
+root_index	context	message_index	selector	table_address	stream_address	rom_offset	string_id	scene	reference_count
+0x00	global	0x00	id=$80	03:4034	03:4042	0x0C042	b03_4042	global prompts and King Kai training	1
+0x00	global	0x01	id=$81	03:4034	03:404B	0x0C04B	b03_404b	global prompts and King Kai training	1
+0x00	global	0x02	id=$82	03:4034	03:410B	0x0C10B	b03_410b	global prompts and King Kai training	1
+0x00	global	0x03	id=$83	03:4034	03:417C	0x0C17C	b03_417c	global prompts and King Kai training	1
+0x00	global	0x04	id=$84	03:4034	03:426E	0x0C26E	b03_426e	global prompts and King Kai training	1
+0x00	global	0x05	id=$85	03:4034	03:4276	0x0C276	b03_4276	global prompts and King Kai training	1
+0x00	global	0x06	id=$86	03:4034	03:427D	0x0C27D	b03_427d	global prompts and King Kai training	1
+0x01	0x00	0x00	context=$00,id=$00	03:4289	03:42AD	0x0C2AD	b03_42ad	Lookout training and Part 1 opening	1
+0x01	0x00	0x01	context=$00,id=$01	03:4289	03:42B4	0x0C2B4	b03_42b4	Lookout training and Part 1 opening	1
+0x01	0x00	0x02	context=$00,id=$02	03:4289	03:42CE	0x0C2CE	b03_42ce	Lookout training and Part 1 opening	1
+0x01	0x00	0x03	context=$00,id=$03	03:4289	03:42F8	0x0C2F8	b03_42f8	Lookout training and Part 1 opening	1
+0x01	0x00	0x04	context=$00,id=$04	03:4289	03:430A	0x0C30A	b03_430a	Lookout training and Part 1 opening	1
+0x01	0x00	0x05	context=$00,id=$05	03:4289	03:431A	0x0C31A	b03_431a	Lookout training and Part 1 opening	1
+0x01	0x00	0x06	context=$00,id=$06	03:4289	03:433E	0x0C33E	b03_433e	Lookout training and Part 1 opening	1
+0x01	0x00	0x07	context=$00,id=$07	03:4289	03:4382	0x0C382	b03_4382	Lookout training and Part 1 opening	1
+0x01	0x00	0x08	context=$00,id=$08	03:4289	03:438C	0x0C38C	b03_438c	Lookout training and Part 1 opening	1
+0x01	0x00	0x09	context=$00,id=$09	03:4289	03:43A5	0x0C3A5	b03_43a5	Lookout training and Part 1 opening	1
+0x01	0x00	0x0A	context=$00,id=$0A	03:4289	03:43BB	0x0C3BB	b03_43bb	Lookout training and Part 1 opening	1
+0x01	0x00	0x0B	context=$00,id=$0B	03:4289	03:43C8	0x0C3C8	b03_43c8	Lookout training and Part 1 opening	1
+0x01	0x00	0x0C	context=$00,id=$0C	03:4289	03:43DB	0x0C3DB	b03_43db	Lookout training and Part 1 opening	1
+0x01	0x00	0x0D	context=$00,id=$0D	03:4289	03:43EB	0x0C3EB	b03_43eb	Lookout training and Part 1 opening	1
+0x01	0x00	0x0E	context=$00,id=$0E	03:4289	03:440B	0x0C40B	b03_440b	Lookout training and Part 1 opening	1
+0x01	0x00	0x0F	context=$00,id=$0F	03:4289	03:441B	0x0C41B	b03_441b	Lookout training and Part 1 opening	1
+0x01	0x00	0x10	context=$00,id=$10	03:4289	03:4443	0x0C443	b03_4443	Lookout training and Part 1 opening	1
+0x01	0x00	0x11	context=$00,id=$11	03:4289	03:4456	0x0C456	b03_4456	Lookout training and Part 1 opening	1
+0x02	0x01	0x00	context=$01,id=$00	03:4465	03:44A1	0x0C4A1	b03_44a1	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x01	context=$01,id=$01	03:4465	03:44B6	0x0C4B6	b03_44b6	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x02	context=$01,id=$02	03:4465	03:44E3	0x0C4E3	b03_44e3	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x03	context=$01,id=$03	03:4465	03:44F3	0x0C4F3	b03_44f3	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x04	context=$01,id=$04	03:4465	03:4514	0x0C514	b03_4514	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x05	context=$01,id=$05	03:4465	03:452B	0x0C52B	b03_452b	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x06	context=$01,id=$06	03:4465	03:4545	0x0C545	b03_4545	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x07	context=$01,id=$07	03:4465	03:4550	0x0C550	b03_4550	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x08	context=$01,id=$08	03:4465	03:455B	0x0C55B	b03_455b	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x09	context=$01,id=$09	03:4465	03:456B	0x0C56B	b03_456b	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x0A	context=$01,id=$0A	03:4465	03:457F	0x0C57F	b03_457f	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x0B	context=$01,id=$0B	03:4465	03:458F	0x0C58F	b03_458f	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x0C	context=$01,id=$0C	03:4465	03:45AD	0x0C5AD	b03_45ad	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x0D	context=$01,id=$0D	03:4465	03:45C2	0x0C5C2	b03_45c2	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x0E	context=$01,id=$0E	03:4465	03:45CC	0x0C5CC	b03_45cc	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x0F	context=$01,id=$0F	03:4465	03:45D7	0x0C5D7	b03_45d7	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x10	context=$01,id=$10	03:4465	03:45E4	0x0C5E4	b03_45e4	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x11	context=$01,id=$11	03:4465	03:460C	0x0C60C	b03_460c	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x12	context=$01,id=$12	03:4465	03:4620	0x0C620	b03_4620	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x13	context=$01,id=$13	03:4465	03:462A	0x0C62A	b03_462a	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x14	context=$01,id=$14	03:4465	03:4643	0x0C643	b03_4643	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x15	context=$01,id=$15	03:4465	03:4656	0x0C656	b03_4656	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x16	context=$01,id=$16	03:4465	03:4667	0x0C667	b03_4667	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x17	context=$01,id=$17	03:4465	03:4672	0x0C672	b03_4672	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x18	context=$01,id=$18	03:4465	03:467E	0x0C67E	b03_467e	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x19	context=$01,id=$19	03:4465	03:4696	0x0C696	b03_4696	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x1A	context=$01,id=$1A	03:4465	03:46D2	0x0C6D2	b03_46d2	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x1B	context=$01,id=$1B	03:4465	03:46F3	0x0C6F3	b03_46f3	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x1C	context=$01,id=$1C	03:4465	03:4701	0x0C701	b03_4701	23rd Tenkaichi Budokai venue and reunion	1
+0x02	0x01	0x1D	context=$01,id=$1D	03:4465	03:4728	0x0C728	b03_4728	23rd Tenkaichi Budokai venue and reunion	1
+0x03	0x02	0x00	context=$02,id=$00	03:4739	03:475F	0x0C75F	b03_475f	23rd Tenkaichi Budokai preliminaries	1
+0x03	0x02	0x01	context=$02,id=$01	03:4739	03:4768	0x0C768	b03_4768	23rd Tenkaichi Budokai preliminaries	1
+0x03	0x02	0x02	context=$02,id=$02	03:4739	03:4770	0x0C770	b03_4770	23rd Tenkaichi Budokai preliminaries	1
+0x03	0x02	0x03	context=$02,id=$03	03:4739	03:4786	0x0C786	b03_4786	23rd Tenkaichi Budokai preliminaries	1
+0x03	0x02	0x04	context=$02,id=$04	03:4739	03:478D	0x0C78D	b03_478d	23rd Tenkaichi Budokai preliminaries	1
+0x03	0x02	0x05	context=$02,id=$05	03:4739	03:47AC	0x0C7AC	b03_47ac	23rd Tenkaichi Budokai preliminaries	1
+0x03	0x02	0x06	context=$02,id=$06	03:4739	03:47EF	0x0C7EF	b03_47ef	23rd Tenkaichi Budokai preliminaries	1
+0x03	0x02	0x07	context=$02,id=$07	03:4739	03:4804	0x0C804	b03_4804	23rd Tenkaichi Budokai preliminaries	1
+0x03	0x02	0x08	context=$02,id=$08	03:4739	03:481B	0x0C81B	b03_481b	23rd Tenkaichi Budokai preliminaries	1
+0x03	0x02	0x09	context=$02,id=$09	03:4739	03:4835	0x0C835	b03_4835	23rd Tenkaichi Budokai preliminaries	1
+0x03	0x02	0x0A	context=$02,id=$0A	03:4739	03:4867	0x0C867	b03_4867	23rd Tenkaichi Budokai preliminaries	1
+0x03	0x02	0x0B	context=$02,id=$0B	03:4739	03:489E	0x0C89E	b03_489e	23rd Tenkaichi Budokai preliminaries	1
+0x03	0x02	0x0C	context=$02,id=$0C	03:4739	03:48B0	0x0C8B0	b03_48b0	23rd Tenkaichi Budokai preliminaries	1
+0x03	0x02	0x0D	context=$02,id=$0D	03:4739	03:48C9	0x0C8C9	b03_48c9	23rd Tenkaichi Budokai preliminaries	1
+0x03	0x02	0x0E	context=$02,id=$0E	03:4739	03:490A	0x0C90A	b03_490a	23rd Tenkaichi Budokai preliminaries	1
+0x03	0x02	0x0F	context=$02,id=$0F	03:4739	03:4913	0x0C913	b03_4913	23rd Tenkaichi Budokai preliminaries	1
+0x03	0x02	0x10	context=$02,id=$10	03:4739	03:4923	0x0C923	b03_4923	23rd Tenkaichi Budokai preliminaries	1
+0x03	0x02	0x11	context=$02,id=$11	03:4739	03:4935	0x0C935	b03_4935	23rd Tenkaichi Budokai preliminaries	1
+0x03	0x02	0x12	context=$02,id=$12	03:4739	03:4941	0x0C941	b03_4941	23rd Tenkaichi Budokai preliminaries	1
+0x04	0x03	0x00	context=$03,id=$00	03:494D	03:4953	0x0C953	b03_4953	23rd Tenkaichi Budokai drawing	1
+0x04	0x03	0x01	context=$03,id=$01	03:494D	03:4980	0x0C980	b03_4980	23rd Tenkaichi Budokai drawing	1
+0x04	0x03	0x02	context=$03,id=$02	03:494D	03:49B9	0x0C9B9	b03_49b9	23rd Tenkaichi Budokai drawing	1
+0x05	0x04	0x00	context=$04,id=$00	03:49C8	03:4A3C	0x0CA3C	b03_4a3c	23rd Tenkaichi Budokai matches	1
+0x05	0x04	0x01	context=$04,id=$01	03:49C8	03:4A5C	0x0CA5C	b03_4a5c	23rd Tenkaichi Budokai matches	1
+0x05	0x04	0x02	context=$04,id=$02	03:49C8	03:4A78	0x0CA78	b03_4a78	23rd Tenkaichi Budokai matches	1
+0x05	0x04	0x03	context=$04,id=$03	03:49C8	03:4A84	0x0CA84	b03_4a84	23rd Tenkaichi Budokai matches	1
+0x05	0x04	0x04	context=$04,id=$04	03:49C8	03:4AB8	0x0CAB8	b03_4ab8	23rd Tenkaichi Budokai matches	1
+0x05	0x04	0x05	context=$04,id=$05	03:49C8	03:4ACB	0x0CACB	b03_4acb	23rd Tenkaichi Budokai matches	1
+0x05	0x04	0x06	context=$04,id=$06	03:49C8	03:4AE6	0x0CAE6	b03_4ae6	23rd Tenkaichi Budokai matches	1
+0x05	0x04	0x07	context=$04,id=$07	03:49C8	03:4AF2	0x0CAF2	b03_4af2	23rd Tenkaichi Budokai matches	1
+0x05	0x04	0x08	context=$04,id=$08	03:49C8	03:4AFB	0x0CAFB	b03_4afb	23rd Tenkaichi Budokai matches	1
+0x05	0x04	0x09	context=$04,id=$09	03:49C8	03:4B0E	0x0CB0E	b03_4b0e	23rd Tenkaichi Budokai matches	1
+0x05	0x04	0x0A	context=$04,id=$0A	03:49C8	03:4B20	0x0CB20	b03_4b20	23rd Tenkaichi Budokai matches	1
+0x05	0x04	0x0B	context=$04,id=$0B	03:49C8	03:4B33	0x0CB33	b03_4b33	23rd Tenkaichi Budokai matches	1
+0x05	0x04	0x0C	context=$04,id=$0C	03:49C8	03:4BA0	0x0CBA0	b03_4ba0	23rd Tenkaichi Budokai matches	1
+0x05	0x04	0x0D	context=$04,id=$0D	03:49C8	03:4BB2	0x0CBB2	b03_4bb2	23rd Tenkaichi Budokai matches	1
+0x05	0x04	0x0E	context=$04,id=$0E	03:49C8	03:4BBB	0x0CBBB	b03_4bbb	23rd Tenkaichi Budokai matches	5
+0x05	0x04	0x0F	context=$04,id=$0F	03:49C8	03:4BBB	0x0CBBB	b03_4bbb	23rd Tenkaichi Budokai matches	5
+0x05	0x04	0x10	context=$04,id=$10	03:49C8	03:4BBB	0x0CBBB	b03_4bbb	23rd Tenkaichi Budokai matches	5
+0x05	0x04	0x11	context=$04,id=$11	03:49C8	03:4BBB	0x0CBBB	b03_4bbb	23rd Tenkaichi Budokai matches	5
+0x05	0x04	0x12	context=$04,id=$12	03:49C8	03:4BBB	0x0CBBB	b03_4bbb	23rd Tenkaichi Budokai matches	5
+0x05	0x04	0x13	context=$04,id=$13	03:49C8	03:4BDD	0x0CBDD	b03_4bdd	23rd Tenkaichi Budokai matches	1
+0x05	0x04	0x14	context=$04,id=$14	03:49C8	03:4C05	0x0CC05	b03_4c05	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x15	context=$04,id=$15	03:49C8	03:4C05	0x0CC05	b03_4c05	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x16	context=$04,id=$16	03:49C8	03:4C2F	0x0CC2F	b03_4c2f	23rd Tenkaichi Budokai matches	1
+0x05	0x04	0x17	context=$04,id=$17	03:49C8	03:4C4E	0x0CC4E	b03_4c4e	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x18	context=$04,id=$18	03:49C8	03:4C4E	0x0CC4E	b03_4c4e	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x19	context=$04,id=$19	03:49C8	03:4C6D	0x0CC6D	b03_4c6d	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x1A	context=$04,id=$1A	03:49C8	03:4C6D	0x0CC6D	b03_4c6d	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x1B	context=$04,id=$1B	03:49C8	03:4C95	0x0CC95	b03_4c95	23rd Tenkaichi Budokai matches	1
+0x05	0x04	0x1C	context=$04,id=$1C	03:49C8	03:4CBF	0x0CCBF	b03_4cbf	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x1D	context=$04,id=$1D	03:49C8	03:4CBF	0x0CCBF	b03_4cbf	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x1E	context=$04,id=$1E	03:49C8	03:4CE3	0x0CCE3	b03_4ce3	23rd Tenkaichi Budokai matches	1
+0x05	0x04	0x1F	context=$04,id=$1F	03:49C8	03:4D08	0x0CD08	b03_4d08	23rd Tenkaichi Budokai matches	1
+0x05	0x04	0x20	context=$04,id=$20	03:49C8	03:4D2C	0x0CD2C	b03_4d2c	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x21	context=$04,id=$21	03:49C8	03:4D4C	0x0CD4C	b03_4d4c	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x22	context=$04,id=$22	03:49C8	03:4D5B	0x0CD5B	b03_4d5b	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x23	context=$04,id=$23	03:49C8	03:4D6A	0x0CD6A	b03_4d6a	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x24	context=$04,id=$24	03:49C8	03:4D80	0x0CD80	b03_4d80	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x25	context=$04,id=$25	03:49C8	03:4DA2	0x0CDA2	b03_4da2	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x26	context=$04,id=$26	03:49C8	03:4DBC	0x0CDBC	b03_4dbc	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x27	context=$04,id=$27	03:49C8	03:4DC7	0x0CDC7	b03_4dc7	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x28	context=$04,id=$28	03:49C8	03:4DED	0x0CDED	b03_4ded	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x29	context=$04,id=$29	03:49C8	03:4E06	0x0CE06	b03_4e06	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x2A	context=$04,id=$2A	03:49C8	03:4E11	0x0CE11	b03_4e11	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x2B	context=$04,id=$2B	03:49C8	03:4E2C	0x0CE2C	b03_4e2c	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x2C	context=$04,id=$2C	03:49C8	03:4E52	0x0CE52	b03_4e52	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x2D	context=$04,id=$2D	03:49C8	03:4E6A	0x0CE6A	b03_4e6a	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x2E	context=$04,id=$2E	03:49C8	03:4E82	0x0CE82	b03_4e82	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x2F	context=$04,id=$2F	03:49C8	03:4EA9	0x0CEA9	b03_4ea9	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x30	context=$04,id=$30	03:49C8	03:4EC2	0x0CEC2	b03_4ec2	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x31	context=$04,id=$31	03:49C8	03:4EDA	0x0CEDA	b03_4eda	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x32	context=$04,id=$32	03:49C8	03:4EFF	0x0CEFF	b03_4eff	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x33	context=$04,id=$33	03:49C8	03:4F19	0x0CF19	b03_4f19	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x34	context=$04,id=$34	03:49C8	03:4F3F	0x0CF3F	b03_4f3f	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x35	context=$04,id=$35	03:49C8	03:4F61	0x0CF61	b03_4f61	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x36	context=$04,id=$36	03:49C8	03:4F7C	0x0CF7C	b03_4f7c	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x37	context=$04,id=$37	03:49C8	03:4F8D	0x0CF8D	b03_4f8d	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x38	context=$04,id=$38	03:49C8	03:4FA4	0x0CFA4	b03_4fa4	23rd Tenkaichi Budokai matches	2
+0x05	0x04	0x39	context=$04,id=$39	03:49C8	03:4FC3	0x0CFC3	b03_4fc3	23rd Tenkaichi Budokai matches	2
+0x06	0x05	0x00	context=$05,id=$00	03:4FE1	03:500D	0x0D00D	b03_500d	late tournament and Piccolo conflict	1
+0x06	0x05	0x01	context=$05,id=$01	03:4FE1	03:502C	0x0D02C	b03_502c	late tournament and Piccolo conflict	1
+0x06	0x05	0x02	context=$05,id=$02	03:4FE1	03:5044	0x0D044	b03_5044	late tournament and Piccolo conflict	1
+0x06	0x05	0x03	context=$05,id=$03	03:4FE1	03:5079	0x0D079	b03_5079	late tournament and Piccolo conflict	1
+0x06	0x05	0x04	context=$05,id=$04	03:4FE1	03:50C9	0x0D0C9	b03_50c9	late tournament and Piccolo conflict	1
+0x06	0x05	0x05	context=$05,id=$05	03:4FE1	03:5104	0x0D104	b03_5104	late tournament and Piccolo conflict	1
+0x06	0x05	0x06	context=$05,id=$06	03:4FE1	03:5130	0x0D130	b03_5130	late tournament and Piccolo conflict	1
+0x06	0x05	0x07	context=$05,id=$07	03:4FE1	03:5140	0x0D140	b03_5140	late tournament and Piccolo conflict	1
+0x06	0x05	0x08	context=$05,id=$08	03:4FE1	03:5164	0x0D164	b03_5164	late tournament and Piccolo conflict	1
+0x06	0x05	0x09	context=$05,id=$09	03:4FE1	03:5170	0x0D170	b03_5170	late tournament and Piccolo conflict	1
+0x06	0x05	0x0A	context=$05,id=$0A	03:4FE1	03:5182	0x0D182	b03_5182	late tournament and Piccolo conflict	1
+0x06	0x05	0x0B	context=$05,id=$0B	03:4FE1	03:51DF	0x0D1DF	b03_51df	late tournament and Piccolo conflict	1
+0x06	0x05	0x0C	context=$05,id=$0C	03:4FE1	03:5262	0x0D262	b03_5262	late tournament and Piccolo conflict	1
+0x06	0x05	0x0D	context=$05,id=$0D	03:4FE1	03:529A	0x0D29A	b03_529a	late tournament and Piccolo conflict	1
+0x06	0x05	0x0E	context=$05,id=$0E	03:4FE1	03:52AE	0x0D2AE	b03_52ae	late tournament and Piccolo conflict	1
+0x06	0x05	0x0F	context=$05,id=$0F	03:4FE1	03:52DE	0x0D2DE	b03_52de	late tournament and Piccolo conflict	1
+0x06	0x05	0x10	context=$05,id=$10	03:4FE1	03:52F4	0x0D2F4	b03_52f4	late tournament and Piccolo conflict	1
+0x06	0x05	0x11	context=$05,id=$11	03:4FE1	03:5327	0x0D327	b03_5327	late tournament and Piccolo conflict	1
+0x06	0x05	0x12	context=$05,id=$12	03:4FE1	03:5345	0x0D345	b03_5345	late tournament and Piccolo conflict	1
+0x06	0x05	0x13	context=$05,id=$13	03:4FE1	03:537A	0x0D37A	b03_537a	late tournament and Piccolo conflict	1
+0x06	0x05	0x14	context=$05,id=$14	03:4FE1	03:53C8	0x0D3C8	b03_53c8	late tournament and Piccolo conflict	1
+0x06	0x05	0x15	context=$05,id=$15	03:4FE1	03:53F0	0x0D3F0	b03_53f0	late tournament and Piccolo conflict	1
+0x07	0x06	0x00	context=$06,id=$00	03:541A	03:5456	0x0D456	b03_5456	Goku versus Piccolo/Majunior	2
+0x07	0x06	0x01	context=$06,id=$01	03:541A	03:55FF	0x0D5FF	b03_55ff	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x02	context=$06,id=$02	03:541A	03:5616	0x0D616	b03_5616	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x03	context=$06,id=$03	03:541A	03:545C	0x0D45C	b03_545c	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x04	context=$06,id=$04	03:541A	03:546E	0x0D46E	b03_546e	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x05	context=$06,id=$05	03:541A	03:5483	0x0D483	b03_5483	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x06	context=$06,id=$06	03:541A	03:54A9	0x0D4A9	b03_54a9	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x07	context=$06,id=$07	03:541A	03:54D0	0x0D4D0	b03_54d0	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x08	context=$06,id=$08	03:541A	03:5573	0x0D573	b03_5573	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x09	context=$06,id=$09	03:541A	03:5580	0x0D580	b03_5580	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x0A	context=$06,id=$0A	03:541A	03:5532	0x0D532	b03_5532	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x0B	context=$06,id=$0B	03:541A	03:553F	0x0D53F	b03_553f	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x0C	context=$06,id=$0C	03:541A	03:554D	0x0D54D	b03_554d	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x0D	context=$06,id=$0D	03:541A	03:5558	0x0D558	b03_5558	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x0E	context=$06,id=$0E	03:541A	03:5625	0x0D625	b03_5625	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x0F	context=$06,id=$0F	03:541A	03:5513	0x0D513	b03_5513	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x10	context=$06,id=$10	03:541A	03:5636	0x0D636	b03_5636	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x11	context=$06,id=$11	03:541A	03:55B8	0x0D5B8	b03_55b8	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x12	context=$06,id=$12	03:541A	03:54FB	0x0D4FB	b03_54fb	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x13	context=$06,id=$13	03:541A	03:55CB	0x0D5CB	b03_55cb	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x14	context=$06,id=$14	03:541A	03:55ED	0x0D5ED	b03_55ed	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x15	context=$06,id=$15	03:541A	03:5595	0x0D595	b03_5595	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x16	context=$06,id=$16	03:541A	03:565D	0x0D65D	b03_565d	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x17	context=$06,id=$17	03:541A	03:5522	0x0D522	b03_5522	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x18	context=$06,id=$18	03:541A	03:5456	0x0D456	b03_5456	Goku versus Piccolo/Majunior	2
+0x07	0x06	0x19	context=$06,id=$19	03:541A	03:55AB	0x0D5AB	b03_55ab	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x1A	context=$06,id=$1A	03:541A	03:5688	0x0D688	b03_5688	Goku versus Piccolo/Majunior	1
+0x07	0x06	0x1B	context=$06,id=$1B	03:541A	03:56C5	0x0D6C5	b03_56c5	Goku versus Piccolo/Majunior	2
+0x07	0x06	0x1C	context=$06,id=$1C	03:541A	03:56ED	0x0D6ED	b03_56ed	Goku versus Piccolo/Majunior	2
+0x07	0x06	0x1D	context=$06,id=$1D	03:541A	03:5722	0x0D722	b03_5722	Goku versus Piccolo/Majunior	2
+0x08	0x07	0x00	context=$07,id=$00	03:573F	03:57C9	0x0D7C9	b03_57c9	tournament ending and optional Lookout training	1
+0x08	0x07	0x01	context=$07,id=$01	03:573F	03:57F1	0x0D7F1	b03_57f1	tournament ending and optional Lookout training	1
+0x08	0x07	0x02	context=$07,id=$02	03:573F	03:5800	0x0D800	b03_5800	tournament ending and optional Lookout training	1
+0x08	0x07	0x03	context=$07,id=$03	03:573F	03:587F	0x0D87F	b03_587f	tournament ending and optional Lookout training	1
+0x08	0x07	0x04	context=$07,id=$04	03:573F	03:589D	0x0D89D	b03_589d	tournament ending and optional Lookout training	1
+0x08	0x07	0x05	context=$07,id=$05	03:573F	03:58B7	0x0D8B7	b03_58b7	tournament ending and optional Lookout training	1
+0x08	0x07	0x06	context=$07,id=$06	03:573F	03:58EC	0x0D8EC	b03_58ec	tournament ending and optional Lookout training	1
+0x08	0x07	0x07	context=$07,id=$07	03:573F	03:5902	0x0D902	b03_5902	tournament ending and optional Lookout training	1
+0x08	0x07	0x08	context=$07,id=$08	03:573F	03:5919	0x0D919	b03_5919	tournament ending and optional Lookout training	1
+0x08	0x07	0x09	context=$07,id=$09	03:573F	03:5926	0x0D926	b03_5926	tournament ending and optional Lookout training	1
+0x08	0x07	0x0A	context=$07,id=$0A	03:573F	03:5937	0x0D937	b03_5937	tournament ending and optional Lookout training	1
+0x08	0x07	0x0B	context=$07,id=$0B	03:573F	03:5943	0x0D943	b03_5943	tournament ending and optional Lookout training	1
+0x08	0x07	0x0C	context=$07,id=$0C	03:573F	03:5977	0x0D977	b03_5977	tournament ending and optional Lookout training	1
+0x08	0x07	0x0D	context=$07,id=$0D	03:573F	03:598A	0x0D98A	b03_598a	tournament ending and optional Lookout training	1
+0x08	0x07	0x0E	context=$07,id=$0E	03:573F	03:59A5	0x0D9A5	b03_59a5	tournament ending and optional Lookout training	1
+0x08	0x07	0x0F	context=$07,id=$0F	03:573F	03:59BC	0x0D9BC	b03_59bc	tournament ending and optional Lookout training	1
+0x08	0x07	0x10	context=$07,id=$10	03:573F	03:59DC	0x0D9DC	b03_59dc	tournament ending and optional Lookout training	1
+0x08	0x07	0x11	context=$07,id=$11	03:573F	03:59E6	0x0D9E6	b03_59e6	tournament ending and optional Lookout training	1
+0x08	0x07	0x12	context=$07,id=$12	03:573F	03:59FF	0x0D9FF	b03_59ff	tournament ending and optional Lookout training	1
+0x08	0x07	0x13	context=$07,id=$13	03:573F	03:5A2B	0x0DA2B	b03_5a2b	tournament ending and optional Lookout training	1
+0x08	0x07	0x14	context=$07,id=$14	03:573F	03:5A8B	0x0DA8B	b03_5a8b	tournament ending and optional Lookout training	1
+0x08	0x07	0x15	context=$07,id=$15	03:573F	03:5A9D	0x0DA9D	b03_5a9d	tournament ending and optional Lookout training	1
+0x08	0x07	0x16	context=$07,id=$16	03:573F	03:5AA6	0x0DAA6	b03_5aa6	tournament ending and optional Lookout training	1
+0x08	0x07	0x17	context=$07,id=$17	03:573F	03:5AC2	0x0DAC2	b03_5ac2	tournament ending and optional Lookout training	1
+0x08	0x07	0x18	context=$07,id=$18	03:573F	03:5AED	0x0DAED	b03_5aed	tournament ending and optional Lookout training	1
+0x08	0x07	0x19	context=$07,id=$19	03:573F	03:5B0E	0x0DB0E	b03_5b0e	tournament ending and optional Lookout training	1
+0x08	0x07	0x1A	context=$07,id=$1A	03:573F	03:5B21	0x0DB21	b03_5b21	tournament ending and optional Lookout training	1
+0x08	0x07	0x1B	context=$07,id=$1B	03:573F	03:5B35	0x0DB35	b03_5b35	tournament ending and optional Lookout training	1
+0x08	0x07	0x1C	context=$07,id=$1C	03:573F	03:5B70	0x0DB70	b03_5b70	tournament ending and optional Lookout training	1
+0x08	0x07	0x1D	context=$07,id=$1D	03:573F	03:5B9E	0x0DB9E	b03_5b9e	tournament ending and optional Lookout training	1
+0x08	0x07	0x1E	context=$07,id=$1E	03:573F	03:5BAC	0x0DBAC	b03_5bac	tournament ending and optional Lookout training	1
+0x08	0x07	0x1F	context=$07,id=$1F	03:573F	03:5BB7	0x0DBB7	b03_5bb7	tournament ending and optional Lookout training	1
+0x08	0x07	0x20	context=$07,id=$20	03:573F	03:5C13	0x0DC13	b03_5c13	tournament ending and optional Lookout training	1
+0x08	0x07	0x21	context=$07,id=$21	03:573F	03:5C41	0x0DC41	b03_5c41	tournament ending and optional Lookout training	1
+0x08	0x07	0x22	context=$07,id=$22	03:573F	03:5C62	0x0DC62	b03_5c62	tournament ending and optional Lookout training	1
+0x08	0x07	0x23	context=$07,id=$23	03:573F	03:5C89	0x0DC89	b03_5c89	tournament ending and optional Lookout training	1
+0x08	0x07	0x24	context=$07,id=$24	03:573F	03:5D22	0x0DD22	b03_5d22	tournament ending and optional Lookout training	1
+0x08	0x07	0x25	context=$07,id=$25	03:573F	03:5D47	0x0DD47	b03_5d47	tournament ending and optional Lookout training	1
+0x08	0x07	0x26	context=$07,id=$26	03:573F	03:5D56	0x0DD56	b03_5d56	tournament ending and optional Lookout training	1
+0x08	0x07	0x27	context=$07,id=$27	03:573F	03:580F	0x0D80F	b03_580f	tournament ending and optional Lookout training	1
+0x08	0x07	0x28	context=$07,id=$28	03:573F	03:5872	0x0D872	b03_5872	tournament ending and optional Lookout training	1
+0x08	0x07	0x29	context=$07,id=$29	03:573F	03:5CB4	0x0DCB4	b03_5cb4	tournament ending and optional Lookout training	1
+0x08	0x07	0x2A	context=$07,id=$2A	03:573F	03:5C33	0x0DC33	b03_5c33	tournament ending and optional Lookout training	1
+0x08	0x07	0x2B	context=$07,id=$2B	03:573F	03:5DA2	0x0DDA2	b03_5da2	tournament ending and optional Lookout training	1
+0x08	0x07	0x2C	context=$07,id=$2C	03:573F	03:5DB3	0x0DDB3	b03_5db3	tournament ending and optional Lookout training	1
+0x08	0x07	0x2D	context=$07,id=$2D	03:573F	03:5DF1	0x0DDF1	b03_5df1	tournament ending and optional Lookout training	1
+0x08	0x07	0x2E	context=$07,id=$2E	03:573F	03:5E10	0x0DE10	b03_5e10	tournament ending and optional Lookout training	1
+0x08	0x07	0x2F	context=$07,id=$2F	03:573F	03:5E21	0x0DE21	b03_5e21	tournament ending and optional Lookout training	1
+0x08	0x07	0x30	context=$07,id=$30	03:573F	03:5E37	0x0DE37	b03_5e37	tournament ending and optional Lookout training	1
+0x08	0x07	0x31	context=$07,id=$31	03:573F	03:5E5B	0x0DE5B	b03_5e5b	tournament ending and optional Lookout training	1
+0x08	0x07	0x32	context=$07,id=$32	03:573F	03:5E64	0x0DE64	b03_5e64	tournament ending and optional Lookout training	1
+0x08	0x07	0x33	context=$07,id=$33	03:573F	03:5E76	0x0DE76	b03_5e76	tournament ending and optional Lookout training	1
+0x08	0x07	0x34	context=$07,id=$34	03:573F	03:5E8B	0x0DE8B	b03_5e8b	tournament ending and optional Lookout training	1
+0x08	0x07	0x35	context=$07,id=$35	03:573F	03:5EBE	0x0DEBE	b03_5ebe	tournament ending and optional Lookout training	1
+0x08	0x07	0x36	context=$07,id=$36	03:573F	03:5EE9	0x0DEE9	b03_5ee9	tournament ending and optional Lookout training	3
+0x08	0x07	0x37	context=$07,id=$37	03:573F	03:5F18	0x0DF18	b03_5f18	tournament ending and optional Lookout training	1
+0x08	0x07	0x38	context=$07,id=$38	03:573F	03:5F3F	0x0DF3F	b03_5f3f	tournament ending and optional Lookout training	1
+0x08	0x07	0x39	context=$07,id=$39	03:573F	03:5F52	0x0DF52	b03_5f52	tournament ending and optional Lookout training	1
+0x08	0x07	0x3A	context=$07,id=$3A	03:573F	03:5F82	0x0DF82	b03_5f82	tournament ending and optional Lookout training	1
+0x08	0x07	0x3B	context=$07,id=$3B	03:573F	03:5EE9	0x0DEE9	b03_5ee9	tournament ending and optional Lookout training	3
+0x08	0x07	0x3C	context=$07,id=$3C	03:573F	03:5FA3	0x0DFA3	b03_5fa3	tournament ending and optional Lookout training	1
+0x08	0x07	0x3D	context=$07,id=$3D	03:573F	03:5FCA	0x0DFCA	b03_5fca	tournament ending and optional Lookout training	1
+0x08	0x07	0x3E	context=$07,id=$3E	03:573F	03:5FFB	0x0DFFB	b03_5ffb	tournament ending and optional Lookout training	1
+0x08	0x07	0x3F	context=$07,id=$3F	03:573F	03:5EE9	0x0DEE9	b03_5ee9	tournament ending and optional Lookout training	3
+0x08	0x07	0x40	context=$07,id=$40	03:573F	03:601E	0x0E01E	b03_601e	tournament ending and optional Lookout training	1
+0x08	0x07	0x41	context=$07,id=$41	03:573F	03:6046	0x0E046	b03_6046	tournament ending and optional Lookout training	1
+0x08	0x07	0x42	context=$07,id=$42	03:573F	03:605F	0x0E05F	b03_605f	tournament ending and optional Lookout training	1
+0x08	0x07	0x43	context=$07,id=$43	03:573F	03:608B	0x0E08B	b03_608b	tournament ending and optional Lookout training	1
+0x08	0x07	0x44	context=$07,id=$44	03:573F	03:609D	0x0E09D	b03_609d	tournament ending and optional Lookout training	1
+0x0A	0x09	0x00	context=$09,id=$00	03:60C0	03:60E2	0x0E0E2	b03_60e2	Part 2 opening and Raditz arrival	1
+0x0A	0x09	0x01	context=$09,id=$01	03:60C0	03:6118	0x0E118	b03_6118	Part 2 opening and Raditz arrival	1
+0x0A	0x09	0x02	context=$09,id=$02	03:60C0	03:6122	0x0E122	b03_6122	Part 2 opening and Raditz arrival	2
+0x0A	0x09	0x03	context=$09,id=$03	03:60C0	03:6122	0x0E122	b03_6122	Part 2 opening and Raditz arrival	2
+0x0A	0x09	0x04	context=$09,id=$04	03:60C0	03:616B	0x0E16B	b03_616b	Part 2 opening and Raditz arrival	1
+0x0A	0x09	0x05	context=$09,id=$05	03:60C0	03:61EB	0x0E1EB	b03_61eb	Part 2 opening and Raditz arrival	1
+0x0A	0x09	0x06	context=$09,id=$06	03:60C0	03:621F	0x0E21F	b03_621f	Part 2 opening and Raditz arrival	1
+0x0A	0x09	0x07	context=$09,id=$07	03:60C0	03:623C	0x0E23C	b03_623c	Part 2 opening and Raditz arrival	1
+0x0A	0x09	0x08	context=$09,id=$08	03:60C0	03:6252	0x0E252	b03_6252	Part 2 opening and Raditz arrival	1
+0x0A	0x09	0x09	context=$09,id=$09	03:60C0	03:6277	0x0E277	b03_6277	Part 2 opening and Raditz arrival	1
+0x0A	0x09	0x0A	context=$09,id=$0A	03:60C0	03:628A	0x0E28A	b03_628a	Part 2 opening and Raditz arrival	1
+0x0A	0x09	0x0B	context=$09,id=$0B	03:60C0	03:62BB	0x0E2BB	b03_62bb	Part 2 opening and Raditz arrival	1
+0x0A	0x09	0x0C	context=$09,id=$0C	03:60C0	03:62E9	0x0E2E9	b03_62e9	Part 2 opening and Raditz arrival	1
+0x0A	0x09	0x0D	context=$09,id=$0D	03:60C0	03:630E	0x0E30E	b03_630e	Part 2 opening and Raditz arrival	1
+0x0A	0x09	0x0E	context=$09,id=$0E	03:60C0	03:632A	0x0E32A	b03_632a	Part 2 opening and Raditz arrival	1
+0x0A	0x09	0x0F	context=$09,id=$0F	03:60C0	03:6348	0x0E348	b03_6348	Part 2 opening and Raditz arrival	1
+0x0A	0x09	0x10	context=$09,id=$10	03:60C0	03:63A8	0x0E3A8	b03_63a8	Part 2 opening and Raditz arrival	1
+0x0B	0x0A	0x00	context=$0A,id=$00	03:63B7	03:63BF	0x0E3BF	b03_63bf	Goku and Piccolo alliance	1
+0x0B	0x0A	0x01	context=$0A,id=$01	03:63B7	03:63F4	0x0E3F4	b03_63f4	Goku and Piccolo alliance	1
+0x0B	0x0A	0x02	context=$0A,id=$02	03:63B7	03:642D	0x0E42D	b03_642d	Goku and Piccolo alliance	1
+0x0B	0x0A	0x03	context=$0A,id=$03	03:63B7	03:647B	0x0E47B	b03_647b	Goku and Piccolo alliance	1
+0x0C	0x0B	0x00	context=$0B,id=$00	03:6492	03:64FC	0x0E4FC	b03_64fc	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x01	context=$0B,id=$01	03:6492	03:6519	0x0E519	b03_6519	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x02	context=$0B,id=$02	03:6492	03:656E	0x0E56E	b03_656e	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x03	context=$0B,id=$03	03:6492	03:658A	0x0E58A	b03_658a	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x04	context=$0B,id=$04	03:6492	03:66F6	0x0E6F6	b03_66f6	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x05	context=$0B,id=$05	03:6492	03:6719	0x0E719	b03_6719	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x06	context=$0B,id=$06	03:6492	03:6747	0x0E747	b03_6747	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x07	context=$0B,id=$07	03:6492	03:6753	0x0E753	b03_6753	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x08	context=$0B,id=$08	03:6492	03:676D	0x0E76D	b03_676d	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x09	context=$0B,id=$09	03:6492	03:6787	0x0E787	b03_6787	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x0A	context=$0B,id=$0A	03:6492	03:67C4	0x0E7C4	b03_67c4	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x0B	context=$0B,id=$0B	03:6492	03:67D4	0x0E7D4	b03_67d4	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x0C	context=$0B,id=$0C	03:6492	03:6827	0x0E827	b03_6827	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x0D	context=$0B,id=$0D	03:6492	03:683B	0x0E83B	b03_683b	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x0E	context=$0B,id=$0E	03:6492	03:684E	0x0E84E	b03_684e	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x0F	context=$0B,id=$0F	03:6492	03:6959	0x0E959	b03_6959	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x10	context=$0B,id=$10	03:6492	03:6967	0x0E967	b03_6967	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x11	context=$0B,id=$11	03:6492	03:699B	0x0E99B	b03_699b	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x12	context=$0B,id=$12	03:6492	03:69C5	0x0E9C5	b03_69c5	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x13	context=$0B,id=$13	03:6492	03:6A0B	0x0EA0B	b03_6a0b	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x14	context=$0B,id=$14	03:6492	03:6A30	0x0EA30	b03_6a30	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x15	context=$0B,id=$15	03:6492	03:6A40	0x0EA40	b03_6a40	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x16	context=$0B,id=$16	03:6492	03:6A54	0x0EA54	b03_6a54	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x17	context=$0B,id=$17	03:6492	03:6A76	0x0EA76	b03_6a76	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x18	context=$0B,id=$18	03:6492	03:6A8C	0x0EA8C	b03_6a8c	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x19	context=$0B,id=$19	03:6492	03:65A6	0x0E5A6	b03_65a6	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x1A	context=$0B,id=$1A	03:6492	03:65C1	0x0E5C1	b03_65c1	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x1B	context=$0B,id=$1B	03:6492	03:65E5	0x0E5E5	b03_65e5	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x1C	context=$0B,id=$1C	03:6492	03:6609	0x0E609	b03_6609	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x1D	context=$0B,id=$1D	03:6492	03:661C	0x0E61C	b03_661c	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x1E	context=$0B,id=$1E	03:6492	03:6695	0x0E695	b03_6695	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x1F	context=$0B,id=$1F	03:6492	03:66D3	0x0E6D3	b03_66d3	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x20	context=$0B,id=$20	03:6492	03:6873	0x0E873	b03_6873	Raditz battle and Saiyan warning	2
+0x0C	0x0B	0x21	context=$0B,id=$21	03:6492	03:6873	0x0E873	b03_6873	Raditz battle and Saiyan warning	2
+0x0C	0x0B	0x22	context=$0B,id=$22	03:6492	03:6889	0x0E889	b03_6889	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x23	context=$0B,id=$23	03:6492	03:6898	0x0E898	b03_6898	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x24	context=$0B,id=$24	03:6492	03:68F6	0x0E8F6	b03_68f6	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x25	context=$0B,id=$25	03:6492	03:6901	0x0E901	b03_6901	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x26	context=$0B,id=$26	03:6492	03:6923	0x0E923	b03_6923	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x27	context=$0B,id=$27	03:6492	03:6937	0x0E937	b03_6937	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x28	context=$0B,id=$28	03:6492	03:6981	0x0E981	b03_6981	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x29	context=$0B,id=$29	03:6492	03:69E8	0x0E9E8	b03_69e8	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x2A	context=$0B,id=$2A	03:6492	03:69F1	0x0E9F1	b03_69f1	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x2B	context=$0B,id=$2B	03:6492	03:6ACA	0x0EACA	b03_6aca	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x2C	context=$0B,id=$2C	03:6492	03:6AEE	0x0EAEE	b03_6aee	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x2D	context=$0B,id=$2D	03:6492	03:6B1A	0x0EB1A	b03_6b1a	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x2E	context=$0B,id=$2E	03:6492	03:6B2E	0x0EB2E	b03_6b2e	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x2F	context=$0B,id=$2F	03:6492	03:6B35	0x0EB35	b03_6b35	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x30	context=$0B,id=$30	03:6492	03:6B50	0x0EB50	b03_6b50	Raditz battle and Saiyan warning	1
+0x0C	0x0B	0x31	context=$0B,id=$31	03:6492	03:6B75	0x0EB75	b03_6b75	Raditz battle and Saiyan warning	2
+0x0C	0x0B	0x32	context=$0B,id=$32	03:6492	03:6B94	0x0EB94	b03_6b94	Raditz battle and Saiyan warning	2
+0x0C	0x0B	0x33	context=$0B,id=$33	03:6492	03:6BC6	0x0EBC6	b03_6bc6	Raditz battle and Saiyan warning	2
+0x0C	0x0B	0x34	context=$0B,id=$34	03:6492	03:6BFB	0x0EBFB	b03_6bfb	Raditz battle and Saiyan warning	2
+0x0D	0x0C	0x00	context=$0C,id=$00	03:6C20	03:6C3A	0x0EC3A	b03_6c3a	afterlife and Snake Way	1
+0x0D	0x0C	0x01	context=$0C,id=$01	03:6C20	03:6C40	0x0EC40	b03_6c40	afterlife and Snake Way	1
+0x0D	0x0C	0x02	context=$0C,id=$02	03:6C20	03:6C6D	0x0EC6D	b03_6c6d	afterlife and Snake Way	1
+0x0D	0x0C	0x03	context=$0C,id=$03	03:6C20	03:6C92	0x0EC92	b03_6c92	afterlife and Snake Way	1
+0x0D	0x0C	0x04	context=$0C,id=$04	03:6C20	03:6CC2	0x0ECC2	b03_6cc2	afterlife and Snake Way	1
+0x0D	0x0C	0x05	context=$0C,id=$05	03:6C20	03:6CF4	0x0ECF4	b03_6cf4	afterlife and Snake Way	1
+0x0D	0x0C	0x06	context=$0C,id=$06	03:6C20	03:6D1B	0x0ED1B	b03_6d1b	afterlife and Snake Way	1
+0x0D	0x0C	0x07	context=$0C,id=$07	03:6C20	03:6D4A	0x0ED4A	b03_6d4a	afterlife and Snake Way	1
+0x0D	0x0C	0x08	context=$0C,id=$08	03:6C20	03:6D75	0x0ED75	b03_6d75	afterlife and Snake Way	1
+0x0D	0x0C	0x09	context=$0C,id=$09	03:6C20	03:6D91	0x0ED91	b03_6d91	afterlife and Snake Way	1
+0x0D	0x0C	0x0A	context=$0C,id=$0A	03:6C20	03:6DB4	0x0EDB4	b03_6db4	afterlife and Snake Way	1
+0x0D	0x0C	0x0B	context=$0C,id=$0B	03:6C20	03:6DDB	0x0EDDB	b03_6ddb	afterlife and Snake Way	1
+0x0D	0x0C	0x0C	context=$0C,id=$0C	03:6C20	03:6DF9	0x0EDF9	b03_6df9	afterlife and Snake Way	1
+0x0E	0x0D	0x00	context=$0D,id=$00	03:6E07	03:6E11	0x0EE11	b03_6e11	King Kai training and Saiyan countdown	1
+0x0E	0x0D	0x01	context=$0D,id=$01	03:6E07	03:6E3E	0x0EE3E	b03_6e3e	King Kai training and Saiyan countdown	1
+0x0E	0x0D	0x02	context=$0D,id=$02	03:6E07	03:6E5E	0x0EE5E	b03_6e5e	King Kai training and Saiyan countdown	1
+0x0E	0x0D	0x03	context=$0D,id=$03	03:6E07	03:6E74	0x0EE74	b03_6e74	King Kai training and Saiyan countdown	1
+0x0E	0x0D	0x04	context=$0D,id=$04	03:6E07	03:6F35	0x0EF35	b03_6f35	King Kai training and Saiyan countdown	1
+0x0F	0x0E	0x00	context=$0E,id=$00	03:6F70	03:6F76	0x0EF76	b03_6f76	Vegeta and Nappa arrive on Earth	1
+0x0F	0x0E	0x01	context=$0E,id=$01	03:6F70	03:6FAE	0x0EFAE	b03_6fae	Vegeta and Nappa arrive on Earth	1
+0x0F	0x0E	0x02	context=$0E,id=$02	03:6F70	03:6FCC	0x0EFCC	b03_6fcc	Vegeta and Nappa arrive on Earth	1
+0x10	0x0F	0x00	context=$0F,id=$00	03:6FE1	03:7001	0x0F001	b03_7001	Earth battle and Goku return	1
+0x10	0x0F	0x01	context=$0F,id=$01	03:6FE1	03:701C	0x0F01C	b03_701c	Earth battle and Goku return	1
+0x10	0x0F	0x02	context=$0F,id=$02	03:6FE1	03:7037	0x0F037	b03_7037	Earth battle and Goku return	1
+0x10	0x0F	0x03	context=$0F,id=$03	03:6FE1	03:705F	0x0F05F	b03_705f	Earth battle and Goku return	1
+0x10	0x0F	0x04	context=$0F,id=$04	03:6FE1	03:706E	0x0F06E	b03_706e	Earth battle and Goku return	1
+0x10	0x0F	0x05	context=$0F,id=$05	03:6FE1	03:7087	0x0F087	b03_7087	Earth battle and Goku return	1
+0x10	0x0F	0x06	context=$0F,id=$06	03:6FE1	03:70B1	0x0F0B1	b03_70b1	Earth battle and Goku return	1
+0x10	0x0F	0x07	context=$0F,id=$07	03:6FE1	03:70DE	0x0F0DE	b03_70de	Earth battle and Goku return	1
+0x10	0x0F	0x08	context=$0F,id=$08	03:6FE1	03:7132	0x0F132	b03_7132	Earth battle and Goku return	1
+0x10	0x0F	0x09	context=$0F,id=$09	03:6FE1	03:714C	0x0F14C	b03_714c	Earth battle and Goku return	1
+0x10	0x0F	0x0A	context=$0F,id=$0A	03:6FE1	03:715F	0x0F15F	b03_715f	Earth battle and Goku return	1
+0x10	0x0F	0x0B	context=$0F,id=$0B	03:6FE1	03:716D	0x0F16D	b03_716d	Earth battle and Goku return	1
+0x10	0x0F	0x0C	context=$0F,id=$0C	03:6FE1	03:717B	0x0F17B	b03_717b	Earth battle and Goku return	1
+0x10	0x0F	0x0D	context=$0F,id=$0D	03:6FE1	03:718D	0x0F18D	b03_718d	Earth battle and Goku return	1
+0x10	0x0F	0x0E	context=$0F,id=$0E	03:6FE1	03:719A	0x0F19A	b03_719a	Earth battle and Goku return	1
+0x10	0x0F	0x0F	context=$0F,id=$0F	03:6FE1	03:71B9	0x0F1B9	b03_71b9	Earth battle and Goku return	1
+0x11	0x10	0x00	context=$10,id=$00	03:71CC	03:71DA	0x0F1DA	b03_71da	Goku reaches the battlefield	1
+0x11	0x10	0x01	context=$10,id=$01	03:71CC	03:7213	0x0F213	b03_7213	Goku reaches the battlefield	1
+0x11	0x10	0x02	context=$10,id=$02	03:71CC	03:7229	0x0F229	b03_7229	Goku reaches the battlefield	1
+0x11	0x10	0x03	context=$10,id=$03	03:71CC	03:723A	0x0F23A	b03_723a	Goku reaches the battlefield	1
+0x11	0x10	0x04	context=$10,id=$04	03:71CC	03:7280	0x0F280	b03_7280	Goku reaches the battlefield	1
+0x11	0x10	0x05	context=$10,id=$05	03:71CC	03:728F	0x0F28F	b03_728f	Goku reaches the battlefield	1
+0x11	0x10	0x06	context=$10,id=$06	03:71CC	03:72A2	0x0F2A2	b03_72a2	Goku reaches the battlefield	1
+0x12	0x11	0x00	context=$11,id=$00	03:72C6	03:72E6	0x0F2E6	b03_72e6	battle against Nappa	1
+0x12	0x11	0x01	context=$11,id=$01	03:72C6	03:7302	0x0F302	b03_7302	battle against Nappa	1
+0x12	0x11	0x02	context=$11,id=$02	03:72C6	03:731B	0x0F31B	b03_731b	battle against Nappa	1
+0x12	0x11	0x03	context=$11,id=$03	03:72C6	03:7333	0x0F333	b03_7333	battle against Nappa	1
+0x12	0x11	0x04	context=$11,id=$04	03:72C6	03:7347	0x0F347	b03_7347	battle against Nappa	1
+0x12	0x11	0x05	context=$11,id=$05	03:72C6	03:7363	0x0F363	b03_7363	battle against Nappa	1
+0x12	0x11	0x06	context=$11,id=$06	03:72C6	03:7390	0x0F390	b03_7390	battle against Nappa	1
+0x12	0x11	0x07	context=$11,id=$07	03:72C6	03:73B4	0x0F3B4	b03_73b4	battle against Nappa	2
+0x12	0x11	0x08	context=$11,id=$08	03:72C6	03:73C7	0x0F3C7	b03_73c7	battle against Nappa	2
+0x12	0x11	0x09	context=$11,id=$09	03:72C6	03:73ED	0x0F3ED	b03_73ed	battle against Nappa	2
+0x12	0x11	0x0A	context=$11,id=$0A	03:72C6	03:7407	0x0F407	b03_7407	battle against Nappa	2
+0x12	0x11	0x0B	context=$11,id=$0B	03:72C6	03:7422	0x0F422	b03_7422	battle against Nappa	2
+0x12	0x11	0x0C	context=$11,id=$0C	03:72C6	03:7442	0x0F442	b03_7442	battle against Nappa	2
+0x12	0x11	0x0D	context=$11,id=$0D	03:72C6	03:745D	0x0F45D	b03_745d	battle against Nappa	2
+0x12	0x11	0x0E	context=$11,id=$0E	03:72C6	03:746F	0x0F46F	b03_746f	battle against Nappa	2
+0x12	0x11	0x0F	context=$11,id=$0F	03:72C6	03:7489	0x0F489	b03_7489	battle against Nappa	2
+0x13	0x12	0x00	context=$12,id=$00	03:7499	03:74C5	0x0F4C5	b03_74c5	battle against Vegeta	1
+0x13	0x12	0x01	context=$12,id=$01	03:7499	03:7508	0x0F508	b03_7508	battle against Vegeta	1
+0x13	0x12	0x02	context=$12,id=$02	03:7499	03:7538	0x0F538	b03_7538	battle against Vegeta	1
+0x13	0x12	0x03	context=$12,id=$03	03:7499	03:754B	0x0F54B	b03_754b	battle against Vegeta	1
+0x13	0x12	0x04	context=$12,id=$04	03:7499	03:7576	0x0F576	b03_7576	battle against Vegeta	1
+0x13	0x12	0x05	context=$12,id=$05	03:7499	03:759E	0x0F59E	b03_759e	battle against Vegeta	1
+0x13	0x12	0x06	context=$12,id=$06	03:7499	03:75D8	0x0F5D8	b03_75d8	battle against Vegeta	1
+0x13	0x12	0x07	context=$12,id=$07	03:7499	03:75EF	0x0F5EF	b03_75ef	battle against Vegeta	1
+0x13	0x12	0x08	context=$12,id=$08	03:7499	03:761F	0x0F61F	b03_761f	battle against Vegeta	1
+0x13	0x12	0x09	context=$12,id=$09	03:7499	03:762E	0x0F62E	b03_762e	battle against Vegeta	1
+0x13	0x12	0x0A	context=$12,id=$0A	03:7499	03:7646	0x0F646	b03_7646	battle against Vegeta	1
+0x13	0x12	0x0B	context=$12,id=$0B	03:7499	03:767A	0x0F67A	b03_767a	battle against Vegeta	1
+0x13	0x12	0x0C	context=$12,id=$0C	03:7499	03:768B	0x0F68B	b03_768b	battle against Vegeta	1
+0x13	0x12	0x0D	context=$12,id=$0D	03:7499	03:769B	0x0F69B	b03_769b	battle against Vegeta	1
+0x13	0x12	0x0E	context=$12,id=$0E	03:7499	03:76B1	0x0F6B1	b03_76b1	battle against Vegeta	1
+0x13	0x12	0x0F	context=$12,id=$0F	03:7499	03:76D9	0x0F6D9	b03_76d9	battle against Vegeta	1
+0x13	0x12	0x10	context=$12,id=$10	03:7499	03:772E	0x0F72E	b03_772e	battle against Vegeta	1
+0x13	0x12	0x11	context=$12,id=$11	03:7499	03:775C	0x0F75C	b03_775c	battle against Vegeta	2
+0x13	0x12	0x12	context=$12,id=$12	03:7499	03:77A0	0x0F7A0	b03_77a0	battle against Vegeta	2
+0x13	0x12	0x13	context=$12,id=$13	03:7499	03:77D5	0x0F7D5	b03_77d5	battle against Vegeta	2
+0x13	0x12	0x14	context=$12,id=$14	03:7499	03:780E	0x0F80E	b03_780e	battle against Vegeta	2
+0x13	0x12	0x15	context=$12,id=$15	03:7499	03:7835	0x0F835	b03_7835	battle against Vegeta	2
+0x14	0x13	0x00	context=$13,id=$00	03:7858	03:7880	0x0F880	b03_7880	Vegeta retreat, evaluation, and ending	1
+0x14	0x13	0x01	context=$13,id=$01	03:7858	03:78A9	0x0F8A9	b03_78a9	Vegeta retreat, evaluation, and ending	1
+0x14	0x13	0x02	context=$13,id=$02	03:7858	03:78EE	0x0F8EE	b03_78ee	Vegeta retreat, evaluation, and ending	1
+0x14	0x13	0x03	context=$13,id=$03	03:7858	03:7923	0x0F923	b03_7923	Vegeta retreat, evaluation, and ending	1
+0x14	0x13	0x04	context=$13,id=$04	03:7858	03:7967	0x0F967	b03_7967	Vegeta retreat, evaluation, and ending	1
+0x14	0x13	0x05	context=$13,id=$05	03:7858	03:79BB	0x0F9BB	b03_79bb	Vegeta retreat, evaluation, and ending	1
+0x14	0x13	0x06	context=$13,id=$06	03:7858	03:7A0F	0x0FA0F	b03_7a0f	Vegeta retreat, evaluation, and ending	1
+0x14	0x13	0x07	context=$13,id=$07	03:7858	03:7A5D	0x0FA5D	b03_7a5d	Vegeta retreat, evaluation, and ending	1
+0x14	0x13	0x08	context=$13,id=$08	03:7858	03:7A68	0x0FA68	b03_7a68	Vegeta retreat, evaluation, and ending	1
+0x14	0x13	0x09	context=$13,id=$09	03:7858	03:7AB2	0x0FAB2	b03_7ab2	Vegeta retreat, evaluation, and ending	1
+0x14	0x13	0x0A	context=$13,id=$0A	03:7858	03:7ACD	0x0FACD	b03_7acd	Vegeta retreat, evaluation, and ending	1
+0x14	0x13	0x0B	context=$13,id=$0B	03:7858	03:7AE0	0x0FAE0	b03_7ae0	Vegeta retreat, evaluation, and ending	1
+0x14	0x13	0x0C	context=$13,id=$0C	03:7858	03:7AF9	0x0FAF9	b03_7af9	Vegeta retreat, evaluation, and ending	1
+0x14	0x13	0x0D	context=$13,id=$0D	03:7858	03:7B04	0x0FB04	b03_7b04	Vegeta retreat, evaluation, and ending	1
+0x14	0x13	0x0E	context=$13,id=$0E	03:7858	03:7B19	0x0FB19	b03_7b19	Vegeta retreat, evaluation, and ending	1
+0x14	0x13	0x0F	context=$13,id=$0F	03:7858	03:7B2F	0x0FB2F	b03_7b2f	Vegeta retreat, evaluation, and ending	1
+0x14	0x13	0x10	context=$13,id=$10	03:7858	03:7B54	0x0FB54	b03_7b54	Vegeta retreat, evaluation, and ending	1
+0x14	0x13	0x11	context=$13,id=$11	03:7858	03:7A93	0x0FA93	b03_7a93	Vegeta retreat, evaluation, and ending	1
+0x14	0x13	0x12	context=$13,id=$12	03:7858	03:7AAE	0x0FAAE	b03_7aae	Vegeta retreat, evaluation, and ending	1
+0x14	0x13	0x13	context=$13,id=$13	03:7858	03:7B63	0x0FB63	b03_7b63	Vegeta retreat, evaluation, and ending	1
+0x15	0x14	0x00	context=$14,id=$00	03:4A08	03:4D2C	0x0CD2C	b03_4d2c	alternate tournament battle responses	2
+0x15	0x14	0x01	context=$14,id=$01	03:4A08	03:4D4C	0x0CD4C	b03_4d4c	alternate tournament battle responses	2
+0x15	0x14	0x02	context=$14,id=$02	03:4A08	03:4D5B	0x0CD5B	b03_4d5b	alternate tournament battle responses	2
+0x15	0x14	0x03	context=$14,id=$03	03:4A08	03:4D6A	0x0CD6A	b03_4d6a	alternate tournament battle responses	2
+0x15	0x14	0x04	context=$14,id=$04	03:4A08	03:4D80	0x0CD80	b03_4d80	alternate tournament battle responses	2
+0x15	0x14	0x05	context=$14,id=$05	03:4A08	03:4DA2	0x0CDA2	b03_4da2	alternate tournament battle responses	2
+0x15	0x14	0x06	context=$14,id=$06	03:4A08	03:4DBC	0x0CDBC	b03_4dbc	alternate tournament battle responses	2
+0x15	0x14	0x07	context=$14,id=$07	03:4A08	03:4DC7	0x0CDC7	b03_4dc7	alternate tournament battle responses	2
+0x15	0x14	0x08	context=$14,id=$08	03:4A08	03:4DED	0x0CDED	b03_4ded	alternate tournament battle responses	2
+0x15	0x14	0x09	context=$14,id=$09	03:4A08	03:4E06	0x0CE06	b03_4e06	alternate tournament battle responses	2
+0x15	0x14	0x0A	context=$14,id=$0A	03:4A08	03:4E11	0x0CE11	b03_4e11	alternate tournament battle responses	2
+0x15	0x14	0x0B	context=$14,id=$0B	03:4A08	03:4E2C	0x0CE2C	b03_4e2c	alternate tournament battle responses	2
+0x15	0x14	0x0C	context=$14,id=$0C	03:4A08	03:4E52	0x0CE52	b03_4e52	alternate tournament battle responses	2
+0x15	0x14	0x0D	context=$14,id=$0D	03:4A08	03:4E6A	0x0CE6A	b03_4e6a	alternate tournament battle responses	2
+0x15	0x14	0x0E	context=$14,id=$0E	03:4A08	03:4E82	0x0CE82	b03_4e82	alternate tournament battle responses	2
+0x15	0x14	0x0F	context=$14,id=$0F	03:4A08	03:4EA9	0x0CEA9	b03_4ea9	alternate tournament battle responses	2
+0x15	0x14	0x10	context=$14,id=$10	03:4A08	03:4EC2	0x0CEC2	b03_4ec2	alternate tournament battle responses	2
+0x15	0x14	0x11	context=$14,id=$11	03:4A08	03:4EDA	0x0CEDA	b03_4eda	alternate tournament battle responses	2
+0x15	0x14	0x12	context=$14,id=$12	03:4A08	03:4EFF	0x0CEFF	b03_4eff	alternate tournament battle responses	2
+0x15	0x14	0x13	context=$14,id=$13	03:4A08	03:4F19	0x0CF19	b03_4f19	alternate tournament battle responses	2
+0x15	0x14	0x14	context=$14,id=$14	03:4A08	03:4F3F	0x0CF3F	b03_4f3f	alternate tournament battle responses	2
+0x15	0x14	0x15	context=$14,id=$15	03:4A08	03:4F61	0x0CF61	b03_4f61	alternate tournament battle responses	2
+0x15	0x14	0x16	context=$14,id=$16	03:4A08	03:4F7C	0x0CF7C	b03_4f7c	alternate tournament battle responses	2
+0x15	0x14	0x17	context=$14,id=$17	03:4A08	03:4F8D	0x0CF8D	b03_4f8d	alternate tournament battle responses	2
+0x15	0x14	0x18	context=$14,id=$18	03:4A08	03:4FA4	0x0CFA4	b03_4fa4	alternate tournament battle responses	2
+0x15	0x14	0x19	context=$14,id=$19	03:4A08	03:4FC3	0x0CFC3	b03_4fc3	alternate tournament battle responses	2
+0x16	0x15	0x00	context=$15,id=$00	03:5450	03:56C5	0x0D6C5	b03_56c5	alternate Piccolo/Majunior responses	2
+0x16	0x15	0x01	context=$15,id=$01	03:5450	03:56ED	0x0D6ED	b03_56ed	alternate Piccolo/Majunior responses	2
+0x16	0x15	0x02	context=$15,id=$02	03:5450	03:5722	0x0D722	b03_5722	alternate Piccolo/Majunior responses	2
+0x17	0x16	0x00	context=$16,id=$00	03:64F4	03:6B75	0x0EB75	b03_6b75	alternate Raditz responses	2
+0x17	0x16	0x01	context=$16,id=$01	03:64F4	03:6B94	0x0EB94	b03_6b94	alternate Raditz responses	2
+0x17	0x16	0x02	context=$16,id=$02	03:64F4	03:6BC6	0x0EBC6	b03_6bc6	alternate Raditz responses	2
+0x17	0x16	0x03	context=$16,id=$03	03:64F4	03:6BFB	0x0EBFB	b03_6bfb	alternate Raditz responses	2
+0x18	0x17	0x00	context=$17,id=$00	03:72D4	03:73B4	0x0F3B4	b03_73b4	alternate Nappa responses	2
+0x18	0x17	0x01	context=$17,id=$01	03:72D4	03:73C7	0x0F3C7	b03_73c7	alternate Nappa responses	2
+0x18	0x17	0x02	context=$17,id=$02	03:72D4	03:73ED	0x0F3ED	b03_73ed	alternate Nappa responses	2
+0x18	0x17	0x03	context=$17,id=$03	03:72D4	03:7407	0x0F407	b03_7407	alternate Nappa responses	2
+0x18	0x17	0x04	context=$17,id=$04	03:72D4	03:7422	0x0F422	b03_7422	alternate Nappa responses	2
+0x18	0x17	0x05	context=$17,id=$05	03:72D4	03:7442	0x0F442	b03_7442	alternate Nappa responses	2
+0x18	0x17	0x06	context=$17,id=$06	03:72D4	03:745D	0x0F45D	b03_745d	alternate Nappa responses	2
+0x18	0x17	0x07	context=$17,id=$07	03:72D4	03:746F	0x0F46F	b03_746f	alternate Nappa responses	2
+0x18	0x17	0x08	context=$17,id=$08	03:72D4	03:7489	0x0F489	b03_7489	alternate Nappa responses	2
+0x19	0x18	0x00	context=$18,id=$00	03:74BB	03:775C	0x0F75C	b03_775c	alternate Vegeta responses	2
+0x19	0x18	0x01	context=$18,id=$01	03:74BB	03:77A0	0x0F7A0	b03_77a0	alternate Vegeta responses	2
+0x19	0x18	0x02	context=$18,id=$02	03:74BB	03:77D5	0x0F7D5	b03_77d5	alternate Vegeta responses	2
+0x19	0x18	0x03	context=$18,id=$03	03:74BB	03:780E	0x0F80E	b03_780e	alternate Vegeta responses	2
+0x19	0x18	0x04	context=$18,id=$04	03:74BB	03:7835	0x0F835	b03_7835	alternate Vegeta responses	2

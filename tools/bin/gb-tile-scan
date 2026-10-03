@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 import argparse, sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'toolkit'))
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / 'toolkit'))
 from gbworkbench.graphics import save_tiles
 
 p=argparse.ArgumentParser(description="Render complete Game Boy ROM banks as tile contact sheets.")
@@ -12,7 +13,12 @@ g.add_argument("--all", action="store_true", help="scan all banks")
 p.add_argument("--bpp", type=int, choices=(1,2), default=2)
 p.add_argument("--columns", type=int, default=32)
 p.add_argument("--scale", type=int, default=2)
-p.add_argument("-o","--output-dir", default="analysis/tiles")
+p.add_argument(
+    "-o",
+    "--output-dir",
+    type=Path,
+    default=ROOT / "projects" / "gb-db-z-gokou" / "analysis" / "tiles",
+)
 a=p.parse_args()
 rom=Path(a.rom)
 if not rom.is_file(): p.error(f"ROM not found: {rom}")
@@ -23,7 +29,7 @@ if a.bank is not None:
     selected=[a.bank]
 else:
     selected=range(banks)
-outdir=Path(a.output_dir)
+outdir=a.output_dir
 stride=8 if a.bpp==1 else 16
 for bank in selected:
     chunk=data[bank*0x4000:min((bank+1)*0x4000,len(data))]

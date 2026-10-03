@@ -28,6 +28,8 @@ Each project is self-contained under `projects/<project-id>/` and provides:
 - `project.toml` with input/output identity, adapter, manifests, and approved ranges;
 - a game-specific Python package under `src/`;
 - repository-authored English translation data under `translation/`;
+- reviewed, reasoned reverse-engineering notes and compact derived lookup tables under
+  `analysis/`, when they are safe to distribute;
 - project-specific tests under `tests/`.
 
 Reusable code lives under `toolkit/gbworkbench/`. Generic toolkit modules never import a
@@ -122,9 +124,12 @@ make audit
 ```
 
 The audit checks tracked and prospective non-ignored source files. It rejects ROMs,
-generated binaries, extracted media, reverse-engineering evidence directories, local
-decoded-original catalogs, unreviewed Japanese/CJK content, and suspicious embedded byte
-arrays. Repository-authored graphics definitions in source form are allowed.
+generated binaries, extracted media, disassemblies, local decoded-original catalogs,
+unreviewed Japanese/CJK content, and suspicious embedded byte arrays. Reviewed project-local
+analysis documents are allowed. Compact character/encoding lookup tables may contain CJK only
+in an explicitly allowlisted character column, with at most one CJK code point per row; decoded
+dialogue and extracted graphics remain prohibited. Repository-authored graphics definitions in
+source form are allowed.
 
 Local ignored material may include:
 
@@ -133,11 +138,17 @@ roms/<project-id>/original.gb
 build/
 analysis/
 disassembly/
-projects/*/analysis/
+projects/*/analysis/tiles/
+projects/*/analysis/bank3_text_tables.tsv
 projects/*/local/
 projects/*/translation/strings.tsv
 projects/*/translation/glossary.tsv
 projects/*/translation/text_layout.tsv
 ```
+
+For `gb-db-z-gokou`, the tracked analysis consists of reasoned Markdown/JSON, a script-free
+Bank 3 reference index, and the narrowly reviewed `font_tiles.tsv` and `text_encoding.tsv`
+lookup tables. The full decoded Japanese catalog and reconstructed tile sheets stay local and
+ignored.
 
 The audit is a technical safeguard, not legal advice.

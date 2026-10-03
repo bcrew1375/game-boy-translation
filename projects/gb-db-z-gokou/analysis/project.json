@@ -1,0 +1,716 @@
+{
+  "schema_version": 1,
+  "rom": {
+    "path": "roms/gb-db-z-gokou/original.gb",
+    "sha256": "f63b95b5b03c399b8546e5f72004a2ebaf2e2826fa83a76705b2629bd4da817f",
+    "title": "GB DBZ GOKOU",
+    "size_bytes": 262144,
+    "rom_banks": 16,
+    "target": "DMG",
+    "cartridge_type": "MBC2+BATTERY (header $06)"
+  },
+  "symbols": {
+    "00:0000": {
+      "name": "ROMBank_SwitchSavePrevious",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:0008": {
+      "name": "ROMBank_RestorePrevious",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:0150": {
+      "name": "EntryPoint",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:2D12": {
+      "name": "Input_ReadJoypad",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:2D9D": {
+      "name": "OAMDMA_InstallHRAMRoutine",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:3026": {
+      "name": "Memory_Fill",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:3037": {
+      "name": "Memory_FillSmall",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "01:5D3B": {
+      "name": "FontTiles_Compressed",
+      "kind": "compressed_graphics",
+      "confidence": "confirmed"
+    },
+    "01:7B42": {
+      "name": "FontTiles_Load",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:3138": {
+      "name": "DMGPalettes_Init",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "HRAM:FFA2": {
+      "name": "hCurrentROMBank",
+      "kind": "byte",
+      "confidence": "confirmed"
+    },
+    "HRAM:FFA3": {
+      "name": "hPreviousROMBank",
+      "kind": "byte",
+      "confidence": "confirmed"
+    },
+    "00:01BB": {
+      "name": "VBlank_Handler",
+      "kind": "interrupt_handler",
+      "confidence": "confirmed"
+    },
+    "00:0258": {
+      "name": "LCDSTAT_Handler",
+      "kind": "interrupt_handler",
+      "confidence": "confirmed"
+    },
+    "00:2DAB": {
+      "name": "OAMDMA_HRAMRoutineSource",
+      "kind": "routine_data",
+      "confidence": "confirmed"
+    },
+    "HRAM:FF80": {
+      "name": "hOAMDMA",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "HRAM:FF9A": {
+      "name": "hShadowLYC",
+      "kind": "byte",
+      "confidence": "confirmed"
+    },
+    "HRAM:FF9B": {
+      "name": "hShadowLCDC",
+      "kind": "byte",
+      "confidence": "confirmed"
+    },
+    "HRAM:FF9C": {
+      "name": "hShadowIE",
+      "kind": "byte",
+      "confidence": "confirmed"
+    },
+    "HRAM:FF9D": {
+      "name": "hShadowSCY",
+      "kind": "byte",
+      "confidence": "confirmed"
+    },
+    "HRAM:FF9E": {
+      "name": "hShadowSCX",
+      "kind": "byte",
+      "confidence": "confirmed"
+    },
+    "HRAM:FF9F": {
+      "name": "hShadowWY",
+      "kind": "byte",
+      "confidence": "confirmed"
+    },
+    "HRAM:FFA0": {
+      "name": "hShadowWX0",
+      "kind": "byte",
+      "confidence": "confirmed"
+    },
+    "HRAM:FFA1": {
+      "name": "hShadowWX1",
+      "kind": "byte",
+      "confidence": "confirmed"
+    },
+    "HRAM:FFA8": {
+      "name": "hFrameCounter",
+      "kind": "byte",
+      "confidence": "confirmed"
+    },
+    "00:2DB5": {
+      "name": "LCD_DisableSafely",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:2E31": {
+      "name": "Frame_WaitVBlank",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:303C": {
+      "name": "VRAM_CopySafe",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:3058": {
+      "name": "VRAM_CopySafeDouble",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:3092": {
+      "name": "VRAM_WriteByteSafeFromA",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:3093": {
+      "name": "VRAM_WriteByteSafe",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:30AD": {
+      "name": "Tilemap_FillRectangle",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:30BE": {
+      "name": "Tilemap_FillIncrementingRectangle",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:30E0": {
+      "name": "Tilemap_CopyRectangle",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:315B": {
+      "name": "SaveData_WriteSlot",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:3180": {
+      "name": "SaveData_GetSlotAddress",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:3197": {
+      "name": "SaveData_ReadSlot",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:31BD": {
+      "name": "SaveData_Decode126Bytes",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:31C8": {
+      "name": "SaveData_DecodeByte",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:31D3": {
+      "name": "SaveData_ChecksumNibbles",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:33B2": {
+      "name": "Tilemap_Clear",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:329F": {
+      "name": "Text_ResolveMessageStream",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:32C4": {
+      "name": "Text_PrintMessageWait",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "03:4000": {
+      "name": "TextData_Bank3Root",
+      "kind": "pointer_table_and_text_data",
+      "confidence": "confirmed"
+    },
+    "03:7E00": {
+      "name": "TextStream_VBlankStep",
+      "kind": "vblank_callback",
+      "confidence": "confirmed"
+    },
+    "02:4000": {
+      "name": "TitleScreenMainGraphics_Compressed",
+      "kind": "compressed_graphics",
+      "confidence": "confirmed"
+    },
+    "02:459E": {
+      "name": "TitleScreenTilemap_Compressed",
+      "kind": "compressed_tilemap",
+      "confidence": "confirmed"
+    },
+    "02:465F": {
+      "name": "TitleMenuLabels_Compressed",
+      "kind": "compressed_graphics",
+      "confidence": "confirmed"
+    },
+    "02:48E3": {
+      "name": "TitleMenuExtraTiles",
+      "kind": "graphics",
+      "confidence": "confirmed"
+    },
+    "02:4923": {
+      "name": "TitleScreenSubtitle_Compressed",
+      "kind": "compressed_graphics",
+      "confidence": "confirmed"
+    },
+    "02:7133": {
+      "name": "TitleScreen_Load",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "02:7194": {
+      "name": "TitleMenu_Run",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "02:721C": {
+      "name": "TitleMenu_Select",
+      "kind": "routine",
+      "confidence": "confirmed"
+    }
+  },
+  "regions": [
+    {
+      "bank": 0,
+      "cpu_start": "$0000",
+      "cpu_end": "$000F",
+      "rom_start": "$00000",
+      "rom_end": "$0000F",
+      "type": "code",
+      "name": "MBC2 ROM bank switching RST handlers",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$0150",
+      "cpu_end": "$01BA",
+      "rom_start": "$00150",
+      "rom_end": "$001BA",
+      "type": "code",
+      "name": "Startup initialization",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$2D12",
+      "cpu_end": "$2D9C",
+      "rom_start": "$02D12",
+      "rom_end": "$02D9C",
+      "type": "code",
+      "name": "Joypad polling",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$2D9D",
+      "cpu_end": "$2DB4",
+      "rom_start": "$02D9D",
+      "rom_end": "$02DB4",
+      "type": "code",
+      "name": "OAM DMA HRAM routine installation",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$3026",
+      "cpu_end": "$3032",
+      "rom_start": "$03026",
+      "rom_end": "$03032",
+      "type": "code",
+      "name": "Memory fill helper",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$3037",
+      "cpu_end": "$303B",
+      "rom_start": "$03037",
+      "rom_end": "$0303B",
+      "type": "code",
+      "name": "Small memory fill helper",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$3138",
+      "cpu_end": "$3144",
+      "rom_start": "$03138",
+      "rom_end": "$03144",
+      "type": "code",
+      "name": "DMG palette initialization",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$01BB",
+      "cpu_end": "$020A",
+      "rom_start": "$001BB",
+      "rom_end": "$0020A",
+      "type": "code",
+      "name": "VBlank interrupt handler",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$0258",
+      "cpu_end": "$02D4",
+      "rom_start": "$00258",
+      "rom_end": "$002D4",
+      "type": "code",
+      "name": "LCD STAT interrupt handler",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$2DAB",
+      "cpu_end": "$2DB4",
+      "rom_start": "$02DAB",
+      "rom_end": "$02DB4",
+      "type": "routine_data",
+      "name": "OAM DMA HRAM routine source",
+      "confidence": "confirmed",
+      "runtime_destination": "HRAM $FF80-$FF89"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$2DB5",
+      "cpu_end": "$2DCF",
+      "rom_start": "$02DB5",
+      "rom_end": "$02DCF",
+      "type": "code",
+      "name": "Safe LCD disable",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$2DD0",
+      "cpu_end": "$2E30",
+      "rom_start": "$02DD0",
+      "rom_end": "$02E30",
+      "type": "code",
+      "name": "Input repeat and LCDC shadow helpers",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$2E31",
+      "cpu_end": "$2E85",
+      "rom_start": "$02E31",
+      "rom_end": "$02E85",
+      "type": "code",
+      "name": "VBlank wait and input repeat timing",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$2E86",
+      "cpu_end": "$301F",
+      "rom_start": "$02E86",
+      "rom_end": "$0301F",
+      "type": "code",
+      "name": "Arithmetic, numeric conversion, and pointer helpers",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$303C",
+      "cpu_end": "$3128",
+      "rom_start": "$0303C",
+      "rom_end": "$03128",
+      "type": "code",
+      "name": "LCD-safe VRAM and tilemap primitives",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$315B",
+      "cpu_end": "$31E5",
+      "rom_start": "$0315B",
+      "rom_end": "$031E5",
+      "type": "code",
+      "name": "MBC2 save-slot encoding and validation",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$322D",
+      "cpu_end": "$32D5",
+      "rom_start": "$0322D",
+      "rom_end": "$032D5",
+      "type": "code",
+      "name": "Command-stream renderer and bank-3 resource lookup",
+      "confidence": "strong_inference"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$33B2",
+      "cpu_end": "$3440",
+      "rom_start": "$033B2",
+      "rom_end": "$03440",
+      "type": "code",
+      "name": "Tilemap clearing and descriptor operations",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$365D",
+      "cpu_end": "$36C5",
+      "rom_start": "$0365D",
+      "rom_end": "$036C5",
+      "type": "code",
+      "name": "OAM staging builder",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$3FB9",
+      "cpu_end": "$3FFF",
+      "rom_start": "$03FB9",
+      "rom_end": "$03FFF",
+      "type": "padding",
+      "name": "End-of-bank zero padding",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 3,
+      "cpu_start": "$4000",
+      "cpu_end": "$7BD6",
+      "rom_start": "$0C000",
+      "rom_end": "$0FBD6",
+      "type": "data",
+      "name": "Encoded message pointer tables and streams",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 3,
+      "cpu_start": "$7BD7",
+      "cpu_end": "$7DFF",
+      "rom_start": "$0FBD7",
+      "rom_end": "$0FDFF",
+      "type": "padding",
+      "name": "Zero padding before VBlank text interpreter",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 3,
+      "cpu_start": "$7E00",
+      "cpu_end": "$7FA2",
+      "rom_start": "$0FE00",
+      "rom_end": "$0FFA2",
+      "type": "code",
+      "name": "VBlank text/tilemap stream interpreter",
+      "confidence": "confirmed"
+    }
+  ],
+  "text": {
+    "bank_3_message_streams": {
+      "root": "03:4000",
+      "root_rom_offset": "$0C000",
+      "data_range": "03:4000-7BD6",
+      "data_rom_range": "$0C000-$0FBD6",
+      "resolver": "00:329F",
+      "interpreter": "03:7E00",
+      "message_id_ge_80": "root[0] -> table; table[id-$80] -> stream",
+      "message_id_lt_80": "root[$D8C1+1] -> table; table[id] -> stream",
+      "stream_pointer_wram": "$C1A8/$C1A9",
+      "tilemap_pointer_wram": "$C1A6/$C1A7",
+      "controls": {
+        "$FE": "terminate stream or return from nested expansion",
+        "$FD": "line/tilemap-row advance",
+        "$FB": "input-sensitive control"
+      },
+      "confidence": "confirmed mechanics and primary-font character mapping; dynamic direct tiles $A0-$AF and some control/UI semantics unresolved",
+      "padding_range": "03:7BD7-7DFF",
+      "padding_rom_range": "$0FBD7-$0FDFF",
+      "source_representation": "26 root pointers as dw; remaining encoded bytes as db; trailing zeros as ds",
+      "font_tile_map": "projects/gb-db-z-gokou/analysis/font_tiles.tsv",
+      "stream_byte_map": "projects/gb-db-z-gokou/analysis/text_encoding.tsv",
+      "decoder": "tools/bin/gb-text-decode",
+      "character_mapping_confidence": "confirmed for text tiles $00-$89 and $96-$9F; $8A-$95 are non-text UI graphics; direct stream bytes $A0-$AF remain unresolved",
+      "table_catalog_local": "projects/gb-db-z-gokou/analysis/bank3_text_tables.tsv",
+      "reference_index": "projects/gb-db-z-gokou/analysis/bank3_text_reference_index.tsv",
+      "analysis_document": "projects/gb-db-z-gokou/analysis/bank_003_text.md",
+      "catalog_generator_status": "removed during the source-only restructure; current catalogs are static artifacts",
+      "root_entry_count": 26,
+      "non_null_table_count": 25,
+      "table_reference_count": 479,
+      "unique_stream_count": 419,
+      "shared_stream_count": 56,
+      "duplicate_reference_count": 60,
+      "catalog_status_counts": {
+        "decoded": 360,
+        "translated": 46,
+        "needs_context": 10,
+        "dynamic_fragment": 3
+      },
+      "story_scope": "23rd Tenkaichi Budokai through the Saiyan story ending after Vegeta retreats",
+      "stable_string_id": "b03_<four-digit lowercase CPU address>",
+      "catalog_representation": "The local decoded TSV uses literal \\n for line controls and <WAIT> for $FB; the committed reference index omits decoded text",
+      "translated_text_build": {
+        "builder": "projects/gb-db-z-gokou/src/gb_db_z_gokou/build.py",
+        "patches": "projects/gb-db-z-gokou/translation/patches.tsv",
+        "references": "projects/gb-db-z-gokou/translation/references.tsv",
+        "ranges_manifest": "projects/gb-db-z-gokou/translation/ranges.tsv",
+        "rom_output": "build/gb-db-z-gokou/translated.gb",
+        "reference_count": 48,
+        "unique_stream_count": 46,
+        "encoded_size": 1472,
+        "max_line_tiles": 18,
+        "allocation_ranges": [
+          "03:42AD-4464",
+          "03:5DA2-60BF",
+          "03:7BD7-7DFF"
+        ],
+        "scope": "initial Lookout scenes, later optional Lookout training, and confirmed global prompts"
+      }
+    }
+  },
+  "graphics": {
+    "primary_font": {
+      "compressed_source": "01:5D3B-6198",
+      "compressed_rom_range": "$05D3B-$06198",
+      "compressed_size": "$045E",
+      "loader": "01:7B42",
+      "decompressor": "00:35CF",
+      "decompressed_size": "$0500",
+      "format": "160 packed 1bpp 8x8 glyphs; each byte is duplicated into both 2bpp VRAM bitplanes",
+      "vram_tile_ids_00_7f": "$9000-$97FF from decompressed offsets $000-$3FF",
+      "vram_tile_ids_80_9f": "$8800-$89FF from decompressed offsets $400-$4FF",
+      "observed_ranges": {
+        "$00": "space",
+        "$01-$37": "hiragana",
+        "$38-$6E": "katakana",
+        "$6F-$79": "punctuation and combining marks",
+        "$7A-$7F": "blank/reserved",
+        "$80-$89": "digits 0-9",
+        "$8A-$95": "multi-cell UI/meter graphics (not text characters)",
+        "$96-$9D": "Latin UI letters H, P, K, I, S, A, B, D",
+        "$9E-$9F": "left/right arrows"
+      },
+      "confidence": "confirmed source, loader, dimensions, and text-character mapping; exact semantics of UI graphics $8A-$95 remain tentative",
+      "tile_map": "projects/gb-db-z-gokou/analysis/font_tiles.tsv",
+      "stream_encoding_map": "projects/gb-db-z-gokou/analysis/text_encoding.tsv",
+      "translated_replacement": {
+        "definition": "projects/gb-db-z-gokou/src/gb_db_z_gokou/font.py",
+        "builder": "projects/gb-db-z-gokou/src/gb_db_z_gokou/build.py",
+        "encoding": "projects/gb-db-z-gokou/translation/encoding.tsv",
+        "analysis_document": "projects/gb-db-z-gokou/analysis/english_font.md",
+        "rom_output": "build/gb-db-z-gokou/translated.gb",
+        "compressed_size_before_padding": 627,
+        "fixed_slot_size": 1118,
+        "decompressed_size": 1280,
+        "preserved_tile_range": "$80-$9F",
+        "status": "font replacement and selected Lookout text insertion implemented"
+      }
+    },
+    "title_screen": {
+      "analysis_document": "projects/gb-db-z-gokou/analysis/title_screen_graphics.md",
+      "loader": "02:7133",
+      "menu_loader": "02:7194",
+      "menu_selection": "02:721C",
+      "decompressor": "00:35CF",
+      "tile_addressing": "unsigned LCDC $8000-$8FFF mode",
+      "resources": {
+        "main_graphics": {
+          "source": "02:4000-459D",
+          "rom_range": "$08000-$0859D",
+          "compressed_size": "$059E",
+          "decompressed_size": "$07A0",
+          "format": "122 2bpp 8x8 tiles",
+          "vram_destination": "$8000"
+        },
+        "base_tilemap": {
+          "source": "02:459E-465E",
+          "rom_range": "$0859E-$0865E",
+          "compressed_size": "$00C1",
+          "decompressed_size": "$0168",
+          "format": "20x18 tilemap",
+          "vram_destination": "$9800"
+        },
+        "menu_labels": {
+          "source": "02:465F-48E2",
+          "rom_range": "$0865F-$088E2",
+          "compressed_size": "$0284",
+          "decompressed_size": "$02E0",
+          "format": "46 2bpp 8x8 tiles",
+          "vram_destination": "$8A00",
+          "tile_ids": "$A0-$CD",
+          "translated_replacement": {
+            "definition": "projects/gb-db-z-gokou/src/gb_db_z_gokou/title_graphics.py",
+            "builder": "projects/gb-db-z-gokou/src/gb_db_z_gokou/build.py",
+            "preview": "projects/gb-db-z-gokou/analysis/tiles/title_menu_english.png",
+            "compressed_size_before_padding": 406,
+            "fixed_slot_size": 644,
+            "wording": [
+              "STORY",
+              "WORLD TOURNAMENT",
+              "VERSUS",
+              "TRAINING"
+            ],
+            "status": "implemented for translated builds"
+          }
+        },
+        "menu_extra_tiles": {
+          "source": "02:48E3-4922",
+          "rom_range": "$088E3-$08922",
+          "stored_size": "$0040",
+          "format": "four raw 2bpp 8x8 tiles",
+          "translation_status": "preserved unchanged; exact purpose remains unknown"
+        },
+        "subtitle": {
+          "source": "02:4923-4A4B",
+          "rom_range": "$08923-$08A4B",
+          "compressed_size": "$0129",
+          "decompressed_size": "$0140",
+          "format": "20 2bpp 8x8 tiles",
+          "vram_destination": "$8E00",
+          "tile_ids": "$E0-$F3",
+          "tilemap_rectangle": "10x2 at $98E5",
+          "visible_text": "five-character Japanese title subtitle",
+          "translated_replacement": {
+            "definition": "projects/gb-db-z-gokou/src/gb_db_z_gokou/title_graphics.py",
+            "builder": "projects/gb-db-z-gokou/src/gb_db_z_gokou/build.py",
+            "preview": "projects/gb-db-z-gokou/analysis/tiles/title_subtitle_english.png",
+            "compressed_size_before_padding": 250,
+            "fixed_slot_size": 297,
+            "wording": "GOKU'S / SOARING LEGEND",
+            "status": "implemented for translated builds"
+          }
+        }
+      },
+      "menu_rectangles": {
+        "$A0-$A7": "4x2 fixed artwork: STORY",
+        "$A8-$BD": "11x2 fixed artwork: WORLD TOURNAMENT",
+        "$BE-$C5": "4x2 fixed artwork: VERSUS; conditionally displayed",
+        "$C6-$CD": "4x2 fixed artwork: TRAINING"
+      },
+      "translation_builder": "projects/gb-db-z-gokou/src/gb_db_z_gokou/build.py",
+      "shared_codec": "projects/gb-db-z-gokou/src/gb_db_z_gokou/compression.py",
+      "conclusion": "fixed screen-specific 2bpp artwork; not a reusable 16x16 kanji font",
+      "confidence": "confirmed"
+    }
+  },
+  "notes": [
+    "Baseline generated with mgbdis commit 95d951a9881a0d7ff1a42a94d1be175da92b1777 and RGBDS v1.0.4.",
+    "MBC2 ROM bank selection writes to $2100. The selected bank is cached at HRAM $FFA2; $FFA3 stores one previous bank for the paired restore RST.",
+    "The generated mgbdis source is a bootstrap: many non-code regions are still represented as instructions and must not be interpreted without evidence.",
+    "VBlank copies the HRAM shadow block at $FF9A-$FFA1 into LYC/LCDC/IE/SCY/SCX/WY/WX, runs bank 3 and bank 15 callbacks, restores the cached ROM bank, and increments $FFA8.",
+    "The ten bytes at Bank 00:$2DAB-$2DB4 are copied to HRAM $FF80-$FF89 and perform OAM DMA from WRAM $C000.",
+    "The primary font is compressed at Bank 1:$5D3B-$6198 and therefore was not visible in whole-bank raw tile scans. It expands to 160 packed 1bpp 8x8 glyphs and is uploaded to signed tile IDs $00-$9F.",
+    "Bank 00 is mapped in projects/gb-db-z-gokou/analysis/bank_000.md. Broad gameplay ranges are documented by subsystem without speculative semantic names.",
+    "The MBC2 save format stores each logical byte as two low-nibble RAM cells. Slots begin at $A004 and $A102, encode 126 bytes each, and use an 8-bit nibble-sum checksum.",
+    "Bank 00:$322D-$32D5 includes command parsing and message resolution. 00:329F resolves IDs through bank-3 pointer tables rooted at 03:4000; 03:7E00 consumes the resulting encoded stream during VBlank and writes tile IDs to the tilemap.",
+    "Bank 00 includes confirmed non-code/table-heavy ranges, especially $27D4-$2866 and $3E72-$3F69; generated instruction mnemonics there must not be treated as executable evidence.",
+    "Bank 3:$4000-$7BD6 (ROM $0C000-$0FBD6) is encoded message pointer/data storage and is explicitly declared as dw/db data. Bank 3:$7BD7-$7DFF is confirmed zero padding; the VBlank interpreter begins at 03:7E00 (ROM $0FE00).",
+    "The primary font tile map is recorded in projects/gb-db-z-gokou/analysis/font_tiles.tsv; bank-3 direct/composite stream bytes through $E1 are recorded in projects/gb-db-z-gokou/analysis/text_encoding.tsv and can be decoded with tools/bin/gb-text-decode.",
+    "Bank-3 text enumeration finds 479 pointer-table references to 419 unique streams. The script-free reference index is projects/gb-db-z-gokou/analysis/bank3_text_reference_index.tsv; the local decoded catalog is projects/gb-db-z-gokou/analysis/bank3_text_tables.tsv, with methodology in projects/gb-db-z-gokou/analysis/bank_003_text.md.",
+    "The five-character title subtitle and four post-START menu labels are fixed Bank 2 2bpp tile strips, not reusable 16x16 font text; see projects/gb-db-z-gokou/analysis/title_screen_graphics.md."
+  ]
+}

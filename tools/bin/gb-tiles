@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 import argparse, sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'toolkit'))
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / 'toolkit'))
 from gbworkbench.rom import parse_bank_address, bank_address_to_offset
 from gbworkbench.graphics import save_tiles
 
@@ -20,7 +21,7 @@ bank,addr=parse_bank_address(a.address)
 off=bank_address_to_offset(bank,addr)
 stride=8 if a.bpp==1 else 16
 data=rom.read_bytes()[off:off+a.count*stride]
-out=Path(a.output or f"analysis/tiles/bank_{bank:03x}_{addr:04x}_{a.bpp}bpp.png")
+out=Path(a.output) if a.output else ROOT / "projects" / "gb-db-z-gokou" / "analysis" / "tiles" / f"bank_{bank:03x}_{addr:04x}_{a.bpp}bpp.png"
 n=save_tiles(data,out,a.bpp,a.columns,a.scale)
 print(f"Wrote {out} ({n} tiles)")
 print(f"tile N ROM offset = 0x{off:x} + N*{stride} bytes")

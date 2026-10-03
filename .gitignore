@@ -5,11 +5,12 @@
 !/roms/*/README.md
 /build/
 
-# Local reverse-engineering evidence. None of this is distributable source.
+# Local reverse-engineering evidence and ROM-derived working data.
 /disassembly/
 /analysis/
 /translation/
-/projects/*/analysis/
+/projects/*/analysis/tiles/
+/projects/*/analysis/bank3_text_tables.tsv
 /projects/*/disassembly/
 /projects/*/local/
 /projects/*/original/

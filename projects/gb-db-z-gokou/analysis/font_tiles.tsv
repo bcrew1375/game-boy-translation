@@ -1,0 +1,161 @@
+tile_id	character	class	confidence	evidence
+0x00	 	space	confirmed	used between words and phrases in decoded streams
+0x01	あ	hiragana	confirmed	glyph appearance and decoded message context
+0x02	い	hiragana	confirmed	glyph appearance and decoded message context
+0x03	う	hiragana	confirmed	glyph appearance and decoded message context
+0x04	え	hiragana	confirmed	glyph appearance and decoded message context
+0x05	お	hiragana	confirmed	glyph appearance and decoded message context
+0x06	か	hiragana	confirmed	glyph appearance and decoded message context
+0x07	き	hiragana	confirmed	glyph appearance and decoded message context
+0x08	く	hiragana	confirmed	glyph appearance and decoded message context
+0x09	け	hiragana	confirmed	glyph appearance and decoded message context
+0x0A	こ	hiragana	confirmed	glyph appearance and decoded message context
+0x0B	さ	hiragana	confirmed	glyph appearance and decoded message context
+0x0C	し	hiragana	confirmed	glyph appearance and decoded message context
+0x0D	す	hiragana	confirmed	glyph appearance and decoded message context
+0x0E	せ	hiragana	confirmed	glyph appearance and decoded message context
+0x0F	そ	hiragana	confirmed	glyph appearance and decoded message context
+0x10	た	hiragana	confirmed	glyph appearance and decoded message context
+0x11	ち	hiragana	confirmed	glyph appearance and decoded message context
+0x12	つ	hiragana	confirmed	glyph appearance and decoded message context
+0x13	て	hiragana	confirmed	glyph appearance and decoded message context
+0x14	と	hiragana	confirmed	glyph appearance and decoded message context
+0x15	な	hiragana	confirmed	glyph appearance and decoded message context
+0x16	に	hiragana	confirmed	glyph appearance and decoded message context
+0x17	ぬ	hiragana	confirmed	glyph appearance and decoded message context
+0x18	ね	hiragana	confirmed	glyph appearance and decoded message context
+0x19	の	hiragana	confirmed	glyph appearance and decoded message context
+0x1A	は	hiragana	confirmed	glyph appearance and decoded message context
+0x1B	ひ	hiragana	confirmed	glyph appearance and decoded message context
+0x1C	ふ	hiragana	confirmed	glyph appearance and decoded message context
+0x1D	へ	hiragana	confirmed	glyph appearance and decoded message context
+0x1E	ほ	hiragana	confirmed	glyph appearance and decoded message context
+0x1F	ま	hiragana	confirmed	glyph appearance and decoded message context
+0x20	み	hiragana	confirmed	glyph appearance and decoded message context
+0x21	む	hiragana	confirmed	glyph appearance and decoded message context
+0x22	め	hiragana	confirmed	glyph appearance and decoded message context
+0x23	も	hiragana	confirmed	glyph appearance and decoded message context
+0x24	や	hiragana	confirmed	glyph appearance and decoded message context
+0x25	ゆ	hiragana	confirmed	glyph appearance and decoded message context
+0x26	よ	hiragana	confirmed	glyph appearance and decoded message context
+0x27	ら	hiragana	confirmed	glyph appearance and decoded message context
+0x28	り	hiragana	confirmed	glyph appearance and decoded message context
+0x29	る	hiragana	confirmed	glyph appearance and decoded message context
+0x2A	れ	hiragana	confirmed	glyph appearance and decoded message context
+0x2B	ろ	hiragana	confirmed	glyph appearance and decoded message context
+0x2C	わ	hiragana	confirmed	glyph appearance and decoded message context
+0x2D	を	hiragana	confirmed	glyph appearance and decoded message context
+0x2E	ん	hiragana	confirmed	glyph appearance and decoded message context
+0x2F	っ	hiragana	confirmed	glyph appearance and decoded message context
+0x30	ゃ	hiragana	confirmed	glyph appearance and decoded message context
+0x31	ゅ	hiragana	confirmed	glyph appearance and decoded message context
+0x32	ょ	hiragana	confirmed	glyph appearance and decoded message context
+0x33	ぁ	hiragana	confirmed	glyph appearance and decoded message context
+0x34	ぃ	hiragana	confirmed	glyph appearance and decoded message context
+0x35	ぅ	hiragana	confirmed	glyph appearance and decoded message context
+0x36	ぇ	hiragana	confirmed	glyph appearance and decoded message context
+0x37	ぉ	hiragana	confirmed	glyph appearance and decoded message context
+0x38	ア	katakana	confirmed	glyph appearance and decoded message context
+0x39	イ	katakana	confirmed	glyph appearance and decoded message context
+0x3A	ウ	katakana	confirmed	glyph appearance and decoded message context
+0x3B	エ	katakana	confirmed	glyph appearance and decoded message context
+0x3C	オ	katakana	confirmed	glyph appearance and decoded message context
+0x3D	カ	katakana	confirmed	glyph appearance and decoded message context
+0x3E	キ	katakana	confirmed	glyph appearance and decoded message context
+0x3F	ク	katakana	confirmed	glyph appearance and decoded message context
+0x40	ケ	katakana	confirmed	glyph appearance and decoded message context
+0x41	コ	katakana	confirmed	glyph appearance and decoded message context
+0x42	サ	katakana	confirmed	glyph appearance and decoded message context
+0x43	シ	katakana	confirmed	glyph appearance and decoded message context
+0x44	ス	katakana	confirmed	glyph appearance and decoded message context
+0x45	セ	katakana	confirmed	glyph appearance and decoded message context
+0x46	ソ	katakana	confirmed	glyph appearance and decoded message context
+0x47	タ	katakana	confirmed	glyph appearance and decoded message context
+0x48	チ	katakana	confirmed	glyph appearance and decoded message context
+0x49	ツ	katakana	confirmed	glyph appearance and decoded message context
+0x4A	テ	katakana	confirmed	glyph appearance and decoded message context
+0x4B	ト	katakana	confirmed	glyph appearance and decoded message context
+0x4C	ナ	katakana	confirmed	glyph appearance and decoded message context
+0x4D	ニ	katakana	confirmed	glyph appearance and decoded message context
+0x4E	ヌ	katakana	confirmed	glyph appearance and decoded message context
+0x4F	ネ	katakana	confirmed	glyph appearance and decoded message context
+0x50	ノ	katakana	confirmed	glyph appearance and decoded message context
+0x51	ハ	katakana	confirmed	glyph appearance and decoded message context
+0x52	ヒ	katakana	confirmed	glyph appearance and decoded message context
+0x53	フ	katakana	confirmed	glyph appearance and decoded message context
+0x54	ヘ	katakana	confirmed	glyph appearance and decoded message context
+0x55	ホ	katakana	confirmed	glyph appearance and decoded message context
+0x56	マ	katakana	confirmed	glyph appearance and decoded message context
+0x57	ミ	katakana	confirmed	glyph appearance and decoded message context
+0x58	ム	katakana	confirmed	glyph appearance and decoded message context
+0x59	メ	katakana	confirmed	glyph appearance and decoded message context
+0x5A	モ	katakana	confirmed	glyph appearance and decoded message context
+0x5B	ヤ	katakana	confirmed	glyph appearance and decoded message context
+0x5C	ユ	katakana	confirmed	glyph appearance and decoded message context
+0x5D	ヨ	katakana	confirmed	glyph appearance and decoded message context
+0x5E	ラ	katakana	confirmed	glyph appearance and decoded message context
+0x5F	リ	katakana	confirmed	glyph appearance and decoded message context
+0x60	ル	katakana	confirmed	glyph appearance and decoded message context
+0x61	レ	katakana	confirmed	glyph appearance and decoded message context
+0x62	ロ	katakana	confirmed	glyph appearance and decoded message context
+0x63	ワ	katakana	confirmed	glyph appearance and decoded message context
+0x64	ヲ	katakana	confirmed	glyph appearance and decoded message context
+0x65	ン	katakana	confirmed	glyph appearance and decoded message context
+0x66	ッ	katakana	confirmed	glyph appearance and decoded message context
+0x67	ャ	katakana	confirmed	glyph appearance and decoded message context
+0x68	ュ	katakana	confirmed	glyph appearance and decoded message context
+0x69	ョ	katakana	confirmed	glyph appearance and decoded message context
+0x6A	ァ	katakana	confirmed	glyph appearance and decoded message context
+0x6B	ィ	katakana	confirmed	glyph appearance and decoded message context
+0x6C	ゥ	katakana	confirmed	glyph appearance and decoded message context
+0x6D	ェ	katakana	confirmed	glyph appearance and decoded message context
+0x6E	ォ	katakana	confirmed	glyph appearance and decoded message context
+0x6F	ー	punctuation	confirmed	glyph appearance; validated by the time-up and speed labels
+0x70	・	punctuation	confirmed	glyph appearance and centered-separator use
+0x71	゛	combining_mark	confirmed	written above base tiles for stream bytes $B0-$D7
+0x72	゜	combining_mark	confirmed	written above base tiles for stream bytes $D8-$E1
+0x73	?	punctuation	confirmed	glyph appearance and question-sentence context
+0x74	!	punctuation	confirmed	glyph appearance and exclamation context
+0x75	、	punctuation	confirmed	glyph appearance
+0x76	。	punctuation	confirmed	glyph appearance
+0x77	/	punctuation	confirmed	glyph appearance
+0x78	「	punctuation	confirmed	glyph appearance and opening-dialogue position
+0x79	」	punctuation	confirmed	glyph appearance and closing-dialogue position
+0x7A		blank	confirmed	all pixels clear in the decompressed font
+0x7B		blank	confirmed	all pixels clear in the decompressed font
+0x7C		blank	confirmed	all pixels clear in the decompressed font
+0x7D		blank	confirmed	all pixels clear in the decompressed font
+0x7E		blank	confirmed	all pixels clear in the decompressed font
+0x7F		blank	confirmed	all pixels clear in the decompressed font
+0x80	0	digit	confirmed	glyph appearance and numeric message context
+0x81	1	digit	confirmed	glyph appearance and numeric message context
+0x82	2	digit	confirmed	glyph appearance and numeric message context
+0x83	3	digit	confirmed	glyph appearance and numeric message context
+0x84	4	digit	confirmed	glyph appearance and numeric message context
+0x85	5	digit	confirmed	glyph appearance and numeric message context
+0x86	6	digit	confirmed	glyph appearance and numeric message context
+0x87	7	digit	confirmed	glyph appearance and numeric message context
+0x88	8	digit	confirmed	glyph appearance and numeric message context
+0x89	9	digit	confirmed	glyph appearance and numeric message context
+0x8A		ui_graphic	confirmed visual class; semantic role tentative	left vertical UI fragment
+0x8B		ui_graphic	confirmed visual class; semantic role tentative	right vertical UI fragment
+0x8C		ui_graphic	confirmed visual class; semantic role tentative	upper horizontal UI fragment
+0x8D		ui_graphic	confirmed visual class; semantic role tentative	upper-right diagonal UI fragment
+0x8E		ui_graphic	confirmed visual class; semantic role tentative	upper-left diagonal UI fragment
+0x8F		ui_graphic	confirmed visual class; semantic role tentative	double horizontal UI fragment
+0x90		ui_graphic	confirmed visual class; semantic role tentative	lower-right diagonal UI fragment
+0x91		ui_graphic	confirmed visual class; semantic role tentative	lower-left diagonal UI fragment
+0x92		ui_graphic	confirmed visual class; semantic role tentative	solid/solid paired meter cells
+0x93		ui_graphic	confirmed visual class; semantic role tentative	solid/outline paired meter cells
+0x94		ui_graphic	confirmed visual class; semantic role tentative	outline/solid paired meter cells
+0x95		ui_graphic	confirmed visual class; semantic role tentative	outline/outline paired meter cells
+0x96	H	latin	confirmed	glyph appearance and decoded button/UI text
+0x97	P	latin	confirmed	glyph appearance and decoded button/UI text
+0x98	K	latin	confirmed	glyph appearance and decoded button/UI text
+0x99	I	latin	confirmed	glyph appearance and decoded button/UI text
+0x9A	S	latin	confirmed	glyph appearance and decoded button/UI text
+0x9B	A	latin	confirmed	glyph appearance and decoded button/UI text
+0x9C	B	latin	confirmed	glyph appearance and decoded button/UI text
+0x9D	D	latin	confirmed	glyph appearance and decoded button/UI text
+0x9E	←	arrow	confirmed	glyph appearance
+0x9F	→	arrow	confirmed	glyph appearance
