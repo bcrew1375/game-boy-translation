@@ -1,5 +1,5 @@
 {
-  "name": "Game Boy Reverse Engineering",
+  "name": "Game Boy Translation Workstation",
   "build": {
     "dockerfile": "Dockerfile",
     "context": ".."
@@ -7,6 +7,7 @@
   "remoteUser": "vscode",
   "containerEnv": {
     "DISPLAY": ":1",
+    "PYTHONDONTWRITEBYTECODE": "1",
     "PYTHONUNBUFFERED": "1"
   },
   "remoteEnv": {
@@ -21,7 +22,7 @@
       "onAutoForward": "notify"
     }
   },
-  "postCreateCommand": "chmod +x \"${containerWorkspaceFolder}\"/tools/bin/* && \"${containerWorkspaceFolder}\"/tools/bin/gb-self-test",
+  "postCreateCommand": "chmod +x \"${containerWorkspaceFolder}\"/tools/bin/* && make -C \"${containerWorkspaceFolder}\" self-test",
   "postStartCommand": "\"${containerWorkspaceFolder}\"/tools/bin/gb-desktop start",
   "customizations": {
     "vscode": {

@@ -2,16 +2,27 @@ from pathlib import Path
 import hashlib
 ROM_BANK = 0x4000
 
+def parse_bank_address(value: str) -> tuple[int, int]:
+    if ':' not in value:
+        raise ValueError('address must use bank:CPU-address notation')
+    bank_text, address_text = value.split(':', 1)
+    bank, address = int(bank_text, 16), int(address_text, 16)
+    bank_address_to_offset(bank, address)
+    return bank, address
+
+def bank_address_to_offset(bank: int, address: int) -> int:
+    if bank == 0:
+        if not 0 <= address <= 0x3fff:
+            raise ValueError('bank 00 address must be 0000-3FFF')
+        return address
+    if bank < 0 or not 0x4000 <= address <= 0x7fff:
+        raise ValueError('banked ROM address must be 4000-7FFF')
+    return bank * ROM_BANK + address - 0x4000
+
 def parse_address(value: str) -> int:
     if ':' not in value:
         return int(value, 0)
-    b, a = value.split(':', 1)
-    bank, addr = int(b, 16), int(a, 16)
-    if bank == 0:
-        if not 0 <= addr <= 0x3fff: raise ValueError('bank 00 address must be 0000-3FFF')
-        return addr
-    if not 0x4000 <= addr <= 0x7fff: raise ValueError('banked ROM address must be 4000-7FFF')
-    return bank * ROM_BANK + addr - 0x4000
+    return bank_address_to_offset(*parse_bank_address(value))
 
 def header(path: str):
     data = Path(path).read_bytes()

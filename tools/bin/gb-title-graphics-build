@@ -6,10 +6,11 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT / "tools"))
+sys.path.insert(0, str(ROOT / "toolkit"))
+sys.path.insert(0, str(ROOT / "projects" / "gb-db-z-gokou" / "src"))
 
-from gb.compression import compress_resource, decompress_resource  # noqa: E402
-from gb.title_graphics import (  # noqa: E402
+from gb_db_z_gokou.compression import compress_resource, decompress_resource  # noqa: E402
+from gb_db_z_gokou.title_graphics import (  # noqa: E402
     MENU_COMPRESSED_SLOT_SIZE,
     TITLE_COMPRESSED_SLOT_SIZE,
     build_menu_tiles,

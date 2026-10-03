@@ -8,11 +8,11 @@ command -v websockify >/dev/null && pass 'websockify/noVNC backend available' ||
 bash -n "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/gb-desktop" && pass 'desktop manager syntax' || bad 'desktop manager syntax'
 bash -n "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/gb-desktop-service" && pass 'desktop service syntax' || bad 'desktop service syntax'
 root=$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)
-for c in gb-rom-info gb-offset gb-hexdump gb-verify gb-run gb-debug gb-desktop gb-font-build gb-title-graphics-build gb-translate-build; do "$root/tools/bin/$c" --help >/dev/null 2>&1 && pass "$c --help" || bad "$c --help"; done
+for c in gb-rom-info gb-offset gb-hexdump gb-verify gb-run gb-debug gb-desktop gb-disassemble gb-font-build gb-title-graphics-build gb-workstation gb-translate gb-translate-build; do "$root/tools/bin/$c" --help >/dev/null 2>&1 && pass "$c --help" || bad "$c --help"; done
 tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
 python3 - "$tmp/test.gb" <<'PY'
 import sys
-p=sys.argv[1]; d=bytearray(0x8000); d[0x100:0x104]=bytes([0,0xC3,0x50,1]); d[0x134:0x13B]=b'SELFTEST'; d[0x143]=0x80; d[0x147]=0; d[0x148]=0; d[0x149]=0
+p=sys.argv[1]; d=bytearray(0x8000); d[0x100:0x104]=bytes([0,0xC3,0x50,1]); d[0x134:0x13C]=b'SELFTEST'; d[0x143]=0x80; d[0x147]=0; d[0x148]=0; d[0x149]=0
 open(p,'wb').write(d)
 PY
 if "$root/tools/bin/gb-rom-info" "$tmp/test.gb" >"$tmp/rom-info.json" && grep -q SELFTEST "$tmp/rom-info.json"; then
@@ -22,7 +22,29 @@ else
 fi
 [[ $("$root/tools/bin/gb-offset" 02:4000) == 0x8000 ]] && pass 'bank address conversion' || bad 'bank address conversion'
 "$root/tools/bin/gb-hexdump" "$tmp/test.gb" 00:0100 4 | grep -q '00 C3 50 01' && pass 'bank-aware hexdump' || bad 'bank-aware hexdump'
-python3 -m unittest discover -s "$root/tests" -v >/dev/null && pass 'Python analysis-tool tests' || bad 'Python analysis-tool tests'
+if "$root/tools/bin/gb-disassemble" "$tmp/test.gb" "$tmp/disassembly" >/dev/null \
+   && find "$tmp/disassembly" -type f -name '*.asm' -print -quit | grep -q .; then
+    pass 'mgbdis synthetic ROM disassembly'
+else
+    bad 'mgbdis synthetic ROM disassembly'
+fi
+PYTHONPATH="$root/toolkit" python3 -m unittest discover -s "$root/tests/toolkit" -v >/dev/null && pass 'generic toolkit tests' || bad 'generic toolkit tests'
+if "$root/tools/bin/gb-workstation" list >"$tmp/projects.tsv"; then
+    pass 'workstation project discovery'
+else
+    bad 'workstation project discovery'
+fi
+mapfile -t project_ids < <(awk 'NF {print $1}' "$tmp/projects.tsv")
+if (( ${#project_ids[@]} == 0 )); then
+    bad 'at least one workstation project discovered'
+else
+    pass 'at least one workstation project discovered'
+    for project in "${project_ids[@]}"; do
+        "$root/tools/bin/gb-workstation" validate "$project" >/dev/null && pass "$project metadata" || bad "$project metadata"
+        "$root/tools/bin/gb-workstation" test "$project" >/dev/null && pass "$project tests" || bad "$project tests"
+    done
+fi
+"$root/tools/bin/gb-repo-audit" >/dev/null && pass 'repository source audit' || bad 'repository source audit'
 cp "$tmp/test.gb" "$tmp/copy.gb"; "$root/tools/bin/gb-verify" "$tmp/test.gb" "$tmp/copy.gb" >/dev/null && pass 'ROM match verification' || bad 'ROM match verification'
 printf '\1' | dd of="$tmp/copy.gb" bs=1 seek=0 conv=notrunc status=none
 if "$root/tools/bin/gb-verify" "$tmp/test.gb" "$tmp/copy.gb" >/dev/null 2>&1; then bad 'ROM mismatch detection'; else pass 'ROM mismatch detection'; fi

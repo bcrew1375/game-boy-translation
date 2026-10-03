@@ -4,10 +4,12 @@ from collections import Counter
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "tools"))
+PROJECT = Path(__file__).resolve().parents[1]
+REPOSITORY = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(REPOSITORY / "toolkit"))
+sys.path.insert(0, str(PROJECT / "src"))
 
-from gb.font import (  # noqa: E402
+from gb_db_z_gokou.font import (  # noqa: E402
     FONT_COMPRESSED_SLOT_SIZE,
     FONT_DECOMPRESSED_SIZE,
     FONT_ROM_OFFSET,
@@ -33,9 +35,9 @@ class FontCodecTest(unittest.TestCase):
             decompress_font(data)
 
     def test_original_and_english_fonts(self):
-        rom_path = ROOT / "rom" / "original.gb"
+        rom_path = REPOSITORY / "roms" / "gb-db-z-gokou" / "original.gb"
         if not rom_path.exists():
-            self.skipTest("rom/original.gb is not available")
+            self.skipTest("roms/gb-db-z-gokou/original.gb is not available")
         rom = rom_path.read_bytes()
         original = decompress_font(
             rom[FONT_ROM_OFFSET : FONT_ROM_OFFSET + FONT_COMPRESSED_SLOT_SIZE]

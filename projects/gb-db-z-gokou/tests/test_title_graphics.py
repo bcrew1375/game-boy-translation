@@ -3,12 +3,14 @@ import unittest
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "tools"))
+PROJECT = Path(__file__).resolve().parents[1]
+REPOSITORY = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(REPOSITORY / "toolkit"))
+sys.path.insert(0, str(PROJECT / "src"))
 
-from gb.compression import compress_resource, decompress_resource  # noqa: E402
-from gb.graphics import decode_tiles, encode_tiles  # noqa: E402
-from gb.title_graphics import (  # noqa: E402
+from gbworkbench.graphics import decode_tiles, encode_tiles  # noqa: E402
+from gb_db_z_gokou.compression import compress_resource, decompress_resource  # noqa: E402
+from gb_db_z_gokou.title_graphics import (  # noqa: E402
     MENU_COMPRESSED_SLOT_SIZE,
     MENU_DECOMPRESSED_SIZE,
     MENU_FILL_INDEX,

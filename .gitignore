@@ -1,15 +1,21 @@
-# User-supplied and generated ROMs
-/rom/*.gb
-/rom/*.gbc
-/rom/*.rom
+# User-supplied ROMs and generated output
+/rom/
+/roms/*/*
+!/roms/README.md
+!/roms/*/README.md
 /build/
 
 # Local reverse-engineering evidence. None of this is distributable source.
 /disassembly/
 /analysis/
-/translation/strings.tsv
-/translation/glossary.tsv
-/translation/text_layout.tsv
+/translation/
+/projects/*/analysis/
+/projects/*/disassembly/
+/projects/*/local/
+/projects/*/original/
+/projects/*/translation/strings.tsv
+/projects/*/translation/glossary.tsv
+/projects/*/translation/text_layout.tsv
 /tools/bin/gb-text-build
 /tools/bin/gb-text-catalog
 /tests/test_text.py

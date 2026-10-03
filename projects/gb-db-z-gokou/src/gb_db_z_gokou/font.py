@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from gb.compression import (
+from .compression import (
     DecodedResource,
     ResourceCodecError,
     compress_resource,

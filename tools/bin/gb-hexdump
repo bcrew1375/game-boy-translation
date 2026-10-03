@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import argparse, sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from gb.rom import parse_address
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'toolkit'))
+from gbworkbench.rom import parse_address
 p=argparse.ArgumentParser(description='Hexdump a ROM using banked Game Boy addresses.')
 p.add_argument('rom'); p.add_argument('address'); p.add_argument('length', nargs='?', default='256')
 a=p.parse_args(); d=Path(a.rom).read_bytes(); o=parse_address(a.address); n=int(a.length,0)

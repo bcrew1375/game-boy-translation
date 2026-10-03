@@ -1,0 +1,62 @@
+schema_version = 1
+id = "gb-db-z-gokou"
+name = "GB DBZ GOKOU"
+platform = "game-boy"
+adapter = "gb_db_z_gokou.build"
+source_directory = "src"
+
+[input]
+default_path = "roms/gb-db-z-gokou/original.gb"
+size = 262144
+sha256 = "f63b95b5b03c399b8546e5f72004a2ebaf2e2826fa83a76705b2629bd4da817f"
+
+[output]
+default_path = "build/gb-db-z-gokou/translated.gb"
+size = 262144
+sha256 = "312798b43d2415fecbfe777e7d54c10f247b60bb68554657392aff6398a5150b"
+
+[manifests]
+encoding = "translation/encoding.tsv"
+patches = "translation/patches.tsv"
+references = "translation/references.tsv"
+ranges = "translation/ranges.tsv"
+
+[[approved_ranges]]
+name = "global-checksum"
+start = 334
+end = 335
+
+[[approved_ranges]]
+name = "yes-no-labels"
+start = 16075
+end = 16080
+
+[[approved_ranges]]
+name = "english-font"
+start = 23867
+end = 24984
+
+[[approved_ranges]]
+name = "title-menu-labels"
+start = 34399
+end = 35042
+
+[[approved_ranges]]
+name = "title-subtitle"
+start = 35107
+end = 35403
+
+[[approved_ranges]]
+name = "translated-text-1"
+start = 49837
+end = 50276
+
+[[approved_ranges]]
+name = "translated-text-2"
+start = 56738
+end = 57535
+
+[[approved_ranges]]
+name = "translated-text-3"
+start = 64471
+end = 65023

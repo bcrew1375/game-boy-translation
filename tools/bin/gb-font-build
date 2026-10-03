@@ -7,9 +7,10 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT / "tools"))
+sys.path.insert(0, str(ROOT / "toolkit"))
+sys.path.insert(0, str(ROOT / "projects" / "gb-db-z-gokou" / "src"))
 
-from gb.font import (  # noqa: E402
+from gb_db_z_gokou.font import (  # noqa: E402
     ENGLISH_TILE_CHARACTERS,
     FONT_COMPRESSED_SLOT_SIZE,
     FONT_DECOMPRESSED_SIZE,
@@ -18,7 +19,7 @@ from gb.font import (  # noqa: E402
     compress_font,
     decompress_font,
 )
-from gb.graphics import save_tiles  # noqa: E402
+from gbworkbench.graphics import save_tiles  # noqa: E402
 
 
 def main() -> int:

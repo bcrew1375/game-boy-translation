@@ -2,10 +2,18 @@
 
 from __future__ import annotations
 
-import csv
 import unicodedata
 from dataclasses import dataclass
 from pathlib import Path
+
+from gbworkbench.text import (
+    AllocationRange,
+    TextEncodeError,
+    TextEncoding,
+    allocate_streams,
+    encode_text,
+    load_character_encoding as load_generic_character_encoding,
+)
 
 
 ROM_BANK_SIZE = 0x4000
@@ -16,10 +24,6 @@ ROOT_ENTRY_COUNT = 26
 
 class TextDecodeError(ValueError):
     """Raised for an invalid pointer or malformed/unbounded text stream."""
-
-
-class TextEncodeError(ValueError):
-    """Raised for unsupported or invalid translated text."""
 
 
 def bank3_offset(cpu_address: int) -> int:
@@ -41,6 +45,8 @@ def read_word_bank3(rom: bytes, cpu_address: int) -> int:
 
 def load_tile_characters(path: str | Path) -> dict[int, str]:
     """Load tile-to-character records from analysis/font_tiles.tsv."""
+    import csv
+
     result: dict[int, str] = {}
     with Path(path).open(encoding="utf-8", newline="") as source:
         for row in csv.DictReader(source, delimiter="\t"):
@@ -50,19 +56,7 @@ def load_tile_characters(path: str | Path) -> dict[int, str]:
 
 def load_character_encoding(path: str | Path) -> dict[str, int]:
     """Load the canonical translated character-to-stream-byte map."""
-    result: dict[str, int] = {}
-    with Path(path).open(encoding="utf-8", newline="") as source:
-        for row in csv.DictReader(source, delimiter="\t"):
-            character = row["character"]
-            value = int(row["stream_byte"], 0)
-            if character in result:
-                raise TextEncodeError(f"duplicate encoding for {character!r}")
-            if value >= 0xB0:
-                raise TextEncodeError(
-                    f"translated direct byte must be below $B0, got ${value:02X}"
-                )
-            result[character] = value
-    return result
+    return load_generic_character_encoding(path, maximum_value=0xAF)
 
 
 def encode_translated_text(
@@ -72,33 +66,16 @@ def encode_translated_text(
     max_line_tiles: int = 18,
 ) -> bytes:
     """Encode TSV-style translated text with line/wait controls and terminator."""
-    output = bytearray()
-    line_tiles = 0
-    cursor = 0
-    while cursor < len(text):
-        if text.startswith("\\n", cursor):
-            output.append(0xFD)
-            line_tiles = 0
-            cursor += 2
-            continue
-        if text.startswith("<WAIT>", cursor):
-            output.append(0xFB)
-            cursor += len("<WAIT>")
-            continue
-        character = text[cursor]
-        if character not in encoding:
-            raise TextEncodeError(
-                f"unsupported translated character {character!r} at index {cursor}"
-            )
-        line_tiles += 1
-        if line_tiles > max_line_tiles:
-            raise TextEncodeError(
-                f"translated line exceeds {max_line_tiles} tiles near index {cursor}"
-            )
-        output.append(encoding[character])
-        cursor += 1
-    output.append(0xFE)
-    return bytes(output)
+    return encode_text(
+        text,
+        TextEncoding(
+            characters=encoding,
+            controls=(("\\n", b"\xFD"), ("<WAIT>", b"\xFB")),
+            terminator=b"\xFE",
+            max_line_units=max_line_tiles,
+            line_control="\\n",
+        ),
+    )
 
 
 def _composite_character(value: int, tiles: dict[int, str]) -> str:
@@ -131,51 +108,11 @@ class DecodedStream:
     bytes_consumed: int
 
 
-@dataclass(frozen=True)
-class AllocationRange:
-    """Inclusive bank-3 CPU-address range available for translated streams."""
-
-    start: int
-    end: int
-
-
-def validate_allocation_ranges(ranges: list[AllocationRange]) -> None:
-    """Reject invalid, overlapping, or unordered translated-text ranges."""
-    if not ranges:
-        raise TextEncodeError("at least one allocation range is required")
-    for region in ranges:
-        if not 0x4000 <= region.start <= region.end <= 0x7FFF:
-            raise TextEncodeError(
-                f"invalid bank-3 allocation range ${region.start:04X}-${region.end:04X}"
-            )
-    for previous, current in zip(ranges, ranges[1:]):
-        if current.start <= previous.end:
-            raise TextEncodeError("allocation ranges overlap or are not ascending")
-
-
 def allocate_translated_streams(
     encoded: list[tuple[str, bytes]], ranges: list[AllocationRange]
 ) -> dict[str, int]:
     """First-fit streams in order without splitting one across allocation ranges."""
-    validate_allocation_ranges(ranges)
-    addresses: dict[str, int] = {}
-    range_index = 0
-    cursor = ranges[0].start
-    for string_id, data in encoded:
-        if not data:
-            raise TextEncodeError(f"translated stream {string_id} is empty")
-        if string_id in addresses:
-            raise TextEncodeError(f"duplicate translated stream ID {string_id}")
-        while cursor + len(data) - 1 > ranges[range_index].end:
-            range_index += 1
-            if range_index >= len(ranges):
-                raise TextEncodeError(
-                    f"translated streams do not fit; failed at {string_id}"
-                )
-            cursor = ranges[range_index].start
-        addresses[string_id] = cursor
-        cursor += len(data)
-    return addresses
+    return allocate_streams(encoded, ranges, minimum=0x4000, maximum=0x7FFF)
 
 
 @dataclass(frozen=True)

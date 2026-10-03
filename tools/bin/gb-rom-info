@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import argparse, json, sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from gb.rom import header
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'toolkit'))
+from gbworkbench.rom import header
 p=argparse.ArgumentParser(description='Print Game Boy ROM header information.')
 p.add_argument('rom')
 a=p.parse_args(); print(json.dumps(header(a.rom), ensure_ascii=False, indent=2))

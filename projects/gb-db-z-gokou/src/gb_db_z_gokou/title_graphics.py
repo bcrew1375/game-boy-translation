@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from gb.font import GLYPH_ROWS
+from .font import GLYPH_ROWS
 from PIL import Image
 
-from gb.graphics import decode_tiles, encode_tiles
+from gbworkbench.graphics import decode_tiles, encode_tiles
 
 
 TITLE_WIDTH = 80

@@ -1,95 +1,143 @@
-# Source-Only Game Boy Translation Builder
+# Multi-Project Game Boy Translation Workstation
 
-This repository builds an English-translated Game Boy ROM from a legally
-obtained original ROM. It intentionally does **not** distribute the original
-ROM, a disassembly, extracted graphics or sound, decoded original dialogue, or
-generated ROM-derived binary assets.
+This repository is a source-only workstation for reproducible Game Boy translation
+projects. It separates reusable ROM, patching, text-allocation, graphics, project-loading,
+and audit infrastructure from each game's addresses, formats, translations, artwork, and
+expected hashes.
 
-## Required input
+The repository intentionally does **not** distribute original ROMs, disassemblies,
+extracted graphics or sound, decoded original-language catalogs, or generated ROM-derived
+binary assets.
 
-Place the supported original ROM at `rom/original.gb`. The required SHA-256 is:
+## Projects
 
-```text
-f63b95b5b03c399b8546e5f72004a2ebaf2e2826fa83a76705b2629bd4da817f
+List checked-in projects with:
+
+```sh
+gb-workstation list
 ```
 
-The original ROM is ignored by Git and is never modified.
+The currently supported project is:
 
-## Build
+```text
+gb-db-z-gokou    GB DBZ GOKOU
+```
+
+Each project is self-contained under `projects/<project-id>/` and provides:
+
+- `project.toml` with input/output identity, adapter, manifests, and approved ranges;
+- a game-specific Python package under `src/`;
+- repository-authored English translation data under `translation/`;
+- project-specific tests under `tests/`.
+
+Reusable code lives under `toolkit/gbworkbench/`. Generic toolkit modules never import a
+game project. Project adapters may import toolkit primitives.
+
+## Build the current project
+
+Place a legally obtained original ROM at:
+
+```text
+roms/gb-db-z-gokou/original.gb
+```
+
+Then run:
 
 ```sh
 make test
 make translated
 ```
 
-The translated ROM is written to `build/translated.gb`. The current expected
-SHA-256 is:
+The translated output is written to:
 
 ```text
-312798b43d2415fecbfe777e7d54c10f247b60bb68554657392aff6398a5150b
+build/gb-db-z-gokou/translated.gb
 ```
 
-The builder validates both hashes and fails if the wrong original ROM is used
-or if the generated output differs from the known translation build.
+Equivalent direct invocation:
 
-## How reconstruction works
+```sh
+gb-workstation build gb-db-z-gokou
+```
 
-`tools/bin/gb-translate-build` copies the original ROM in memory and applies
-only deterministic, repository-owned replacements:
+Input and output paths can be overridden without changing project metadata:
 
-- English font glyphs defined in `tools/gb/font.py`;
-- English title and menu artwork defined in `tools/gb/title_graphics.py`;
-- English text from `translation/patches.tsv`;
-- text pointer and allocation metadata from `translation/references.tsv` and
-  `translation/ranges.tsv`;
-- fixed English user-interface labels;
-- a recalculated Game Boy global checksum.
+```sh
+gb-workstation build gb-db-z-gokou \
+  --rom /path/to/original.gb \
+  --output /path/to/translated.gb
+```
 
-Some numeric and user-interface glyphs needed by the game are retained by
-reading them directly from the user's original ROM during the build. They are
-not stored in this repository.
+The generic executor refuses to overwrite the input ROM and validates input size/hash,
+output size/hash, and the adapter-reported digest. The project adapter additionally checks
+game-specific pointers and ensures all changed bytes fall within declared or manifest-based
+approved locations.
 
-The build does not invoke RGBDS, use a disassembly, or consume extracted image,
-audio, font, or binary resource files.
+## Commands
+
+```text
+make projects                         List checked-in projects
+make validate PROJECT=gb-db-z-gokou  Validate project metadata without a ROM
+make test-toolkit                     Run generic synthetic tests without a ROM
+make test-project PROJECT=...         Run one project's tests
+make test                             Run toolkit and default-project tests
+make translated PROJECT=...          Build one translated ROM
+make info PROJECT=...                 Show resolved project metadata
+make audit                            Audit repository source policy
+make clean                            Remove generated build output
+make run PROJECT=...                  Run a generated ROM in SameBoy
+make debug PROJECT=...                Open a generated ROM in the debugger
+```
+
+`make translated` continues to default to `gb-db-z-gokou`. The deprecated
+`gb-translate-build ROM -o OUTPUT` wrapper remains temporarily and delegates to the new
+project-aware CLI.
+
+The devcontainer runs `make self-test` after creation. This checks the shared toolkit,
+discovers and validates every checked-in project, runs each project's ROM-independent
+tests, exercises the disassembler with a synthetic ROM, and audits repository source
+without requiring any user-supplied ROM.
+
+## Add another game
+
+1. Create `projects/<project-id>/project.toml`.
+2. Put the adapter package under `projects/<project-id>/src/`.
+3. Keep all game-specific hashes, offsets, formats, codecs, text rules, artwork, and
+   translations in that project.
+4. Use toolkit primitives for bounded writes, hashing, project loading, allocation, and
+   Game Boy tile processing.
+5. Add project tests under `projects/<project-id>/tests/`.
+6. Put the user-supplied ROM under `roms/<project-id>/`; never track it.
+7. Run `make test`, `make audit`, and a clean-room reconstruction.
+
+Do not promote a format discovered in one game into the generic toolkit until another
+project demonstrates actual reuse.
 
 ## Repository policy
 
-Run the index-level policy check with:
+Run:
 
 ```sh
 make audit
 ```
 
-The audit rejects tracked ROMs, generated binaries, extracted media,
-disassembly and analysis directories, local decoded-original catalogs, and
-unreviewed Japanese/CJK content. This is a technical safeguard, not legal
-advice.
+The audit checks tracked and prospective non-ignored source files. It rejects ROMs,
+generated binaries, extracted media, reverse-engineering evidence directories, local
+decoded-original catalogs, unreviewed Japanese/CJK content, and suspicious embedded byte
+arrays. Repository-authored graphics definitions in source form are allowed.
 
-The following remain local and ignored if they exist in a development
-workspace:
+Local ignored material may include:
 
 ```text
-rom/original.gb
+roms/<project-id>/original.gb
 build/
-disassembly/
 analysis/
-translation/strings.tsv
-translation/glossary.tsv
-translation/text_layout.tsv
+disassembly/
+projects/*/analysis/
+projects/*/local/
+projects/*/translation/strings.tsv
+projects/*/translation/glossary.tsv
+projects/*/translation/text_layout.tsv
 ```
 
-## Commands
-
-```text
-make test        Run repository-independent tests and the ROM-dependent test
-                 when rom/original.gb is present
-make translated  Build build/translated.gb directly from the original ROM
-make audit       Check the Git index for prohibited material
-make clean       Remove generated output
-make run         Run the translated ROM in SameBoy
-make debug       Open the translated ROM in the SameBoy debugger
-```
-
-The devcontainer includes Python, Pillow, SameBoy, and existing Game Boy
-development utilities. Container startup and generic tests do not require a
-ROM.
+The audit is a technical safeguard, not legal advice.

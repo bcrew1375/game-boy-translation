@@ -2,7 +2,7 @@
 set -euo pipefail
 
 export DISPLAY="${DISPLAY:-:1}"
-STATE_DIR="${XDG_RUNTIME_DIR:-/tmp}/gb-gui-${USER}"
+STATE_DIR="${XDG_RUNTIME_DIR:-/tmp}/gb-gui-$(id -un)"
 CONF="$STATE_DIR/supervisord.conf"
 PIDFILE="$STATE_DIR/supervisord.pid"
 SOCK="$STATE_DIR/supervisor.sock"

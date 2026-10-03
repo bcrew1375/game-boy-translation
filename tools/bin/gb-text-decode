@@ -7,9 +7,10 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT / "tools"))
+sys.path.insert(0, str(ROOT / "toolkit"))
+sys.path.insert(0, str(ROOT / "projects" / "gb-db-z-gokou" / "src"))
 
-from gb.text import (  # noqa: E402
+from gb_db_z_gokou.text import (  # noqa: E402
     Bank3TextDecoder,
     TextDecodeError,
     load_tile_characters,

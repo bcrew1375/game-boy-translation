@@ -1,48 +1,32 @@
 #!/usr/bin/env python3
-"""Build the translated ROM directly from a verified original ROM."""
+"""Deprecated single-project wrapper for gb-workstation build."""
 
 import argparse
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT / "tools"))
+sys.path.insert(0, str(ROOT / "toolkit"))
 
-from gb.translation import TranslationBuildError, build_translated_rom  # noqa: E402
+from gbworkbench.cli import main as workstation_main  # noqa: E402
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("rom", type=Path, help="legally obtained original ROM")
+    parser.add_argument("rom", type=Path)
     parser.add_argument("-o", "--output", type=Path, required=True)
-    parser.add_argument("--encoding", type=Path, default=ROOT / "translation" / "encoding.tsv")
-    parser.add_argument("--patches", type=Path, default=ROOT / "translation" / "patches.tsv")
-    parser.add_argument(
-        "--references", type=Path, default=ROOT / "translation" / "references.tsv"
-    )
-    parser.add_argument("--ranges", type=Path, default=ROOT / "translation" / "ranges.tsv")
     args = parser.parse_args()
-
-    try:
-        if args.rom.resolve() == args.output.resolve():
-            raise TranslationBuildError("output path must not overwrite the original ROM")
-        original = args.rom.read_bytes()
-        result = build_translated_rom(
-            original,
-            encoding_path=args.encoding,
-            patches_path=args.patches,
-            references_path=args.references,
-            ranges_path=args.ranges,
-        )
-        args.output.parent.mkdir(parents=True, exist_ok=True)
-        args.output.write_bytes(result.data)
-    except (OSError, TranslationBuildError, ValueError) as error:
-        parser.error(str(error))
-
-    print(f"Wrote {args.output} ({len(result.data)} bytes).")
-    print(f"Changed {len(result.changed_offsets)} bytes in approved ranges.")
-    print(f"SHA-256: {result.sha256}")
-    return 0
+    print("warning: gb-translate-build is deprecated; use gb-workstation build", file=sys.stderr)
+    return workstation_main(
+        [
+            "build",
+            "gb-db-z-gokou",
+            "--rom",
+            str(args.rom),
+            "--output",
+            str(args.output),
+        ]
+    )
 
 
 if __name__ == "__main__":

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 import argparse, sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from gb.rom import parse_bank_address, bank_address_to_offset
-from gb.graphics import save_tiles
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'toolkit'))
+from gbworkbench.rom import parse_bank_address, bank_address_to_offset
+from gbworkbench.graphics import save_tiles
 
 p=argparse.ArgumentParser(description="Render Game Boy ROM bytes as 8x8 tiles.")
 p.add_argument("rom")

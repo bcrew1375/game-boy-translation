@@ -3,10 +3,12 @@ import unittest
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "tools"))
+PROJECT = Path(__file__).resolve().parents[1]
+REPOSITORY = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(REPOSITORY / "toolkit"))
+sys.path.insert(0, str(PROJECT / "src"))
 
-from gb.text import (  # noqa: E402
+from gb_db_z_gokou.text import (  # noqa: E402
     AllocationRange,
     TextEncodeError,
     allocate_translated_streams,
@@ -18,7 +20,7 @@ from gb.text import (  # noqa: E402
 class TranslatedTextEncodingTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.encoding = load_character_encoding(ROOT / "translation" / "encoding.tsv")
+        cls.encoding = load_character_encoding(PROJECT / "translation" / "encoding.tsv")
 
     def test_controls_and_terminator(self):
         encoded = encode_translated_text("A\\nB<WAIT>!", self.encoding)
