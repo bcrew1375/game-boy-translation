@@ -44,5 +44,8 @@ This project owns and tests:
 - ROM offsets, resource slot sizes, and checksum policy;
 - approved modification ranges and the expected translated-ROM hash.
 
-The English source manifests are under `translation/`. Original-language catalogs and
-reverse-engineering evidence remain local and ignored.
+The English source manifests are under `translation/`. This includes `glossary.tsv`, a
+reviewed terminology manifest with canonical English names, romanized source terms,
+categories, representative Bank 3 stream addresses, recurrence counts, confidence, and
+localization notes. It contains isolated terms only; decoded original-language dialogue and
+the full ROM-derived text catalog remain local and ignored.

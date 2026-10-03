@@ -20,6 +20,7 @@ BANNED_PREFIXES = (
 )
 BANNED_PROJECT_COMPONENTS = {"disassembly", "local", "original"}
 BANNED_BASENAMES = {"strings.tsv", "glossary.tsv", "text_layout.tsv"}
+REVIEWED_GLOSSARY_PATH = "projects/gb-db-z-gokou/translation/glossary.tsv"
 BANNED_PATHS = {
     "tools/bin/gb-text-build",
     "tools/bin/gb-text-catalog",
@@ -47,6 +48,19 @@ BANNED_SUFFIXES = (
 CJK = re.compile(r"[\u3040-\u30ff\u3400-\u9fff]")
 LONG_HEX_ARRAY = re.compile(r"(?:0x[0-9a-fA-F]{2}\s*,\s*){16,}")
 LONG_BYTE_ESCAPE = re.compile(r"(?:\\x[0-9a-fA-F]{2}){16,}")
+GLOSSARY_ADDRESS = re.compile(r"03:[0-9A-F]{4}")
+GLOSSARY_COLUMNS = [
+    "term_id",
+    "english",
+    "romanization",
+    "category",
+    "evidence_addresses",
+    "reference_count",
+    "confidence",
+    "notes",
+]
+GLOSSARY_CATEGORIES = {"character", "species", "place", "event", "item", "technique", "concept"}
+GLOSSARY_CONFIDENCE = {"confirmed", "strong", "tentative"}
 
 
 def source_files() -> list[str]:
@@ -76,7 +90,11 @@ def prohibited_path(relative: str) -> str | None:
             return f"prohibited extracted project artwork: {relative}"
         if path.name == "bank3_text_tables.tsv":
             return f"prohibited decoded-original catalog: {relative}"
-    if "projects" in path.parts and path.name in BANNED_BASENAMES:
+    if (
+        "projects" in path.parts
+        and path.name in BANNED_BASENAMES
+        and relative != REVIEWED_GLOSSARY_PATH
+    ):
         return f"prohibited original-language catalog: {relative}"
     if relative.lower().endswith(BANNED_SUFFIXES):
         return f"prohibited file type: {relative}"
@@ -108,6 +126,52 @@ def valid_structured_cjk(relative: str, text: str) -> bool:
     return True
 
 
+def validate_reviewed_glossary(text: str) -> list[str]:
+    """Validate the one reviewed, dialogue-free terminology manifest."""
+    failures = []
+    try:
+        reader = csv.DictReader(io.StringIO(text), delimiter="\t")
+        if reader.fieldnames != GLOSSARY_COLUMNS:
+            return ["reviewed glossary has an invalid header"]
+        rows = list(reader)
+    except (csv.Error, TypeError):
+        return ["reviewed glossary is not valid TSV"]
+
+    identifiers = set()
+    english_terms = set()
+    for line_number, row in enumerate(rows, start=2):
+        identifier = row["term_id"]
+        english = row["english"]
+        if not re.fullmatch(r"[a-z0-9]+(?:_[a-z0-9]+)*", identifier):
+            failures.append(f"reviewed glossary line {line_number} has an invalid term ID")
+        if identifier in identifiers:
+            failures.append(f"reviewed glossary line {line_number} repeats term ID {identifier}")
+        identifiers.add(identifier)
+        folded_english = english.casefold()
+        if not english or folded_english in english_terms:
+            failures.append(f"reviewed glossary line {line_number} has a missing or repeated English term")
+        english_terms.add(folded_english)
+        if row["category"] not in GLOSSARY_CATEGORIES:
+            failures.append(f"reviewed glossary line {line_number} has an invalid category")
+        if row["confidence"] not in GLOSSARY_CONFIDENCE:
+            failures.append(f"reviewed glossary line {line_number} has invalid confidence")
+        addresses = row["evidence_addresses"].split(";")
+        if not addresses or any(not GLOSSARY_ADDRESS.fullmatch(value) for value in addresses):
+            failures.append(f"reviewed glossary line {line_number} has invalid evidence addresses")
+        try:
+            reference_count = int(row["reference_count"])
+        except ValueError:
+            reference_count = 0
+        if reference_count < len(addresses):
+            failures.append(f"reviewed glossary line {line_number} has an invalid reference count")
+        if any(token in text for token in ("\\n", "<WAIT>", "<END>")):
+            failures.append("reviewed glossary contains dialogue/control syntax")
+            break
+    if not rows:
+        failures.append("reviewed glossary is empty")
+    return failures
+
+
 def main() -> int:
     failures = []
     files = source_files()
@@ -122,6 +186,8 @@ def main() -> int:
         except (UnicodeDecodeError, OSError):
             failures.append(f"unreviewed binary file: {relative}")
             continue
+        if relative == REVIEWED_GLOSSARY_PATH:
+            failures.extend(validate_reviewed_glossary(text))
         if CJK.search(text) and not valid_structured_cjk(relative, text):
             failures.append(f"Japanese/CJK content requires explicit review: {relative}")
         if LONG_HEX_ARRAY.search(text) or LONG_BYTE_ESCAPE.search(text):

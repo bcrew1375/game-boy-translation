@@ -1,0 +1,48 @@
+term_id	english	romanization	category	evidence_addresses	reference_count	confidence	notes
+goku	Goku	Son Goku	character	03:4382;03:460C;03:7B63	147	confirmed	Use Goku in dialogue; Son Goku is the full source name.
+gohan	Gohan	Son Gohan	character	03:616B;03:6959;03:76D9	16	confirmed	Goku's son; use Gohan without the family name in dialogue.
+chi_chi	Chi-Chi	Chichi	character	03:4B33;03:4BA0;03:5DF1	12	confirmed	Preserve the established hyphenated English spelling.
+krillin	Krillin	Kuririn	character	03:460C;03:4672;03:70DE	28	confirmed	Use the established English franchise spelling.
+yamcha	Yamcha	Yamucha	character	03:4728;03:4CBF;03:537A	15	confirmed	Use the established English franchise spelling.
+tien	Tien	Tenshinhan	character	03:4701;03:4867;03:52AE	15	confirmed	Tien Shinhan and Tenshinhan are useful aliases; use Tien in constrained text.
+chiaotzu	Chiaotzu	Chaozu	character	03:7442	1	confirmed	Named in Goku's statement during the Nappa battle.
+piccolo	Piccolo	Pikkoro	character	03:54A9;03:642D;03:6873	37	confirmed	Use Piccolo for the reincarnated character outside his tournament alias.
+majunior	Majunior	Majunia	character	03:500D;03:502C;03:5483	10	confirmed	Piccolo's tournament alias; keep distinct from Piccolo where the source does.
+kami	Kami	Kami-sama	character	03:42CE;03:500D;03:5B70	40	confirmed	Use Kami rather than translating the title as God.
+mr_popo	Mr. Popo	Popo	character	03:43EB;03:717B	2	confirmed	The source speaker label is Popo; use the established English honorific.
+korin	Korin	Karin	character	03:43BB;03:441B;03:719A	9	confirmed	Use the established English spelling Korin.
+master_roshi	Master Roshi	Kame Sennin	character	03:456B;03:5327;03:5C89	10	confirmed	Literally Turtle Hermit; use the established English character name.
+bulma	Bulma	Buruma	character	03:4545;03:62BB;03:630E	11	confirmed	Use the established English spelling.
+launch	Launch	Ranchi	character	03:45C2;03:45CC;03:45D7	3	confirmed	Use the established English character name.
+yajirobe	Yajirobe	Yajirobe	character	03:5AC2;03:5AED;03:5B0E	3	confirmed	Source spelling includes a final long vowel.
+mercenary_tao	Mercenary Tao	Taopaipai	character	03:4C4E;03:4EA9;03:4F19	6	confirmed	Tao Pai Pai is a useful alias; use Mercenary Tao in English prose.
+shen	Shen	Shen	character	03:5104;03:5130;03:537A	4	confirmed	Human tournament identity used by Kami; do not confuse with Shenron.
+raditz	Raditz	Radittsu	character	03:61EB;03:658A;03:6B94	23	confirmed	Use the established English spelling.
+nappa	Nappa	Nappa	character	03:6A40;03:72E6;03:73ED	8	confirmed	Use the established English spelling.
+vegeta	Vegeta	Bejita	character	03:6A76;03:7508;03:7B63	22	confirmed	Use the established English spelling.
+king_kai	King Kai	Kaio	character	03:410B;03:6E11;03:6E74	9	confirmed	Use King Kai rather than Kaio in translated dialogue.
+bubbles	Bubbles	Baburusu	character	03:404B	1	confirmed	King Kai's training companion.
+king_yemma	King Yemma	Enma Daio	character	03:6C92	1	confirmed	Use the established English title and name.
+shenron	Shenron	Shenron	character	03:5B70	1	confirmed	The dragon invoked through the Dragon Balls.
+copy_goku	Copy Goku	Kopi Goku	character	03:43DB;03:5E8B;03:609D	4	confirmed	Artificial training opponent created by Popo and animated by Kami.
+kakarot	Kakarot	Kakarotto	concept	03:65E5;03:7508;03:754B	3	confirmed	Goku's Saiyan birth name; retain when Saiyan characters address him.
+demon_king_piccolo	Demon King Piccolo	Pikkoro Daimao	character	03:5182;03:5483;03:60E2	5	confirmed	Keep distinct from Piccolo/Majunior when referring to the prior incarnation.
+saiyan	Saiyan	Saiyajin	species	03:61EB;03:6E74;03:7B63	11	confirmed	Use Saiyan; the source term literally includes person or people.
+saibaman	Saibaman	Saibaiman	species	03:7280	1	confirmed	Use Saibaman for one creature and Saibamen for the plural.
+the_lookout	the Lookout	tenkai	place	03:42AD	1	strong	The location card names the heavenly realm; existing English patches use the Lookout.
+other_world	Other World	ano yo	place	03:6B50;03:6C3A	2	confirmed	Afterlife realm; capitalize as a proper location.
+snake_way	Snake Way	Hebi no Michi	place	03:6CF4;03:6FAE;03:701C	3	confirmed	Use the established English location name.
+earth	Earth	Chikyu	place	03:433E;03:6F76;03:7B63	7	confirmed	Capitalize when referring to the planet.
+world_martial_arts_tournament	World Martial Arts Tournament	Tenkaichi Budokai	event	03:44A1;03:4980;03:57C9	6	strong	World Tournament is an acceptable short form where display space is limited.
+dragon_ball	Dragon Ball	Doragon Boru	item	03:58B7;03:6898;03:6A8C	5	confirmed	Use Dragon Balls when the source is plural by context.
+senzu_bean	Senzu Bean	Senzu	item	03:42B4;03:441B;03:719A	6	confirmed	Use Senzu Bean for clarity; pluralize Bean in normal English.
+flying_nimbus	Flying Nimbus	Kinto'un	item	03:59A5;03:7087	2	confirmed	The source uses Kinto'un; use the established English name.
+ki	ki	kiryoku	concept	03:5F18	1	strong	Use lowercase ki for the character's combat energy or energy capacity.
+power_level	power level	sentoryoku	concept	03:658A;03:6B94	2	confirmed	Combat strength measured numerically by the Saiyans.
+power_ball	Power Ball	Pawa Boru	concept	03:76D9	1	confirmed	Artificial moon-like energy sphere associated with Great Ape transformation.
+great_ape	Great Ape	Oozaru	concept	03:76D9;03:77D5	2	confirmed	Use Great Ape; Oozaru is a useful untranslated alias.
+special_beam_cannon	Special Beam Cannon	Makankosappo	technique	03:6873	1	strong	Use the established English technique name; Makankosappo is a useful alias.
+spirit_bomb	Spirit Bomb	Genki Dama	technique	03:410B;03:6E74	2	strong	Use the established English technique name.
+kaioken	Kaioken	Kaioken	technique	03:417C;03:6E74	2	confirmed	Use Kaioken consistently; Kaio-ken is an acceptable external alias.
+evil_containment_wave	Evil Containment Wave	Mafuba	technique	03:5130;03:5262;03:5345	5	strong	Mafuba is an acceptable short alias when space or tone favors it.
+evil_containment_wave_reflection	Evil Containment Wave Reflection	Mafuba Gaeshi	technique	03:502C	1	strong	Majunior's reversal of the Evil Containment Wave; Mafuba Reversal is a shorter alias.

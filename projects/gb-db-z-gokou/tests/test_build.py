@@ -20,6 +20,7 @@ class TranslationBuildTest(unittest.TestCase):
         cls.project = load_project(PROJECT)
 
     def test_public_manifests_are_consistent(self):
+        self.assertTrue(self.project.manifests["glossary"].is_file())
         patches = load_patches(self.project.manifests["patches"])
         references = load_references(
             self.project.manifests["references"],

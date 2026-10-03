@@ -15,7 +15,6 @@
 /projects/*/local/
 /projects/*/original/
 /projects/*/translation/strings.tsv
-/projects/*/translation/glossary.tsv
 /projects/*/translation/text_layout.tsv
 /tools/bin/gb-text-build
 /tools/bin/gb-text-catalog
