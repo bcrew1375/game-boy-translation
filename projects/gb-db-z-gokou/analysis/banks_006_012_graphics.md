@@ -1,10 +1,10 @@
-# Banks 06-11 large graphics resource analysis
+# Banks 06-12 large graphics resource analysis
 
 ## Scope
 
-This document now covers 98,304 unique bytes across five analysis operations.
-The latest operation added 25,725 bytes by resolving Bank 6's remaining data,
-completing Bank 10, and mapping all of Bank 11. The cumulative ranges are:
+This document now covers 114,688 unique bytes across six analysis operations.
+The latest operation added all 16,384 bytes of Bank 12. The cumulative ranges
+are:
 
 - Bank 6 `06:4000-$4017`: eight shape-alias descriptor records (24 bytes).
 - Bank 6 `06:4018-$4197`: 128 source-pointer/shape records (384 bytes).
@@ -24,14 +24,15 @@ completing Bank 10, and mapping all of Bank 11. The cumulative ranges are:
 - Bank 11 `0B:4000-$58D5`: 10 primary compressed graphics streams (6,358 bytes).
 - Bank 11 `0B:58D6-$7DCF`: 15 secondary compressed graphics streams (9,466 bytes).
 - Bank 11 `0B:7DD0-$7FFF`: zero padding (560 bytes).
+- Bank 12 `0C:4000-$6E20`: 18 secondary compressed graphics streams (11,809 bytes).
+- Bank 12 `0C:6E21-$7FFF`: zero padding (4,575 bytes).
 
 ## Secondary descriptors and alias layouts
 
 The 33 records at `06:4198-$41FA` use the same three-byte pointer/shape format
 as the primary table. All use shape `$08`. The first 15 pointers identify the
 secondary Bank 11 streams at `0B:58D6-$7DCF`; the remaining 18 identify a
-contiguous Bank 12 family beginning at `0C:4000`. The Bank 12 bytes remain
-deferred, but their descriptor structure and pointers are confirmed.
+contiguous Bank 12 family at `0C:4000-$6E20`.
 
 The non-null words in the eight prefix records at `06:4000-$4017` point to
 seven exact records at `06:41FB-$4402`. Six records contain one tile index per
@@ -341,8 +342,37 @@ shape `$08`.
 
 Bank 11 ends with 560 zero bytes at `0B:7DD0-$7FFF`.
 
+## Bank 12 secondary streams
+
+The remaining 18 descriptors at `06:41C5-$41FA` point into Bank 12. Every
+stream expands to 768 bytes and uses shape `$08`. Descriptor indices 25 and 26
+are stored out of pointer order (`$5AF2` then `$584B`), but sorting the unique
+pointers gives one exact contiguous sequence from `0C:4000-$6E20`.
+
+| Index | CPU range | ROM range | Compressed | Output |
+|---:|---|---:|---:|---:|
+| 15 | `0C:4000-$42CC` | `$30000-$302CC` | 717 | 768 |
+| 16 | `0C:42CD-$44E5` | `$302CD-$304E5` | 537 | 768 |
+| 17 | `0C:44E6-$466C` | `$304E6-$3066C` | 391 | 768 |
+| 18 | `0C:466D-$4809` | `$3066D-$30809` | 413 | 768 |
+| 19 | `0C:480A-$4A95` | `$3080A-$30A95` | 652 | 768 |
+| 20 | `0C:4A96-$4D07` | `$30A96-$30D07` | 626 | 768 |
+| 21 | `0C:4D08-$4F80` | `$30D08-$30F80` | 633 | 768 |
+| 22 | `0C:4F81-$5274` | `$30F81-$31274` | 756 | 768 |
+| 23 | `0C:5275-$5569` | `$31275-$31569` | 757 | 768 |
+| 24 | `0C:556A-$584A` | `$3156A-$3184A` | 737 | 768 |
+| 26 | `0C:584B-$5AF1` | `$3184B-$31AF1` | 679 | 768 |
+| 25 | `0C:5AF2-$5E09` | `$31AF2-$31E09` | 792 | 768 |
+| 27 | `0C:5E0A-$609C` | `$31E0A-$3209C` | 659 | 768 |
+| 28 | `0C:609D-$6314` | `$3209D-$32314` | 632 | 768 |
+| 29 | `0C:6315-$65FA` | `$32315-$325FA` | 742 | 768 |
+| 30 | `0C:65FB-$68C0` | `$325FB-$328C0` | 710 | 768 |
+| 31 | `0C:68C1-$6B84` | `$328C1-$32B84` | 708 | 768 |
+| 32 | `0C:6B85-$6E20` | `$32B85-$32E20` | 668 | 768 |
+
+Bank 12 ends with 4,575 zero bytes at `0C:6E21-$7FFF`.
+
 ## Remaining work
 
-- Map the 18 Bank 12 secondary streams referenced by `06:41C5-$41FA`.
 - Identify visible resource roles through runtime traces rather than artwork
   guesses.

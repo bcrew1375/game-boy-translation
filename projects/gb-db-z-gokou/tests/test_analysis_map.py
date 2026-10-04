@@ -341,6 +341,24 @@ class AnalysisMapTest(unittest.TestCase):
         bank11_padding = rom[11 * BANK_SIZE + 0x3DD0 : 12 * BANK_SIZE]
         self.assertEqual(bank11_padding, bytes(560))
 
+        bank12_streams = {}
+        for pointer, _ in secondary_descriptors[15:]:
+            offset = 12 * BANK_SIZE + pointer - 0x4000
+            decoded = decompress_resource(rom[offset:])
+            self.assertEqual(len(decoded.data), 768)
+            bank12_streams[pointer] = decoded.bytes_consumed
+        self.assertEqual(
+            [pointer for pointer, _ in secondary_descriptors[24:27]],
+            [0x556A, 0x5AF2, 0x584B],
+        )
+        ordered = sorted(bank12_streams.items())
+        self.assertEqual(ordered[0][0], 0x4000)
+        self.assertEqual(ordered[-1][0] + ordered[-1][1] - 1, 0x6E20)
+        for (start, size), (next_start, _) in zip(ordered, ordered[1:]):
+            self.assertEqual(start + size, next_start)
+        bank12_padding = rom[12 * BANK_SIZE + 0x2E21 : 13 * BANK_SIZE]
+        self.assertEqual(bank12_padding, bytes(4_575))
+
         alias_layout_starts = [word for _, word in aliases[:-1]] + [0x4403]
         expected_layout_sizes = [56, 56, 96, 56, 64, 96, 96]
         self.assertEqual(
@@ -408,6 +426,41 @@ class AnalysisMapTest(unittest.TestCase):
             if region["name"] in names
         )
         self.assertEqual(size, 25_725)
+
+    def test_sixth_analysis_batch_size_and_sgb_pages(self):
+        names = {
+            "Secondary graphics resources 15-32 compressed streams",
+            "Bank 12 trailing zero padding",
+            "Super Game Boy border PCT_TRN and CHR_TRN transfer pages",
+        }
+        size = sum(
+            parse_hex(region["rom_end"]) - parse_hex(region["rom_start"]) + 1
+            for region in self.analysis["regions"]
+            if region["name"] in names
+        )
+        self.assertEqual(size, 28_672)
+
+        expected_symbols = {
+            "00:0561": "SGB_LoadBorderTransferPages",
+            "0D:4000": "SGBBorderTransferPage_Pct0",
+            "0D:5000": "SGBBorderTransferPage_Pct1",
+            "0D:6000": "SGBBorderTransferPage_Chr",
+        }
+        for address, name in expected_symbols.items():
+            self.assertEqual(self.analysis["symbols"][address]["name"], name)
+
+        if not ORIGINAL_ROM.is_file():
+            self.skipTest(f"{ORIGINAL_ROM.relative_to(PROJECT)} is not available")
+        rom = ORIGINAL_ROM.read_bytes()
+        fixed_loader = rom[0x0561:0x05B0]
+        self.assertEqual(len(fixed_loader), 0x4F)
+        self.assertEqual(fixed_loader[-1], 0xC9)
+        self.assertEqual(fixed_loader.count(b"\x3E\x0D\xC7"), 3)
+        self.assertIn(b"\x11\x00\x40\x21\x00\x88\x01\x00\x10", fixed_loader)
+        self.assertIn(b"\x11\x00\x50\x21\x00\x88\x01\x00\x10", fixed_loader)
+        self.assertIn(b"\x11\x00\x60\x21\x00\x88\x01\x00\x10", fixed_loader)
+        for setup_index in (4, 5, 6):
+            self.assertIn(bytes((0x3E, setup_index, 0xCD, 0x2D, 0x41)), fixed_loader)
 
     def test_dynamic_pattern_records_match_bank6_resource_dimensions(self):
         if not ORIGINAL_ROM.is_file():

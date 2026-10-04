@@ -40,6 +40,11 @@
       "kind": "routine",
       "confidence": "confirmed"
     },
+    "00:0561": {
+      "name": "SGB_LoadBorderTransferPages",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
     "00:3037": {
       "name": "Memory_FillSmall",
       "kind": "routine",
@@ -453,6 +458,26 @@
     "0B:58D6": {
       "name": "GraphicsSecondaryResource00_Compressed",
       "kind": "compressed_graphics",
+      "confidence": "confirmed"
+    },
+    "0C:4000": {
+      "name": "GraphicsSecondaryResource15_Compressed",
+      "kind": "compressed_graphics",
+      "confidence": "confirmed"
+    },
+    "0D:4000": {
+      "name": "SGBBorderTransferPage_Pct0",
+      "kind": "sgb_transfer_data",
+      "confidence": "confirmed"
+    },
+    "0D:5000": {
+      "name": "SGBBorderTransferPage_Pct1",
+      "kind": "sgb_transfer_data",
+      "confidence": "confirmed"
+    },
+    "0D:6000": {
+      "name": "SGBBorderTransferPage_Chr",
+      "kind": "sgb_transfer_data",
       "confidence": "confirmed"
     }
   },
@@ -1197,6 +1222,36 @@
       "type": "padding",
       "name": "Bank 11 trailing zero padding",
       "confidence": "confirmed"
+    },
+    {
+      "bank": 12,
+      "cpu_start": "$4000",
+      "cpu_end": "$6E20",
+      "rom_start": "$30000",
+      "rom_end": "$32E20",
+      "type": "compressed_graphics",
+      "name": "Secondary graphics resources 15-32 compressed streams",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 12,
+      "cpu_start": "$6E21",
+      "cpu_end": "$7FFF",
+      "rom_start": "$32E21",
+      "rom_end": "$33FFF",
+      "type": "padding",
+      "name": "Bank 12 trailing zero padding",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 13,
+      "cpu_start": "$4000",
+      "cpu_end": "$6FFF",
+      "rom_start": "$34000",
+      "rom_end": "$36FFF",
+      "type": "sgb_transfer_data",
+      "name": "Super Game Boy border PCT_TRN and CHR_TRN transfer pages",
+      "confidence": "confirmed"
     }
   ],
   "text": {
@@ -1404,6 +1459,7 @@
     "The five-character title subtitle and four post-START menu labels are fixed Bank 2 2bpp tile strips, not reusable 16x16 kanji font text; see projects/gb-db-z-gokou/analysis/title_screen_graphics.md.",
     "Bank 1:$4000-$442B contains the Super Game Boy packet transport, initialization, presentation-buffer conversion, sound-effect dispatch, and their command/data tables; see projects/gb-db-z-gokou/analysis/bank_001.md.",
     "Bank 4 and Bank 5:$4000-$5992 contain the catalog and compressed 560-byte graphics resources loaded by 00:3784/00:3879. Direct pointers, shared streams, derived-resource descriptors, auxiliary tiles, stream boundaries, and padding are documented in projects/gb-db-z-gokou/analysis/banks_004_005_graphics.md.",
-    "Bank 6 contains the primary and secondary large-graphics descriptor catalogs, seven alias-selected tile-index layouts, compressed streams for IDs $00-$13, and trailing zero padding. Banks 7-10 complete primary IDs $14-$75; Bank 11 contains IDs $76-$7F plus 15 secondary streams. Banks 7-11 end in confirmed zero padding. Exact source-bank partitions, shape resolution, stream boundaries, and output sizes are documented in projects/gb-db-z-gokou/analysis/banks_006_011_graphics.md."
+    "Bank 6 contains the primary and secondary large-graphics descriptor catalogs, seven alias-selected tile-index layouts, compressed streams for IDs $00-$13, and trailing zero padding. Banks 7-10 complete primary IDs $14-$75; Banks 11-12 contain the 33 secondary streams. Banks 7-12 end in confirmed zero padding. Exact source-bank partitions, shape resolution, stream boundaries, and output sizes are documented in projects/gb-db-z-gokou/analysis/banks_006_012_graphics.md.",
+    "Bank 13:$4000-$6FFF contains three exact 4 KiB Super Game Boy border-transfer pages submitted as PCT_TRN, PCT_TRN parameter $01, and CHR_TRN; see projects/gb-db-z-gokou/analysis/bank_013_sgb_transfer.md."
   ]
 }
