@@ -268,11 +268,17 @@ class AnalysisMapTest(unittest.TestCase):
             7: [768, 1536, 1536, 1152, 1536, 1536, 576, 1536, 1152, 1536, 960,
                 144, 768, 1024, 1024, 768, 1024, 1152, 1536, 1536],
             8: [768] * 14 + [560] * 9 + [768] * 7,
+            9: [768] * 26,
+            10: [768] * 16 + [1280] * 4 + [768] * 2,
+            11: [768] * 10,
         }
         for bank, first_id, last_id, expected_last in (
             (6, 0x00, 0x14, 0x7EF1),
             (7, 0x14, 0x28, 0x7F4D),
             (8, 0x28, 0x46, 0x7FD0),
+            (9, 0x46, 0x60, 0x7D98),
+            (10, 0x60, 0x76, 0x7E70),
+            (11, 0x76, 0x80, 0x58D5),
         ):
             streams = {}
             for resource_id in range(first_id, last_id):
@@ -304,6 +310,45 @@ class AnalysisMapTest(unittest.TestCase):
         self.assertEqual(bank7_padding, bytes(178))
         bank8_padding = rom[8 * BANK_SIZE + 0x3FD1 : 9 * BANK_SIZE]
         self.assertEqual(bank8_padding, bytes(47))
+        bank9_padding = rom[9 * BANK_SIZE + 0x3D99 : 10 * BANK_SIZE]
+        self.assertEqual(bank9_padding, bytes(615))
+        bank10_padding = rom[10 * BANK_SIZE + 0x3E71 : 11 * BANK_SIZE]
+        self.assertEqual(bank10_padding, bytes(399))
+
+        secondary_descriptors = []
+        for index in range(33):
+            offset = bank6_offset + 0x198 + index * 3
+            secondary_descriptors.append(
+                (
+                    int.from_bytes(rom[offset : offset + 2], "little"),
+                    rom[offset + 2],
+                )
+            )
+        self.assertEqual([shape for _, shape in secondary_descriptors], [0x08] * 33)
+
+        secondary_streams = {}
+        for pointer, _ in secondary_descriptors[:15]:
+            offset = 11 * BANK_SIZE + pointer - 0x4000
+            decoded = decompress_resource(rom[offset:])
+            self.assertEqual(len(decoded.data), 768)
+            secondary_streams[pointer] = decoded.bytes_consumed
+        ordered = sorted(secondary_streams.items())
+        self.assertEqual(ordered[0][0], 0x58D6)
+        self.assertEqual(ordered[-1][0] + ordered[-1][1] - 1, 0x7DCF)
+        for (start, size), (next_start, _) in zip(ordered, ordered[1:]):
+            self.assertEqual(start + size, next_start)
+
+        bank11_padding = rom[11 * BANK_SIZE + 0x3DD0 : 12 * BANK_SIZE]
+        self.assertEqual(bank11_padding, bytes(560))
+
+        alias_layout_starts = [word for _, word in aliases[:-1]] + [0x4403]
+        expected_layout_sizes = [56, 56, 96, 56, 64, 96, 96]
+        self.assertEqual(
+            [right - left for left, right in zip(alias_layout_starts, alias_layout_starts[1:])],
+            expected_layout_sizes,
+        )
+        trailer = rom[bank6_offset + 0x33F : bank6_offset + 0x343]
+        self.assertEqual(trailer, b"\xFF\xFF\x78\xFF")
 
     def test_second_graphics_batch_size(self):
         names = {
@@ -333,6 +378,36 @@ class AnalysisMapTest(unittest.TestCase):
             if region["name"] in names
         )
         self.assertEqual(size, 22_079)
+
+    def test_fourth_graphics_batch_size(self):
+        names = {
+            "Large graphics resources $46-$5F compressed streams",
+            "Bank 9 trailing zero padding",
+            "Large graphics resources $60-$6B compressed streams",
+        }
+        size = sum(
+            parse_hex(region["rom_end"]) - parse_hex(region["rom_start"]) + 1
+            for region in self.analysis["regions"]
+            if region["name"] in names
+        )
+        self.assertEqual(size, 24_046)
+
+    def test_fifth_graphics_batch_size(self):
+        names = {
+            "Secondary graphics resource source-pointer and shape descriptors",
+            "Graphics shape-alias tile-index layouts",
+            "Large graphics resources $6C-$75 compressed streams",
+            "Bank 10 trailing zero padding",
+            "Large graphics resources $76-$7F compressed streams",
+            "Secondary graphics resources 0-14 compressed streams",
+            "Bank 11 trailing zero padding",
+        }
+        size = sum(
+            parse_hex(region["rom_end"]) - parse_hex(region["rom_start"]) + 1
+            for region in self.analysis["regions"]
+            if region["name"] in names
+        )
+        self.assertEqual(size, 25_725)
 
     def test_dynamic_pattern_records_match_bank6_resource_dimensions(self):
         if not ORIGINAL_ROM.is_file():

@@ -134,5 +134,5 @@ screen identification.
 - Map Bank 5 after `05:5992`; code is confirmed at several fixed-bank entry
   points from `05:5CAE` onward, but mixed code and embedded tables need a
   separate control-flow pass.
-- Continue the Bank 6-8 large-resource mapping beyond the ranges documented in
-  `projects/gb-db-z-gokou/analysis/banks_006_008_graphics.md`.
+- Continue the Bank 6-11 large-resource mapping beyond the ranges documented in
+  `projects/gb-db-z-gokou/analysis/banks_006_011_graphics.md`.

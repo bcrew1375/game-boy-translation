@@ -400,6 +400,16 @@
       "kind": "pointer_and_shape_descriptor_table",
       "confidence": "confirmed"
     },
+    "06:4198": {
+      "name": "GraphicsSecondaryResourceDescriptorTable",
+      "kind": "pointer_and_shape_descriptor_table",
+      "confidence": "confirmed"
+    },
+    "06:41FB": {
+      "name": "GraphicsAliasTileIndexLayouts",
+      "kind": "tile_index_layouts",
+      "confidence": "confirmed"
+    },
     "06:4403": {
       "name": "GraphicsResource00Large_Compressed",
       "kind": "compressed_graphics",
@@ -417,6 +427,31 @@
     },
     "08:4000": {
       "name": "GraphicsResource28Large_Compressed",
+      "kind": "compressed_graphics",
+      "confidence": "confirmed"
+    },
+    "09:4000": {
+      "name": "GraphicsResource46Large_Compressed",
+      "kind": "compressed_graphics",
+      "confidence": "confirmed"
+    },
+    "0A:4000": {
+      "name": "GraphicsResource60Large_Compressed",
+      "kind": "compressed_graphics",
+      "confidence": "confirmed"
+    },
+    "0A:5DEE": {
+      "name": "GraphicsResource6CLarge_Compressed",
+      "kind": "compressed_graphics",
+      "confidence": "confirmed"
+    },
+    "0B:4000": {
+      "name": "GraphicsResource76Large_Compressed",
+      "kind": "compressed_graphics",
+      "confidence": "confirmed"
+    },
+    "0B:58D6": {
+      "name": "GraphicsSecondaryResource00_Compressed",
       "kind": "compressed_graphics",
       "confidence": "confirmed"
     }
@@ -995,6 +1030,26 @@
     },
     {
       "bank": 6,
+      "cpu_start": "$4198",
+      "cpu_end": "$41FA",
+      "rom_start": "$18198",
+      "rom_end": "$181FA",
+      "type": "pointer_table",
+      "name": "Secondary graphics resource source-pointer and shape descriptors",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 6,
+      "cpu_start": "$41FB",
+      "cpu_end": "$4402",
+      "rom_start": "$181FB",
+      "rom_end": "$18402",
+      "type": "data",
+      "name": "Graphics shape-alias tile-index layouts",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 6,
       "cpu_start": "$4403",
       "cpu_end": "$7EF1",
       "rom_start": "$18403",
@@ -1061,6 +1116,86 @@
       "rom_end": "$23FFF",
       "type": "padding",
       "name": "Bank 8 trailing zero padding",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 9,
+      "cpu_start": "$4000",
+      "cpu_end": "$7D98",
+      "rom_start": "$24000",
+      "rom_end": "$27D98",
+      "type": "compressed_graphics",
+      "name": "Large graphics resources $46-$5F compressed streams",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 9,
+      "cpu_start": "$7D99",
+      "cpu_end": "$7FFF",
+      "rom_start": "$27D99",
+      "rom_end": "$27FFF",
+      "type": "padding",
+      "name": "Bank 9 trailing zero padding",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 10,
+      "cpu_start": "$4000",
+      "cpu_end": "$5DED",
+      "rom_start": "$28000",
+      "rom_end": "$29DED",
+      "type": "compressed_graphics",
+      "name": "Large graphics resources $60-$6B compressed streams",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 10,
+      "cpu_start": "$5DEE",
+      "cpu_end": "$7E70",
+      "rom_start": "$29DEE",
+      "rom_end": "$2BE70",
+      "type": "compressed_graphics",
+      "name": "Large graphics resources $6C-$75 compressed streams",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 10,
+      "cpu_start": "$7E71",
+      "cpu_end": "$7FFF",
+      "rom_start": "$2BE71",
+      "rom_end": "$2BFFF",
+      "type": "padding",
+      "name": "Bank 10 trailing zero padding",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 11,
+      "cpu_start": "$4000",
+      "cpu_end": "$58D5",
+      "rom_start": "$2C000",
+      "rom_end": "$2D8D5",
+      "type": "compressed_graphics",
+      "name": "Large graphics resources $76-$7F compressed streams",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 11,
+      "cpu_start": "$58D6",
+      "cpu_end": "$7DCF",
+      "rom_start": "$2D8D6",
+      "rom_end": "$2FDCF",
+      "type": "compressed_graphics",
+      "name": "Secondary graphics resources 0-14 compressed streams",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 11,
+      "cpu_start": "$7DD0",
+      "cpu_end": "$7FFF",
+      "rom_start": "$2FDD0",
+      "rom_end": "$2FFFF",
+      "type": "padding",
+      "name": "Bank 11 trailing zero padding",
       "confidence": "confirmed"
     }
   ],
@@ -1269,6 +1404,6 @@
     "The five-character title subtitle and four post-START menu labels are fixed Bank 2 2bpp tile strips, not reusable 16x16 kanji font text; see projects/gb-db-z-gokou/analysis/title_screen_graphics.md.",
     "Bank 1:$4000-$442B contains the Super Game Boy packet transport, initialization, presentation-buffer conversion, sound-effect dispatch, and their command/data tables; see projects/gb-db-z-gokou/analysis/bank_001.md.",
     "Bank 4 and Bank 5:$4000-$5992 contain the catalog and compressed 560-byte graphics resources loaded by 00:3784/00:3879. Direct pointers, shared streams, derived-resource descriptors, auxiliary tiles, stream boundaries, and padding are documented in projects/gb-db-z-gokou/analysis/banks_004_005_graphics.md.",
-    "Bank 6 contains the 128-entry large-graphics descriptor catalog, compressed streams for IDs $00-$13, and trailing zero padding. Bank 7 contains IDs $14-$27 and Bank 8 contains IDs $28-$45; both end in confirmed zero padding. Exact source-bank partitions, shape resolution, stream boundaries, and output sizes are documented in projects/gb-db-z-gokou/analysis/banks_006_008_graphics.md."
+    "Bank 6 contains the primary and secondary large-graphics descriptor catalogs, seven alias-selected tile-index layouts, compressed streams for IDs $00-$13, and trailing zero padding. Banks 7-10 complete primary IDs $14-$75; Bank 11 contains IDs $76-$7F plus 15 secondary streams. Banks 7-11 end in confirmed zero padding. Exact source-bank partitions, shape resolution, stream boundaries, and output sizes are documented in projects/gb-db-z-gokou/analysis/banks_006_011_graphics.md."
   ]
 }
