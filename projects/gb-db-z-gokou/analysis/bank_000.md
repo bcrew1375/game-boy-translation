@@ -2,6 +2,11 @@
 
 Bank 00 is the fixed ROM window at CPU `$0000-$3FFF`; therefore its CPU addresses and ROM file offsets are identical. This document records the current static analysis of the complete bank. It intentionally separates **confirmed behavior** from contextual inference. The original RGBDS source remains byte-identical after the associated label/comment pass.
 
+The analysis manifest now classifies every byte in this bank. Broad ranges that
+contain both executable paths and embedded records remain conservatively named;
+full coverage does not imply that every internal field or game-facing concept
+has been resolved.
+
 ## Confidence terms
 
 - **Confirmed**: established directly from instructions, hardware behavior, call structure, or exact data use.

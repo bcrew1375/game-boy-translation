@@ -22,8 +22,9 @@ tile content in the third. The range is therefore classified conservatively as
 SGB border transfer data; narrower SNES-side tile, tilemap, palette, and
 attribute boundaries remain deferred.
 
-`0D:7000` begins unrelated data and is not included merely because it is
-adjacent.
+`0D:7000` begins unrelated mode-resource data and is not included merely
+because it is adjacent. That range is now analyzed separately in
+`bank_013_mode.md`.
 
 ## Remaining work
 

@@ -25,6 +25,46 @@
       "kind": "routine",
       "confidence": "confirmed"
     },
+    "00:0010": {
+      "name": "FrameDelay_RST10",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:0040": {
+      "name": "VBlankVector",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:0048": {
+      "name": "LCDSTATVector",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:02D5": {
+      "name": "FixedBank_RasterAndBankedCallHelpers",
+      "kind": "routine",
+      "confidence": "strong_inference"
+    },
+    "00:0343": {
+      "name": "MainState_Dispatch",
+      "kind": "routine",
+      "confidence": "strong_inference"
+    },
+    "00:27D4": {
+      "name": "GameplayDispatchTables",
+      "kind": "data_table",
+      "confidence": "confirmed"
+    },
+    "00:36C6": {
+      "name": "GraphicsPresentation_Load",
+      "kind": "routine",
+      "confidence": "strong_inference"
+    },
+    "00:3E72": {
+      "name": "UILayoutAndDispatchRecords",
+      "kind": "data_table",
+      "confidence": "strong_inference"
+    },
     "00:2D12": {
       "name": "Input_ReadJoypad",
       "kind": "routine",
@@ -53,6 +93,21 @@
     "01:5D3B": {
       "name": "FontTiles_Compressed",
       "kind": "compressed_graphics",
+      "confidence": "confirmed"
+    },
+    "01:542C": {
+      "name": "Bank1_PresentationResourceData",
+      "kind": "data_table",
+      "confidence": "strong_inference"
+    },
+    "01:6199": {
+      "name": "Bank1_GameplayUIResourceModule",
+      "kind": "data",
+      "confidence": "strong_inference"
+    },
+    "01:7F3D": {
+      "name": "Bank1_AuxiliaryGraphics",
+      "kind": "graphics",
       "confidence": "confirmed"
     },
     "01:7B42": {
@@ -345,6 +400,21 @@
       "kind": "compressed_graphics",
       "confidence": "confirmed"
     },
+    "02:4A4C": {
+      "name": "Bank2_PresentationResourcePointerTable",
+      "kind": "pointer_table",
+      "confidence": "confirmed"
+    },
+    "02:4A74": {
+      "name": "Bank2_PresentationGraphics0_Compressed",
+      "kind": "compressed_graphics",
+      "confidence": "confirmed"
+    },
+    "02:6C8D": {
+      "name": "Bank2_ObjectPlacementRecords",
+      "kind": "data_table",
+      "confidence": "confirmed"
+    },
     "02:7133": {
       "name": "TitleScreen_Load",
       "kind": "routine",
@@ -359,6 +429,11 @@
       "name": "TitleMenu_Select",
       "kind": "routine",
       "confidence": "confirmed"
+    },
+    "02:7300": {
+      "name": "Bank2_ScenarioDataPointerTable",
+      "kind": "pointer_table",
+      "confidence": "strong_inference"
     },
     "00:3784": {
       "name": "GraphicsResource_LoadById",
@@ -479,6 +554,151 @@
       "name": "SGBBorderTransferPage_Chr",
       "kind": "sgb_transfer_data",
       "confidence": "confirmed"
+    },
+    "0D:7074": {
+      "name": "Bank13_ModeGraphics_Common_Compressed",
+      "kind": "compressed_graphics",
+      "confidence": "confirmed"
+    },
+    "0D:7185": {
+      "name": "Bank13_ModeGraphics_Variant_Compressed",
+      "kind": "compressed_graphics",
+      "confidence": "confirmed"
+    },
+    "0D:72DC": {
+      "name": "Bank13_ModeTilemap0_Compressed",
+      "kind": "compressed_tilemap",
+      "confidence": "confirmed"
+    },
+    "0D:73C1": {
+      "name": "Bank13_ModeTilemap1_Compressed",
+      "kind": "compressed_tilemap",
+      "confidence": "confirmed"
+    },
+    "0D:74A2": {
+      "name": "Bank13_ModeTilemap2_Compressed",
+      "kind": "compressed_tilemap",
+      "confidence": "confirmed"
+    },
+    "0D:75A4": {
+      "name": "Bank13_ModeEntry",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "0D:767C": {
+      "name": "Bank13_ModeTilemapPointers",
+      "kind": "pointer_table",
+      "confidence": "confirmed"
+    },
+    "0D:7682": {
+      "name": "Bank13_ModeObjectDataPointers",
+      "kind": "pointer_table",
+      "confidence": "confirmed"
+    },
+    "05:5AA5": {
+      "name": "Bank5_CommandStreamPointerTable",
+      "kind": "pointer_table",
+      "confidence": "confirmed"
+    },
+    "05:5CAE": {
+      "name": "Bank5_PresentationEffectEntry",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "05:6041": {
+      "name": "Bank5_SelectionScreenEntry",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "05:6222": {
+      "name": "Bank5_ModeSetupEntry",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "05:6296": {
+      "name": "Bank5_PresentationScreenEntry",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "05:65D8": {
+      "name": "Bank5_PresentationGraphics0_Compressed",
+      "kind": "compressed_graphics",
+      "confidence": "confirmed"
+    },
+    "05:6C9D": {
+      "name": "Bank5_PresentationGraphics1_Compressed",
+      "kind": "compressed_graphics",
+      "confidence": "confirmed"
+    },
+    "05:7568": {
+      "name": "Bank5_PresentationGraphics2_Compressed",
+      "kind": "compressed_graphics",
+      "confidence": "confirmed"
+    },
+    "05:7924": {
+      "name": "Bank5_PresentationTilemap",
+      "kind": "data_table",
+      "confidence": "confirmed"
+    },
+    "0E:4000": {
+      "name": "Bank14_ModeEntry",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "0E:4B20": {
+      "name": "Bank14_ModeTilemap",
+      "kind": "data_table",
+      "confidence": "confirmed"
+    },
+    "0E:4B70": {
+      "name": "Bank14_ModeGraphics0",
+      "kind": "graphics",
+      "confidence": "confirmed"
+    },
+    "0E:5270": {
+      "name": "Bank14_ModeGraphics1",
+      "kind": "graphics",
+      "confidence": "confirmed"
+    },
+    "0E:5510": {
+      "name": "Bank14_ModeLookupData",
+      "kind": "data_table",
+      "confidence": "confirmed"
+    },
+    "0E:6DDB": {
+      "name": "Bank14_EditorEntry",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "0E:7447": {
+      "name": "Bank14_TransformStateEntry",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "0F:4000": {
+      "name": "Audio_CommandEntry",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "0F:4003": {
+      "name": "Audio_VBlankEntry",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "0F:4006": {
+      "name": "Audio_ProcessCommand",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "0F:4222": {
+      "name": "Audio_Update",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "0F:4B42": {
+      "name": "AudioSequencePointerTable",
+      "kind": "pointer_table",
+      "confidence": "confirmed"
     }
   },
   "regions": [
@@ -494,6 +714,46 @@
     },
     {
       "bank": 0,
+      "cpu_start": "$0010",
+      "cpu_end": "$003F",
+      "rom_start": "$00010",
+      "rom_end": "$0003F",
+      "type": "code",
+      "name": "Fixed-bank delay RSTs and reserved RST slots",
+      "confidence": "strong_inference"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$0040",
+      "cpu_end": "$0060",
+      "rom_start": "$00040",
+      "rom_end": "$00060",
+      "type": "code",
+      "name": "Interrupt vectors",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$0061",
+      "cpu_end": "$00FF",
+      "rom_start": "$00061",
+      "rom_end": "$000FF",
+      "type": "padding",
+      "name": "Pre-header zero padding",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$0100",
+      "cpu_end": "$014F",
+      "rom_start": "$00100",
+      "rom_end": "$0014F",
+      "type": "data",
+      "name": "Cartridge entry and header",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
       "cpu_start": "$0150",
       "cpu_end": "$01BA",
       "rom_start": "$00150",
@@ -501,6 +761,106 @@
       "type": "code",
       "name": "Startup initialization",
       "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$020B",
+      "cpu_end": "$0257",
+      "rom_start": "$0020B",
+      "rom_end": "$00257",
+      "type": "code",
+      "name": "VBlank LCD-shadow helper paths",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$02D5",
+      "cpu_end": "$0342",
+      "rom_start": "$002D5",
+      "rom_end": "$00342",
+      "type": "code",
+      "name": "Raster value and banked-call helpers",
+      "confidence": "strong_inference"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$0343",
+      "cpu_end": "$05AF",
+      "rom_start": "$00343",
+      "rom_end": "$005AF",
+      "type": "code",
+      "name": "Top-level scene and state dispatch",
+      "confidence": "strong_inference"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$05B0",
+      "cpu_end": "$0F44",
+      "rom_start": "$005B0",
+      "rom_end": "$00F44",
+      "type": "code",
+      "name": "Menu and UI state handlers with embedded records",
+      "confidence": "strong_inference"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$0F45",
+      "cpu_end": "$1202",
+      "rom_start": "$00F45",
+      "rom_end": "$01202",
+      "type": "code",
+      "name": "Gameplay-session initialization with embedded tables",
+      "confidence": "strong_inference"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$1203",
+      "cpu_end": "$20D3",
+      "rom_start": "$01203",
+      "rom_end": "$020D3",
+      "type": "code",
+      "name": "Main gameplay orchestration with embedded tables",
+      "confidence": "strong_inference"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$20D4",
+      "cpu_end": "$27D3",
+      "rom_start": "$020D4",
+      "rom_end": "$027D3",
+      "type": "code",
+      "name": "Gameplay calculations and state mutation",
+      "confidence": "strong_inference"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$27D4",
+      "cpu_end": "$2866",
+      "rom_start": "$027D4",
+      "rom_end": "$02866",
+      "type": "data",
+      "name": "Gameplay dispatch and value tables",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$2867",
+      "cpu_end": "$2A31",
+      "rom_start": "$02867",
+      "rom_end": "$02A31",
+      "type": "code",
+      "name": "Event and message dispatch with embedded tables",
+      "confidence": "strong_inference"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$2A32",
+      "cpu_end": "$2D11",
+      "rom_start": "$02A32",
+      "rom_end": "$02D11",
+      "type": "code",
+      "name": "Event and presentation handlers with embedded records",
+      "confidence": "strong_inference"
     },
     {
       "bank": 0,
@@ -534,6 +894,16 @@
     },
     {
       "bank": 0,
+      "cpu_start": "$3020",
+      "cpu_end": "$3025",
+      "rom_start": "$03020",
+      "rom_end": "$03025",
+      "type": "code",
+      "name": "Linear copy helper tail",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
       "cpu_start": "$3037",
       "cpu_end": "$303B",
       "rom_start": "$03037",
@@ -544,12 +914,42 @@
     },
     {
       "bank": 0,
+      "cpu_start": "$3033",
+      "cpu_end": "$3036",
+      "rom_start": "$03033",
+      "rom_end": "$03036",
+      "type": "code",
+      "name": "Memory fill helper entry shims",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
       "cpu_start": "$3138",
       "cpu_end": "$3144",
       "rom_start": "$03138",
       "rom_end": "$03144",
       "type": "code",
       "name": "DMG palette initialization",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$3129",
+      "cpu_end": "$3137",
+      "rom_start": "$03129",
+      "rom_end": "$03137",
+      "type": "code",
+      "name": "WRAM staging-record clear helper",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$3145",
+      "cpu_end": "$315A",
+      "rom_start": "$03145",
+      "rom_end": "$0315A",
+      "type": "code",
+      "name": "Palette data and fixed-bank jump-table dispatch",
       "confidence": "confirmed"
     },
     {
@@ -645,12 +1045,32 @@
     },
     {
       "bank": 0,
+      "cpu_start": "$31E6",
+      "cpu_end": "$322C",
+      "rom_start": "$031E6",
+      "rom_end": "$0322C",
+      "type": "code",
+      "name": "Fixed graphics upload and command-renderer setup",
+      "confidence": "strong_inference"
+    },
+    {
+      "bank": 0,
       "cpu_start": "$322D",
       "cpu_end": "$32D5",
       "rom_start": "$0322D",
       "rom_end": "$032D5",
       "type": "code",
       "name": "Command-stream renderer and bank-3 resource lookup",
+      "confidence": "strong_inference"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$32D6",
+      "cpu_end": "$33B1",
+      "rom_start": "$032D6",
+      "rom_end": "$033B1",
+      "type": "code",
+      "name": "Renderer setup and formatting helpers",
       "confidence": "strong_inference"
     },
     {
@@ -665,6 +1085,16 @@
     },
     {
       "bank": 0,
+      "cpu_start": "$3441",
+      "cpu_end": "$365C",
+      "rom_start": "$03441",
+      "rom_end": "$0365C",
+      "type": "code",
+      "name": "Cursor, tilemap-window, and graphics decompression helpers",
+      "confidence": "strong_inference"
+    },
+    {
+      "bank": 0,
       "cpu_start": "$365D",
       "cpu_end": "$36C5",
       "rom_start": "$0365D",
@@ -672,6 +1102,36 @@
       "type": "code",
       "name": "OAM staging builder",
       "confidence": "confirmed"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$36C6",
+      "cpu_end": "$3E71",
+      "rom_start": "$036C6",
+      "rom_end": "$03E71",
+      "type": "code",
+      "name": "Graphics presentation, transition, and UI modules with embedded data",
+      "confidence": "strong_inference"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$3E72",
+      "cpu_end": "$3F69",
+      "rom_start": "$03E72",
+      "rom_end": "$03F69",
+      "type": "data",
+      "name": "UI layout and dispatch records",
+      "confidence": "strong_inference"
+    },
+    {
+      "bank": 0,
+      "cpu_start": "$3F6A",
+      "cpu_end": "$3FB8",
+      "rom_start": "$03F6A",
+      "rom_end": "$03FB8",
+      "type": "code",
+      "name": "Bank-1 presentation wrappers and ID table",
+      "confidence": "strong_inference"
     },
     {
       "bank": 0,
@@ -894,6 +1354,46 @@
       "confidence": "confirmed"
     },
     {
+      "bank": 1,
+      "cpu_start": "$542C",
+      "cpu_end": "$5D3A",
+      "rom_start": "$0542C",
+      "rom_end": "$05D3A",
+      "type": "data",
+      "name": "Bank 1 presentation and object resource data",
+      "confidence": "strong_inference"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$6199",
+      "cpu_end": "$7F3C",
+      "rom_start": "$06199",
+      "rom_end": "$07F3C",
+      "type": "code",
+      "name": "Bank 1 gameplay and UI module with embedded graphics and tables",
+      "confidence": "strong_inference"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$7F3D",
+      "cpu_end": "$7F9C",
+      "rom_start": "$07F3D",
+      "rom_end": "$07F9C",
+      "type": "graphics",
+      "name": "Bank 1 auxiliary 2bpp graphics block",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$7F9D",
+      "cpu_end": "$7FFF",
+      "rom_start": "$07F9D",
+      "rom_end": "$07FFF",
+      "type": "padding",
+      "name": "Bank 1 trailing zero padding",
+      "confidence": "confirmed"
+    },
+    {
       "bank": 2,
       "cpu_start": "$4000",
       "cpu_end": "$459D",
@@ -944,6 +1444,76 @@
       "confidence": "confirmed"
     },
     {
+      "bank": 2,
+      "cpu_start": "$4A4C",
+      "cpu_end": "$4A73",
+      "rom_start": "$08A4C",
+      "rom_end": "$08A73",
+      "type": "pointer_table",
+      "name": "Bank 2 presentation resource pointer table",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 2,
+      "cpu_start": "$4A74",
+      "cpu_end": "$6C8C",
+      "rom_start": "$08A74",
+      "rom_end": "$0AC8C",
+      "type": "compressed_graphics",
+      "name": "Bank 2 pointer-selected compressed presentation graphics",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 2,
+      "cpu_start": "$6C8D",
+      "cpu_end": "$7132",
+      "rom_start": "$0AC8D",
+      "rom_end": "$0B132",
+      "type": "data",
+      "name": "Bank 2 presentation object and layout records",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 2,
+      "cpu_start": "$7133",
+      "cpu_end": "$726F",
+      "rom_start": "$0B133",
+      "rom_end": "$0B26F",
+      "type": "code",
+      "name": "Title-screen and menu control module with embedded records",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 2,
+      "cpu_start": "$7270",
+      "cpu_end": "$72FF",
+      "rom_start": "$0B270",
+      "rom_end": "$0B2FF",
+      "type": "padding",
+      "name": "Bank 2 inter-module zero padding",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 2,
+      "cpu_start": "$7300",
+      "cpu_end": "$7E30",
+      "rom_start": "$0B300",
+      "rom_end": "$0BE30",
+      "type": "data",
+      "name": "Bank 2 pointer-selected scenario and UI records",
+      "confidence": "strong_inference"
+    },
+    {
+      "bank": 2,
+      "cpu_start": "$7E31",
+      "cpu_end": "$7FFF",
+      "rom_start": "$0BE31",
+      "rom_end": "$0BFFF",
+      "type": "padding",
+      "name": "Bank 2 trailing zero padding",
+      "confidence": "confirmed"
+    },
+    {
       "bank": 3,
       "cpu_start": "$4000",
       "cpu_end": "$7BD6",
@@ -971,6 +1541,16 @@
       "rom_end": "$0FFA2",
       "type": "code",
       "name": "VBlank text/tilemap stream interpreter",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 3,
+      "cpu_start": "$7FA3",
+      "cpu_end": "$7FFF",
+      "rom_start": "$0FFA3",
+      "rom_end": "$0FFFF",
+      "type": "padding",
+      "name": "Bank 3 trailing zero padding",
       "confidence": "confirmed"
     },
     {
@@ -1252,6 +1832,216 @@
       "type": "sgb_transfer_data",
       "name": "Super Game Boy border PCT_TRN and CHR_TRN transfer pages",
       "confidence": "confirmed"
+    },
+    {
+      "bank": 13,
+      "cpu_start": "$7000",
+      "cpu_end": "$75A3",
+      "rom_start": "$37000",
+      "rom_end": "$375A3",
+      "type": "compressed_graphics",
+      "name": "Bank 13 compressed graphics resource tails and streams",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 13,
+      "cpu_start": "$75A4",
+      "cpu_end": "$7F9E",
+      "rom_start": "$375A4",
+      "rom_end": "$37F9E",
+      "type": "code",
+      "name": "Bank 13 mode loader and gameplay module",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 13,
+      "cpu_start": "$767C",
+      "cpu_end": "$768D",
+      "rom_start": "$3767C",
+      "rom_end": "$3768D",
+      "type": "routine_data",
+      "name": "Bank 13 mode resource pointer tables",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 13,
+      "cpu_start": "$7E65",
+      "cpu_end": "$7E94",
+      "rom_start": "$37E65",
+      "rom_end": "$37E94",
+      "type": "routine_data",
+      "name": "Bank 13 mode object initialization records",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 13,
+      "cpu_start": "$7F9F",
+      "cpu_end": "$7FFF",
+      "rom_start": "$37F9F",
+      "rom_end": "$37FFF",
+      "type": "padding",
+      "name": "Bank 13 trailing zero padding",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 5,
+      "cpu_start": "$5993",
+      "cpu_end": "$5C42",
+      "rom_start": "$15993",
+      "rom_end": "$15C42",
+      "type": "data",
+      "name": "Bank 5 command streams and pointer-selected display data",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 5,
+      "cpu_start": "$5C43",
+      "cpu_end": "$65D7",
+      "rom_start": "$15C43",
+      "rom_end": "$165D7",
+      "type": "code",
+      "name": "Bank 5 presentation and selection modules with embedded tables",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 5,
+      "cpu_start": "$65D8",
+      "cpu_end": "$6C9C",
+      "rom_start": "$165D8",
+      "rom_end": "$16C9C",
+      "type": "compressed_graphics",
+      "name": "Bank 5 presentation graphics stream 0",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 5,
+      "cpu_start": "$6C9D",
+      "cpu_end": "$6DBB",
+      "rom_start": "$16C9D",
+      "rom_end": "$16DBB",
+      "type": "compressed_graphics",
+      "name": "Bank 5 presentation graphics stream 1",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 5,
+      "cpu_start": "$6DBC",
+      "cpu_end": "$7567",
+      "rom_start": "$16DBC",
+      "rom_end": "$17567",
+      "type": "data",
+      "name": "Bank 5 presentation object, animation, and layout data",
+      "confidence": "strong_inference"
+    },
+    {
+      "bank": 5,
+      "cpu_start": "$7568",
+      "cpu_end": "$7923",
+      "rom_start": "$17568",
+      "rom_end": "$17923",
+      "type": "compressed_graphics",
+      "name": "Bank 5 presentation graphics stream 2",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 5,
+      "cpu_start": "$7924",
+      "cpu_end": "$79B2",
+      "rom_start": "$17924",
+      "rom_end": "$179B2",
+      "type": "data",
+      "name": "Bank 5 presentation tilemap",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 5,
+      "cpu_start": "$79B3",
+      "cpu_end": "$7FFF",
+      "rom_start": "$179B3",
+      "rom_end": "$17FFF",
+      "type": "padding",
+      "name": "Bank 5 trailing zero padding",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 14,
+      "cpu_start": "$4000",
+      "cpu_end": "$4B1F",
+      "rom_start": "$38000",
+      "rom_end": "$38B1F",
+      "type": "code",
+      "name": "Bank 14 primary mode module",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 14,
+      "cpu_start": "$4B20",
+      "cpu_end": "$4B6F",
+      "rom_start": "$38B20",
+      "rom_end": "$38B6F",
+      "type": "data",
+      "name": "Bank 14 primary mode tilemap",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 14,
+      "cpu_start": "$4B70",
+      "cpu_end": "$526F",
+      "rom_start": "$38B70",
+      "rom_end": "$3926F",
+      "type": "graphics",
+      "name": "Bank 14 primary mode 2bpp graphics",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 14,
+      "cpu_start": "$5270",
+      "cpu_end": "$550F",
+      "rom_start": "$39270",
+      "rom_end": "$3950F",
+      "type": "graphics",
+      "name": "Bank 14 primary mode auxiliary 2bpp graphics",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 14,
+      "cpu_start": "$5510",
+      "cpu_end": "$6DCA",
+      "rom_start": "$39510",
+      "rom_end": "$3ADCA",
+      "type": "data",
+      "name": "Bank 14 primary mode lookup, map, and object data",
+      "confidence": "strong_inference"
+    },
+    {
+      "bank": 14,
+      "cpu_start": "$6DCB",
+      "cpu_end": "$7461",
+      "rom_start": "$3ADCB",
+      "rom_end": "$3B461",
+      "type": "code",
+      "name": "Bank 14 editor and state-transform module with embedded tables",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 14,
+      "cpu_start": "$7462",
+      "cpu_end": "$7FFF",
+      "rom_start": "$3B462",
+      "rom_end": "$3BFFF",
+      "type": "padding",
+      "name": "Bank 14 trailing zero padding",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 15,
+      "cpu_start": "$4000",
+      "cpu_end": "$7FFF",
+      "rom_start": "$3C000",
+      "rom_end": "$3FFFF",
+      "type": "audio",
+      "name": "Bank 15 audio driver and sequence data",
+      "confidence": "confirmed"
     }
   ],
   "text": {
@@ -1457,9 +2247,16 @@
     "The primary font tile map is recorded in projects/gb-db-z-gokou/analysis/font_tiles.tsv; bank-3 direct/composite stream bytes through $E1 are recorded in projects/gb-db-z-gokou/analysis/text_encoding.tsv and can be decoded with tools/bin/gb-text-decode.",
     "Bank-3 text enumeration finds 479 pointer-table references to 419 unique streams. The script-free reference index is projects/gb-db-z-gokou/analysis/bank3_text_reference_index.tsv; the local decoded catalog is projects/gb-db-z-gokou/analysis/bank3_text_tables.tsv, with methodology in projects/gb-db-z-gokou/analysis/bank_003_text.md.",
     "The five-character title subtitle and four post-START menu labels are fixed Bank 2 2bpp tile strips, not reusable 16x16 kanji font text; see projects/gb-db-z-gokou/analysis/title_screen_graphics.md.",
-    "Bank 1:$4000-$442B contains the Super Game Boy packet transport, initialization, presentation-buffer conversion, sound-effect dispatch, and their command/data tables; see projects/gb-db-z-gokou/analysis/bank_001.md.",
+    "Bank 2 is fully classified. A 20-entry table at $4A4C selects 13 unique gap-free compressed graphics streams through $6C8C; presentation object/layout records continue through $7132, title/menu code occupies $7133-$726F, and a nested pointer-selected scenario/UI data module occupies $7300-$7E30. Exact zero padding fills $7270-$72FF and $7E31-$7FFF; see projects/gb-db-z-gokou/analysis/bank_002.md.",
+    "Bank 3 is fully classified. The VBlank text interpreter ends at $7FA2 and is followed by 93 exact zero bytes at $7FA3-$7FFF.",
+    "Banks 0 and 1 are fully classified. Bank 0 contains fixed interrupt, state, gameplay, rendering, graphics-loading, and UI infrastructure with explicitly retained embedded tables. Bank 1 combines SGB presentation data, the primary font, a broad gameplay/UI module with embedded resources, a 96-byte auxiliary graphics copy source at $7F3D, and zero padding from $7F9D; see projects/gb-db-z-gokou/analysis/bank_000.md and bank_001.md.",
     "Bank 4 and Bank 5:$4000-$5992 contain the catalog and compressed 560-byte graphics resources loaded by 00:3784/00:3879. Direct pointers, shared streams, derived-resource descriptors, auxiliary tiles, stream boundaries, and padding are documented in projects/gb-db-z-gokou/analysis/banks_004_005_graphics.md.",
     "Bank 6 contains the primary and secondary large-graphics descriptor catalogs, seven alias-selected tile-index layouts, compressed streams for IDs $00-$13, and trailing zero padding. Banks 7-10 complete primary IDs $14-$75; Banks 11-12 contain the 33 secondary streams. Banks 7-12 end in confirmed zero padding. Exact source-bank partitions, shape resolution, stream boundaries, and output sizes are documented in projects/gb-db-z-gokou/analysis/banks_006_012_graphics.md.",
-    "Bank 13:$4000-$6FFF contains three exact 4 KiB Super Game Boy border-transfer pages submitted as PCT_TRN, PCT_TRN parameter $01, and CHR_TRN; see projects/gb-db-z-gokou/analysis/bank_013_sgb_transfer.md."
+    "Bank 13:$4000-$6FFF contains three exact 4 KiB Super Game Boy border-transfer pages submitted as PCT_TRN, PCT_TRN parameter $01, and CHR_TRN; see projects/gb-db-z-gokou/analysis/bank_013_sgb_transfer.md.",
+    "Bank 13:$7000-$75A3 completes a gapless sequence of seven compressed mode resources consumed by 0D:75A4; the first two streams begin inside the SGB transfer pages, demonstrating intentional source-range reuse.",
+    "Bank 13:$75A4-$7F9E is a banked mode loader/gameplay module with embedded pointer and object-initialization tables; $7F9F-$7FFF is confirmed zero padding. See projects/gb-db-z-gokou/analysis/bank_013_mode.md.",
+    "Bank 5:$5993-$79B2 contains pointer-selected command/display data, presentation and selection routines, three decoder-confirmed compressed graphics streams, object/layout data, and a tilemap; $79B3-$7FFF is confirmed zero padding. See projects/gb-db-z-gokou/analysis/bank_005_presentation.md.",
+    "Bank 14 contains the primary mode entered at $4000, exact raw tilemap/graphics sources at $4B20/$4B70/$5270, lookup/map/object data through $6DCA, a secondary editor/state-transform module through $7461, and zero padding from $7462. See projects/gb-db-z-gokou/analysis/bank_014_mode.md.",
+    "Bank 15 is the audio subsystem. Entry $4000 processes sound commands, entry $4003 is called once per VBlank and jumps to the update routine at $4222, and data from $4B42 onward is selected through in-bank pointers. See projects/gb-db-z-gokou/analysis/bank_015_audio.md."
   ]
 }

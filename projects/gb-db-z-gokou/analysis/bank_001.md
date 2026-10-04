@@ -4,8 +4,9 @@ Bank 1 occupies CPU `$4000-$7FFF` and ROM offsets `$04000-$07FFF`. This
 document records the current focused mapping over the bank. The pass covers
 the Super Game Boy transport and presentation helpers at `01:4000-$43AB`, the
 packet block they use at `01:43AC-$442B`, the 4 KiB `PAL_TRN` image at
-`01:442C-$542B`, and the already-confirmed compressed font at
-`01:5D3B-$6198`.
+`01:442C-$542B`, presentation/object resource data through `01:5D3A`, the
+compressed font at `01:5D3B-$6198`, and the mixed gameplay/UI module and
+resources through the end of the bank.
 
 The source used for this analysis was generated with the repository's
 `gb-disassemble` wrapper. The generated RGBDS project rebuilt to the exact
@@ -44,7 +45,11 @@ SHA-256 of the supplied original ROM before conclusions were recorded.
 | `01:4970-$4C4C` | `$04970-$04C4C` | Data | 40 dynamic packed-pattern records: one returned layout value followed by a descriptor-sized two-bit rectangle payload; ID `$20` also has three padding bytes. | Confirmed |
 | `01:4C4D-$4E64` | `$04C4D-$04E64` | Data | 20 contiguous SGB attribute-map rectangle records using packed or repeated-fill forms. | Confirmed |
 | `01:4E65-$542B` | `$04E65-$0542B` | SGB transfer data | Remainder of the 4 KiB `PAL_TRN` image; narrower CPU-side structures remain unresolved. | Confirmed transfer extent; internal roles partial |
+| `01:542C-$5D3A` | `$0542C-$05D3A` | Data | Presentation, object, and layout resource records. The density, repeated fixed-size forms, and generated false control flow establish data ownership, while the complete record grammar remains unresolved. | Strong inference |
 | `01:5D3B-$6198` | `$05D3B-$06198` | Compressed graphics | Primary 160-glyph packed 1bpp font resource. | Confirmed |
+| `01:6199-$7F3C` | `$06199-$07F3C` | Code + embedded resources | Gameplay/UI routines mixed with graphics, pointer/value tables, and object/layout records. Fixed-bank code copies data beginning at `$6199`; confirmed callable code includes the font loader at `$7B42` and the fixed-bank entry at `$7C00`. | Strong inference; exact internal boundaries partial |
+| `01:7F3D-$7F9C` | `$07F3D-$07F9C` | Graphics | Exact 96-byte auxiliary graphics source copied to VRAM `$8EA0` by the routine near `01:7C00`; its final 32 bytes are zero and are part of the copied resource. | Confirmed |
+| `01:7F9D-$7FFF` | `$07F9D-$07FFF` | Padding | 99 zero bytes after the end of the copied graphics resource. | Confirmed |
 
 ## SGB packet transport
 
@@ -213,6 +218,7 @@ screen names are intentionally not assigned yet.
   `$C6C5`, `$C82D`, and `$D6C5`.
 - Identify the visual destinations of each fixed-bank presentation caller.
 - Continue mapping the large mixed code/data area between the presentation
-  records and the compressed font.
-- Map the code after the font, including the confirmed font loader at
-  `01:7B42`.
+  records and the compressed font into narrower resource formats.
+- Split `01:6199-$7F3C` into stable routine and data boundaries. The broad
+  classification deliberately preserves embedded resources instead of treating
+  all generated mnemonics as executable code.

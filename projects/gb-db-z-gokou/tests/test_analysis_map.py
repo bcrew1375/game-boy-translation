@@ -462,6 +462,326 @@ class AnalysisMapTest(unittest.TestCase):
         for setup_index in (4, 5, 6):
             self.assertIn(bytes((0x3E, setup_index, 0xCD, 0x2D, 0x41)), fixed_loader)
 
+    def test_seventh_analysis_batch_size_and_banked_entries(self):
+        names = {
+            "Bank 13 compressed graphics resource tails and streams",
+            "Bank 13 mode loader and gameplay module",
+            "Bank 13 trailing zero padding",
+            "Bank 15 audio driver and sequence data",
+        }
+        size = sum(
+            parse_hex(region["rom_end"]) - parse_hex(region["rom_start"]) + 1
+            for region in self.analysis["regions"]
+            if region["name"] in names
+        )
+        self.assertEqual(size, 20_480)
+
+        expected_symbols = {
+            "0D:75A4": "Bank13_ModeEntry",
+            "0D:767C": "Bank13_ModeTilemapPointers",
+            "0F:4000": "Audio_CommandEntry",
+            "0F:4003": "Audio_VBlankEntry",
+            "0F:4222": "Audio_Update",
+            "0F:4B42": "AudioSequencePointerTable",
+        }
+        for address, name in expected_symbols.items():
+            self.assertEqual(self.analysis["symbols"][address]["name"], name)
+
+        if not ORIGINAL_ROM.is_file():
+            self.skipTest(f"{ORIGINAL_ROM.relative_to(PROJECT)} is not available")
+        rom = ORIGINAL_ROM.read_bytes()
+        bank13 = 13 * BANK_SIZE
+        bank15 = 15 * BANK_SIZE
+
+        streams = {
+            0x6860: (1186, 1536),
+            0x6D02: (882, 1120),
+            0x7074: (273, 480),
+            0x7185: (343, 704),
+            0x72DC: (229, 360),
+            0x73C1: (225, 360),
+            0x74A2: (258, 360),
+        }
+        for address, (consumed, expanded) in streams.items():
+            result = decompress_resource(rom[bank13 + address - 0x4000 :])
+            with self.subTest(stream=f"0D:{address:04X}"):
+                self.assertEqual(result.bytes_consumed, consumed)
+                self.assertEqual(len(result.data), expanded)
+
+        tilemap_pointers = [
+            int.from_bytes(rom[bank13 + offset - 0x4000 : bank13 + offset - 0x4000 + 2], "little")
+            for offset in range(0x767C, 0x7682, 2)
+        ]
+        self.assertEqual(tilemap_pointers, [0x72DC, 0x73C1, 0x74A2])
+        self.assertEqual(rom[bank13 + 0x3F9F : bank13 + 0x4000], bytes(0x61))
+
+        self.assertEqual(rom[bank15 : bank15 + 6], b"\xC3\x06\x40\xC3\x22\x42")
+        audio_pointers = [
+            int.from_bytes(rom[bank15 + offset : bank15 + offset + 2], "little")
+            for offset in range(0x0B42, 0x0B62, 2)
+        ]
+        self.assertTrue(all(0x4000 <= pointer <= 0x7FFF for pointer in audio_pointers))
+        self.assertNotEqual(rom[bank15 + 0x3FFF], 0)
+
+    def test_eighth_analysis_batch_size_and_banked_resources(self):
+        names = {
+            "Bank 5 command streams and pointer-selected display data",
+            "Bank 5 presentation and selection modules with embedded tables",
+            "Bank 5 presentation graphics stream 0",
+            "Bank 5 presentation graphics stream 1",
+            "Bank 5 presentation object, animation, and layout data",
+            "Bank 5 presentation graphics stream 2",
+            "Bank 5 presentation tilemap",
+            "Bank 5 trailing zero padding",
+            "Bank 14 primary mode module",
+            "Bank 14 primary mode tilemap",
+            "Bank 14 primary mode 2bpp graphics",
+            "Bank 14 primary mode auxiliary 2bpp graphics",
+            "Bank 14 primary mode lookup, map, and object data",
+            "Bank 14 editor and state-transform module with embedded tables",
+            "Bank 14 trailing zero padding",
+        }
+        size = sum(
+            parse_hex(region["rom_end"]) - parse_hex(region["rom_start"]) + 1
+            for region in self.analysis["regions"]
+            if region["name"] in names
+        )
+        self.assertEqual(size, 26_221)
+
+        expected_symbols = {
+            "05:5CAE": "Bank5_PresentationEffectEntry",
+            "05:6041": "Bank5_SelectionScreenEntry",
+            "05:6222": "Bank5_ModeSetupEntry",
+            "05:6296": "Bank5_PresentationScreenEntry",
+            "05:65D8": "Bank5_PresentationGraphics0_Compressed",
+            "05:6C9D": "Bank5_PresentationGraphics1_Compressed",
+            "05:7568": "Bank5_PresentationGraphics2_Compressed",
+            "05:7924": "Bank5_PresentationTilemap",
+            "0E:4000": "Bank14_ModeEntry",
+            "0E:4B20": "Bank14_ModeTilemap",
+            "0E:4B70": "Bank14_ModeGraphics0",
+            "0E:5270": "Bank14_ModeGraphics1",
+            "0E:6DDB": "Bank14_EditorEntry",
+            "0E:7447": "Bank14_TransformStateEntry",
+        }
+        for address, name in expected_symbols.items():
+            self.assertEqual(self.analysis["symbols"][address]["name"], name)
+
+        if not ORIGINAL_ROM.is_file():
+            self.skipTest(f"{ORIGINAL_ROM.relative_to(PROJECT)} is not available")
+        rom = ORIGINAL_ROM.read_bytes()
+        bank5 = 5 * BANK_SIZE
+        bank14 = 14 * BANK_SIZE
+
+        streams = {
+            0x65D8: (1_733, 1_920),
+            0x6C9D: (287, 416),
+            0x7568: (956, 1_120),
+        }
+        for address, (consumed, expanded) in streams.items():
+            result = decompress_resource(rom[bank5 + address - 0x4000 :])
+            with self.subTest(stream=f"05:{address:04X}"):
+                self.assertEqual(result.bytes_consumed, consumed)
+                self.assertEqual(len(result.data), expanded)
+
+        self.assertEqual(0x65D8 + streams[0x65D8][0], 0x6C9D)
+        self.assertEqual(0x6C9D + streams[0x6C9D][0], 0x6DBC)
+        self.assertEqual(0x7568 + streams[0x7568][0], 0x7924)
+        self.assertEqual(0x79B2 - 0x7924 + 1, 0x0D * 0x0B)
+        self.assertEqual(rom[bank5 + 0x39B3 : bank5 + 0x4000], bytes(1_613))
+
+        setup = rom[bank14 : bank14 + 0x100]
+        self.assertIn(b"\x21\x00\x80\x11\x70\x4B\x01\x00\x07", setup)
+        self.assertIn(b"\x21\x00\x8A\x11\x70\x52\x01\xA0\x02", setup)
+        self.assertIn(b"\x21\x00\x9C\x11\x20\x4B\x01\x14\x04", setup)
+        self.assertEqual(rom[bank14 + 0x3462 : bank14 + 0x4000], bytes(2_974))
+
+    def test_ninth_analysis_batch_covers_banks_zero_and_one(self):
+        names = {
+            "Fixed-bank delay RSTs and reserved RST slots",
+            "Interrupt vectors",
+            "Pre-header zero padding",
+            "Cartridge entry and header",
+            "VBlank LCD-shadow helper paths",
+            "Raster value and banked-call helpers",
+            "Top-level scene and state dispatch",
+            "Menu and UI state handlers with embedded records",
+            "Gameplay-session initialization with embedded tables",
+            "Main gameplay orchestration with embedded tables",
+            "Gameplay calculations and state mutation",
+            "Gameplay dispatch and value tables",
+            "Event and message dispatch with embedded tables",
+            "Event and presentation handlers with embedded records",
+            "Linear copy helper tail",
+            "Memory fill helper entry shims",
+            "WRAM staging-record clear helper",
+            "Palette data and fixed-bank jump-table dispatch",
+            "Fixed graphics upload and command-renderer setup",
+            "Renderer setup and formatting helpers",
+            "Cursor, tilemap-window, and graphics decompression helpers",
+            "Graphics presentation, transition, and UI modules with embedded data",
+            "UI layout and dispatch records",
+            "Bank-1 presentation wrappers and ID table",
+            "Bank 1 presentation and object resource data",
+            "Bank 1 gameplay and UI module with embedded graphics and tables",
+            "Bank 1 auxiliary 2bpp graphics block",
+            "Bank 1 trailing zero padding",
+        }
+        size = sum(
+            parse_hex(region["rom_end"]) - parse_hex(region["rom_start"]) + 1
+            for region in self.analysis["regions"]
+            if region["name"] in names
+        )
+        self.assertEqual(size, 24_481)
+
+        expected_symbols = {
+            "00:0010": "FrameDelay_RST10",
+            "00:0040": "VBlankVector",
+            "00:02D5": "FixedBank_RasterAndBankedCallHelpers",
+            "00:0343": "MainState_Dispatch",
+            "00:27D4": "GameplayDispatchTables",
+            "00:36C6": "GraphicsPresentation_Load",
+            "00:3E72": "UILayoutAndDispatchRecords",
+            "01:542C": "Bank1_PresentationResourceData",
+            "01:6199": "Bank1_GameplayUIResourceModule",
+            "01:7F3D": "Bank1_AuxiliaryGraphics",
+        }
+        for address, name in expected_symbols.items():
+            self.assertEqual(self.analysis["symbols"][address]["name"], name)
+
+        by_bank = {0: set(), 1: set()}
+        for region in self.analysis["regions"]:
+            bank = region["bank"]
+            if bank not in by_bank or region["type"] == "routine_data":
+                continue
+            start = parse_hex(region["cpu_start"])
+            end = parse_hex(region["cpu_end"])
+            by_bank[bank].update(range(start, end + 1))
+        self.assertEqual(len(by_bank[0]), BANK_SIZE)
+        self.assertEqual(len(by_bank[1]), BANK_SIZE)
+
+        if not ORIGINAL_ROM.is_file():
+            self.skipTest(f"{ORIGINAL_ROM.relative_to(PROJECT)} is not available")
+        rom = ORIGINAL_ROM.read_bytes()
+        self.assertEqual(rom[0x0061:0x0100], bytes(159))
+        self.assertEqual(rom[0x3FB9:0x4000], bytes(71))
+
+        bank1 = BANK_SIZE
+        self.assertEqual(rom[bank1 + 0x3F9D : bank1 + 0x4000], bytes(99))
+        graphics = rom[bank1 + 0x3F3D : bank1 + 0x3F9D]
+        self.assertEqual(len(graphics), 0x60)
+        self.assertNotEqual(graphics[:0x40], bytes(0x40))
+        self.assertEqual(graphics[0x40:], bytes(0x20))
+
+        fixed_bank = rom[:BANK_SIZE]
+        self.assertIn(b"\x11\x99\x61\x01\x20\x00\xCD\x3C\x30", fixed_bank)
+        bank1_code = rom[bank1 + 0x3B42 : bank1 + 0x3B62]
+        self.assertIn(b"\x21\x3B\x5D\xCD\xCF\x35", bank1_code)
+
+    def test_tenth_analysis_batch_completes_banks_two_and_three(self):
+        names = {
+            "Bank 2 presentation resource pointer table",
+            "Bank 2 pointer-selected compressed presentation graphics",
+            "Bank 2 presentation object and layout records",
+            "Title-screen and menu control module with embedded records",
+            "Bank 2 inter-module zero padding",
+            "Bank 2 pointer-selected scenario and UI records",
+            "Bank 2 trailing zero padding",
+            "Bank 3 trailing zero padding",
+        }
+        size = sum(
+            parse_hex(region["rom_end"]) - parse_hex(region["rom_start"]) + 1
+            for region in self.analysis["regions"]
+            if region["name"] in names
+        )
+        self.assertEqual(size, 13_841)
+
+        expected_symbols = {
+            "02:4A4C": "Bank2_PresentationResourcePointerTable",
+            "02:4A74": "Bank2_PresentationGraphics0_Compressed",
+            "02:6C8D": "Bank2_ObjectPlacementRecords",
+            "02:7133": "TitleScreen_Load",
+            "02:7194": "TitleMenu_Run",
+            "02:721C": "TitleMenu_Select",
+            "02:7300": "Bank2_ScenarioDataPointerTable",
+            "03:7E00": "TextStream_VBlankStep",
+        }
+        for address, name in expected_symbols.items():
+            self.assertEqual(self.analysis["symbols"][address]["name"], name)
+
+        by_bank = {bank: set() for bank in range(16)}
+        for region in self.analysis["regions"]:
+            if region["type"] == "routine_data":
+                continue
+            start = parse_hex(region["cpu_start"])
+            end = parse_hex(region["cpu_end"])
+            by_bank[region["bank"]].update(range(start, end + 1))
+        for bank, addresses in by_bank.items():
+            with self.subTest(bank=bank):
+                self.assertEqual(len(addresses), BANK_SIZE)
+
+        if not ORIGINAL_ROM.is_file():
+            self.skipTest(f"{ORIGINAL_ROM.relative_to(PROJECT)} is not available")
+        rom = ORIGINAL_ROM.read_bytes()
+        bank2 = 2 * BANK_SIZE
+
+        pointer_table = rom[bank2 + 0x0A4C : bank2 + 0x0A74]
+        pointers = [
+            int.from_bytes(pointer_table[offset : offset + 2], "little")
+            for offset in range(0, len(pointer_table), 2)
+        ]
+        self.assertEqual(len(pointers), 20)
+        self.assertEqual(
+            sorted(set(pointers)),
+            [
+                0x4A74,
+                0x4D50,
+                0x50CC,
+                0x5378,
+                0x5640,
+                0x5842,
+                0x5AE0,
+                0x5D68,
+                0x5F96,
+                0x61FC,
+                0x64C6,
+                0x67D6,
+                0x696B,
+            ],
+        )
+
+        expected_decoded_sizes = [
+            768,
+            1_024,
+            768,
+            768,
+            768,
+            768,
+            768,
+            768,
+            768,
+            768,
+            768,
+            384,
+            1_024,
+        ]
+        unique_pointers = sorted(set(pointers))
+        for index, (pointer, decoded_size) in enumerate(
+            zip(unique_pointers, expected_decoded_sizes)
+        ):
+            offset = bank2 + pointer - 0x4000
+            result = decompress_resource(rom[offset:])
+            expected_end = (
+                unique_pointers[index + 1] if index + 1 < len(unique_pointers) else 0x6C8D
+            )
+            with self.subTest(stream=f"02:{pointer:04X}"):
+                self.assertEqual(pointer + result.bytes_consumed, expected_end)
+                self.assertEqual(len(result.data), decoded_size)
+
+        self.assertEqual(rom[bank2 + 0x3270 : bank2 + 0x3300], bytes(144))
+        self.assertEqual(rom[bank2 + 0x3E31 : bank2 + 0x4000], bytes(463))
+        self.assertEqual(rom[3 * BANK_SIZE + 0x3FA3 : 4 * BANK_SIZE], bytes(93))
+
     def test_dynamic_pattern_records_match_bank6_resource_dimensions(self):
         if not ORIGINAL_ROM.is_file():
             self.skipTest(f"{ORIGINAL_ROM.relative_to(PROJECT)} is not available")

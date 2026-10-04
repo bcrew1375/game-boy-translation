@@ -6,7 +6,8 @@ Bank 3 contains the encoded dialogue, narration, prompts, battle responses, and
 training instructions consumed by `TextStream_VBlankStep` at `03:7E00`.
 `TextData_Bank3Root` at `03:4000` contains 26 little-endian root entries. Of
 those entries, 25 select structurally valid pointer tables and root `$09` is
-null.
+null. The interpreter ends at `03:7FA2`; the remaining `03:7FA3-$7FFF`
+contains exactly 93 zero bytes and is classified as trailing padding.
 
 The decoded story spans both:
 
