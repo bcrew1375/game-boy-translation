@@ -16,6 +16,7 @@ size = 262144
 sha256 = "312798b43d2415fecbfe777e7d54c10f247b60bb68554657392aff6398a5150b"
 
 [manifests]
+analysis = "analysis/project.json"
 encoding = "translation/encoding.tsv"
 glossary = "translation/glossary.tsv"
 patches = "translation/patches.tsv"

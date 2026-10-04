@@ -30,8 +30,8 @@ Each project is self-contained under `projects/<project-id>/` and provides:
 - repository-authored English translation data under `translation/`;
 - reviewed, dialogue-free terminology manifests under `translation/`, when a project needs
   evidence-backed naming consistency;
-- reviewed, reasoned reverse-engineering notes and compact derived lookup tables under
-  `analysis/`, when they are safe to distribute;
+- reviewed, reasoned reverse-engineering notes, byte-range coverage manifests, and compact
+  derived lookup tables under `analysis/`, when they are safe to distribute;
 - project-specific tests under `tests/`.
 
 Reusable code lives under `toolkit/gbworkbench/`. Generic toolkit modules never import a
@@ -49,6 +49,7 @@ Then run:
 
 ```sh
 make test
+make analysis
 make translated
 ```
 
@@ -85,6 +86,7 @@ make validate PROJECT=gb-db-z-gokou  Validate project metadata without a ROM
 make test-toolkit                     Run generic synthetic tests without a ROM
 make test-project PROJECT=...         Run one project's tests
 make test                             Run toolkit and default-project tests
+make analysis PROJECT=...             Generate ROM coverage statistics and an SVG map
 make translated PROJECT=...          Build one translated ROM
 make info PROJECT=...                 Show resolved project metadata
 make audit                            Audit repository source policy
@@ -96,6 +98,28 @@ make debug PROJECT=...                Open a generated ROM in the debugger
 `make translated` continues to default to `gb-db-z-gokou`. The deprecated
 `gb-translate-build ROM -o OUTPUT` wrapper remains temporarily and delegates to the new
 project-aware CLI.
+
+## Track ROM analysis coverage
+
+Each project may register an `analysis` manifest in `project.toml`. The JSON manifest records
+inclusive ROM regions with bank/CPU addresses, file offsets, semantic type, name, and evidence
+confidence. Bytes absent from all regions are explicitly reported as `unknown`; therefore total
+analysis reaches 100% only when every byte belongs to a reviewed region. Nested regions are
+allowed for progressively refined discoveries. The narrower region supplies the per-type
+classification, while total coverage counts each byte exactly once.
+
+Generate the current project's reports with:
+
+```sh
+make analysis
+# or: gb-workstation analyze gb-db-z-gokou
+```
+
+This writes a machine-readable summary and a standalone graphical bank map to
+`build/<project-id>/analysis/analysis-coverage.json` and `analysis-map.svg`. The terminal report
+shows overall coverage, ROM percentage for every discovered data type, composition of analyzed
+bytes, and coverage for every bank. Generated reports are deliberately kept under `build/`; the
+reviewed range manifest under the project remains the authoritative source.
 
 The devcontainer runs `make self-test` after creation. This checks the shared toolkit,
 discovers and validates every checked-in project, runs each project's ROM-independent

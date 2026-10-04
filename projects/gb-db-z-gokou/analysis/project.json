@@ -55,6 +55,86 @@
       "kind": "routine",
       "confidence": "confirmed"
     },
+    "01:4000": {
+      "name": "SGB_SendPackets",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "01:4048": {
+      "name": "SGB_TransferScreenData",
+      "kind": "routine",
+      "confidence": "strong_inference"
+    },
+    "01:4099": {
+      "name": "Presentation_TransferPreparedData",
+      "kind": "routine",
+      "confidence": "strong_inference"
+    },
+    "01:412D": {
+      "name": "SGB_PrepareFixedCommand",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "01:4172": {
+      "name": "SGB_Initialize",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "01:41D8": {
+      "name": "SGB_SendPresentationPacket",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "01:41F2": {
+      "name": "SGBAttributeMap_ApplyRectangle",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "01:42E0": {
+      "name": "PresentationBuffers_Clear",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "01:430B": {
+      "name": "SGB_PlaySoundEffect",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "01:434C": {
+      "name": "SGBSoundEffectRecords",
+      "kind": "data_table",
+      "confidence": "confirmed"
+    },
+    "01:43AC": {
+      "name": "SGBInitializationPackets",
+      "kind": "packet_data",
+      "confidence": "confirmed"
+    },
+    "01:442C": {
+      "name": "SGBPaletteTransferImage",
+      "kind": "sgb_transfer_data",
+      "confidence": "confirmed"
+    },
+    "01:471B": {
+      "name": "SGBPatternIndexMap",
+      "kind": "data_table",
+      "confidence": "confirmed"
+    },
+    "01:4754": {
+      "name": "SGBFixedPatternRecords",
+      "kind": "data_table",
+      "confidence": "confirmed"
+    },
+    "01:4920": {
+      "name": "SGBPresentationRecordPointers",
+      "kind": "pointer_table",
+      "confidence": "confirmed"
+    },
+    "01:4C4D": {
+      "name": "SGBAttributeMapRectangleRecords",
+      "kind": "data_table",
+      "confidence": "confirmed"
+    },
     "00:3138": {
       "name": "DMGPalettes_Init",
       "kind": "routine",
@@ -479,6 +559,276 @@
       "confidence": "confirmed"
     },
     {
+      "bank": 1,
+      "cpu_start": "$4000",
+      "cpu_end": "$4047",
+      "rom_start": "$04000",
+      "rom_end": "$04047",
+      "type": "code",
+      "name": "Super Game Boy packet transport",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$4048",
+      "cpu_end": "$4098",
+      "rom_start": "$04048",
+      "rom_end": "$04098",
+      "type": "code",
+      "name": "Super Game Boy screen-transfer staging",
+      "confidence": "strong_inference"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$4099",
+      "cpu_end": "$4118",
+      "rom_start": "$04099",
+      "rom_end": "$04118",
+      "type": "code",
+      "name": "Super Game Boy presentation setup and presence probe",
+      "confidence": "strong_inference"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$4119",
+      "cpu_end": "$4157",
+      "rom_start": "$04119",
+      "rom_end": "$04157",
+      "type": "code",
+      "name": "Fixed Super Game Boy command preparation",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$4158",
+      "cpu_end": "$4171",
+      "rom_start": "$04158",
+      "rom_end": "$04171",
+      "type": "data",
+      "name": "Super Game Boy command template table",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$4172",
+      "cpu_end": "$41B1",
+      "rom_start": "$04172",
+      "rom_end": "$041B1",
+      "type": "code",
+      "name": "Super Game Boy initialization",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$41B2",
+      "cpu_end": "$41F1",
+      "rom_start": "$041B2",
+      "rom_end": "$041F1",
+      "type": "code",
+      "name": "Super Game Boy presentation packet construction",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$41F2",
+      "cpu_end": "$42DF",
+      "rom_start": "$041F2",
+      "rom_end": "$042DF",
+      "type": "code",
+      "name": "Super Game Boy attribute-map rectangle application",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$42E0",
+      "cpu_end": "$430A",
+      "rom_start": "$042E0",
+      "rom_end": "$0430A",
+      "type": "code",
+      "name": "Presentation work-buffer reset and setup",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$430B",
+      "cpu_end": "$434B",
+      "rom_start": "$0430B",
+      "rom_end": "$0434B",
+      "type": "code",
+      "name": "Super Game Boy sound-effect dispatch",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$434C",
+      "cpu_end": "$43AB",
+      "rom_start": "$0434C",
+      "rom_end": "$043AB",
+      "type": "data",
+      "name": "Super Game Boy sound-effect records",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$43AC",
+      "cpu_end": "$442B",
+      "rom_start": "$043AC",
+      "rom_end": "$0442B",
+      "type": "data",
+      "name": "Super Game Boy initialization packets",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$442C",
+      "cpu_end": "$471A",
+      "rom_start": "$0442C",
+      "rom_end": "$0471A",
+      "type": "sgb_transfer_data",
+      "name": "Super Game Boy PAL_TRN image prefix",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$471B",
+      "cpu_end": "$4753",
+      "rom_start": "$0471B",
+      "rom_end": "$04753",
+      "type": "data",
+      "name": "Super Game Boy pattern-index map",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$4754",
+      "cpu_end": "$490B",
+      "rom_start": "$04754",
+      "rom_end": "$0490B",
+      "type": "data",
+      "name": "Super Game Boy fixed 5x7 pattern records",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$490C",
+      "cpu_end": "$491F",
+      "rom_start": "$0490C",
+      "rom_end": "$0491F",
+      "type": "data",
+      "name": "Super Game Boy presentation value tables",
+      "confidence": "strong_inference"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$4920",
+      "cpu_end": "$496B",
+      "rom_start": "$04920",
+      "rom_end": "$0496B",
+      "type": "pointer_table",
+      "name": "Super Game Boy presentation-record pointers",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$496C",
+      "cpu_end": "$496F",
+      "rom_start": "$0496C",
+      "rom_end": "$0496F",
+      "type": "data",
+      "name": "Unresolved PAL_TRN image data before pointer targets",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$4970",
+      "cpu_end": "$4C4C",
+      "rom_start": "$04970",
+      "rom_end": "$04C4C",
+      "type": "data",
+      "name": "Pointer-selected Super Game Boy presentation records",
+      "confidence": "strong_inference"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$4C4D",
+      "cpu_end": "$4E64",
+      "rom_start": "$04C4D",
+      "rom_end": "$04E64",
+      "type": "data",
+      "name": "Super Game Boy attribute-map rectangle records",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$4E65",
+      "cpu_end": "$542B",
+      "rom_start": "$04E65",
+      "rom_end": "$0542B",
+      "type": "sgb_transfer_data",
+      "name": "Remaining Super Game Boy PAL_TRN image data",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 1,
+      "cpu_start": "$5D3B",
+      "cpu_end": "$6198",
+      "rom_start": "$05D3B",
+      "rom_end": "$06198",
+      "type": "compressed_graphics",
+      "name": "Primary packed 1bpp font resource",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 2,
+      "cpu_start": "$4000",
+      "cpu_end": "$459D",
+      "rom_start": "$08000",
+      "rom_end": "$0859D",
+      "type": "compressed_graphics",
+      "name": "Title-screen main graphics",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 2,
+      "cpu_start": "$459E",
+      "cpu_end": "$465E",
+      "rom_start": "$0859E",
+      "rom_end": "$0865E",
+      "type": "compressed_tilemap",
+      "name": "Title-screen base tilemap",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 2,
+      "cpu_start": "$465F",
+      "cpu_end": "$48E2",
+      "rom_start": "$0865F",
+      "rom_end": "$088E2",
+      "type": "compressed_graphics",
+      "name": "Title-menu label graphics",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 2,
+      "cpu_start": "$48E3",
+      "cpu_end": "$4922",
+      "rom_start": "$088E3",
+      "rom_end": "$08922",
+      "type": "graphics",
+      "name": "Title-menu extra tiles",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 2,
+      "cpu_start": "$4923",
+      "cpu_end": "$4A4B",
+      "rom_start": "$08923",
+      "rom_end": "$08A4B",
+      "type": "compressed_graphics",
+      "name": "Title-screen subtitle graphics",
+      "confidence": "confirmed"
+    },
+    {
       "bank": 3,
       "cpu_start": "$4000",
       "cpu_end": "$7BD6",
@@ -711,6 +1061,7 @@
     "Bank 3:$4000-$7BD6 (ROM $0C000-$0FBD6) is encoded message pointer/data storage and is explicitly declared as dw/db data. Bank 3:$7BD7-$7DFF is confirmed zero padding; the VBlank interpreter begins at 03:7E00 (ROM $0FE00).",
     "The primary font tile map is recorded in projects/gb-db-z-gokou/analysis/font_tiles.tsv; bank-3 direct/composite stream bytes through $E1 are recorded in projects/gb-db-z-gokou/analysis/text_encoding.tsv and can be decoded with tools/bin/gb-text-decode.",
     "Bank-3 text enumeration finds 479 pointer-table references to 419 unique streams. The script-free reference index is projects/gb-db-z-gokou/analysis/bank3_text_reference_index.tsv; the local decoded catalog is projects/gb-db-z-gokou/analysis/bank3_text_tables.tsv, with methodology in projects/gb-db-z-gokou/analysis/bank_003_text.md.",
-    "The five-character title subtitle and four post-START menu labels are fixed Bank 2 2bpp tile strips, not reusable 16x16 font text; see projects/gb-db-z-gokou/analysis/title_screen_graphics.md."
+    "The five-character title subtitle and four post-START menu labels are fixed Bank 2 2bpp tile strips, not reusable 16x16 kanji font text; see projects/gb-db-z-gokou/analysis/title_screen_graphics.md.",
+    "Bank 1:$4000-$442B contains the Super Game Boy packet transport, initialization, presentation-buffer conversion, sound-effect dispatch, and their command/data tables; see projects/gb-db-z-gokou/analysis/bank_001.md."
   ]
 }

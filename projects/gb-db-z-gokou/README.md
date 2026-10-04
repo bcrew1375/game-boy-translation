@@ -49,3 +49,16 @@ reviewed terminology manifest with canonical English names, romanized source ter
 categories, representative Bank 3 stream addresses, recurrence counts, confidence, and
 localization notes. It contains isolated terms only; decoded original-language dialogue and
 the full ROM-derived text catalog remain local and ignored.
+
+## Analysis coverage
+
+The reviewed byte-range map is `analysis/project.json`. Generate current statistics and the SVG
+bank map with:
+
+```sh
+gb-workstation analyze gb-db-z-gokou
+```
+
+Reports are written under `build/gb-db-z-gokou/analysis/`. Unmapped bytes are counted as
+`unknown`, and nested ranges allow a broad resource to be refined into more specific tables or
+other structures without double-counting total analyzed coverage.

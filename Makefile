@@ -2,7 +2,7 @@ PROJECT ?= gb-db-z-gokou
 ROM ?= roms/$(PROJECT)/original.gb
 OUTPUT ?= build/$(PROJECT)/translated.gb
 
-.PHONY: self-test projects validate test test-toolkit test-project translated audit clean info run debug gui
+.PHONY: self-test projects validate test test-toolkit test-project analysis translated audit clean info run debug gui
 
 self-test:
 	tools/bin/gb-self-test
@@ -20,6 +20,9 @@ test-toolkit:
 
 test-project:
 	python3 tools/bin/gb-workstation test $(PROJECT)
+
+analysis:
+	python3 tools/bin/gb-workstation analyze $(PROJECT)
 
 translated:
 	python3 tools/bin/gb-workstation build $(PROJECT) --rom $(ROM) --output $(OUTPUT)

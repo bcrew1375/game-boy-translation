@@ -9,16 +9,11 @@
 /disassembly/
 /analysis/
 /translation/
-/projects/*/analysis/tiles/
-/projects/*/analysis/bank3_text_tables.tsv
 /projects/*/disassembly/
 /projects/*/local/
 /projects/*/original/
 /projects/*/translation/strings.tsv
 /projects/*/translation/text_layout.tsv
-/tools/bin/gb-text-build
-/tools/bin/gb-text-catalog
-/tests/test_text.py
 
 # Extracted/generated media and build products anywhere else
 *.gb
