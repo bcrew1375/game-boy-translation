@@ -1,11 +1,16 @@
 import json
+import sys
 import unittest
 from pathlib import Path
 
 
 PROJECT = Path(__file__).resolve().parents[1]
 ANALYSIS = PROJECT / "analysis" / "project.json"
+ORIGINAL_ROM = PROJECT / "original.gb"
 BANK_SIZE = 0x4000
+sys.path.insert(0, str(PROJECT / "src"))
+
+from gb_db_z_gokou.compression import decompress_resource  # noqa: E402
 
 
 def parse_hex(value: str) -> int:
@@ -89,7 +94,7 @@ class AnalysisMapTest(unittest.TestCase):
             "01:442C": "SGBPaletteTransferImage",
             "01:471B": "SGBPatternIndexMap",
             "01:4754": "SGBFixedPatternRecords",
-            "01:4920": "SGBPresentationRecordPointers",
+            "01:4920": "SGBDynamicPatternRecordPointers",
             "01:4C4D": "SGBAttributeMapRectangleRecords",
         }
         for address, name in expected.items():
@@ -117,7 +122,7 @@ class AnalysisMapTest(unittest.TestCase):
         expected_sizes = {
             "Super Game Boy pattern-index map": 57,
             "Super Game Boy fixed 5x7 pattern records": 44 * 10,
-            "Super Game Boy presentation-record pointers": 38 * 2,
+            "Super Game Boy dynamic-pattern record pointers": 40 * 2,
         }
         by_name = {region["name"]: region for region in self.analysis["regions"]}
         for name, expected_size in expected_sizes.items():
@@ -125,6 +130,241 @@ class AnalysisMapTest(unittest.TestCase):
             actual_size = parse_hex(region["cpu_end"]) - parse_hex(region["cpu_start"]) + 1
             with self.subTest(name=name):
                 self.assertEqual(actual_size, expected_size)
+
+    def test_bank4_resource_map_is_an_exact_partition(self):
+        regions = sorted(
+            (
+                parse_hex(region["cpu_start"]),
+                parse_hex(region["cpu_end"]),
+            )
+            for region in self.analysis["regions"]
+            if region["bank"] == 4
+        )
+        self.assertEqual(regions[0][0], 0x4000)
+        self.assertEqual(regions[-1][1], 0x7FFF)
+        self.assertEqual(sum(end - start + 1 for start, end in regions), BANK_SIZE)
+        for left, right in zip(regions, regions[1:]):
+            self.assertEqual(left[1] + 1, right[0])
+
+    def test_graphics_resource_catalog_and_streams(self):
+        if not ORIGINAL_ROM.is_file():
+            self.skipTest(f"{ORIGINAL_ROM.relative_to(PROJECT)} is not available")
+        rom = ORIGINAL_ROM.read_bytes()
+        catalog_offset = 4 * BANK_SIZE
+        catalog = [
+            int.from_bytes(rom[offset : offset + 2], "little")
+            for offset in range(catalog_offset, catalog_offset + 0x70, 2)
+        ]
+        self.assertEqual(len(catalog), 0x38)
+
+        expected_derived = {
+            0x0B: (1, 0, [0x11]),
+            0x0F: (2, 1, [0x11, 0x16]),
+            0x13: (6, 3, [0x10, 0x11, 0x12, 0x15, 0x16, 0x17]),
+            0x18: (2, 9, [0x16, 0x1B]),
+            0x24: (1, 11, [0x10]),
+            0x2D: (1, 12, [0x16]),
+            0x31: (2, 13, [0x15, 0x1A]),
+        }
+        destination_indices = rom[catalog_offset + 0x70 : catalog_offset + 0x7F]
+        used_indices = []
+        for resource_id, (count, start, expected) in expected_derived.items():
+            value = catalog[resource_id]
+            with self.subTest(resource_id=f"${resource_id:02X}"):
+                self.assertEqual((value >> 8, value & 0xFF), (count, start))
+                self.assertEqual(
+                    list(destination_indices[start : start + count]), expected
+                )
+                used_indices.extend(range(start, start + count))
+        self.assertEqual(sorted(used_indices), list(range(15)))
+
+        expected_stream_counts = {4: 31, 5: 13}
+        expected_spans = {4: (0x416F, 0x7E47), 5: (0x4000, 0x5992)}
+        for bank, first_id, last_id in ((4, 0x00, 0x28), (5, 0x28, 0x38)):
+            streams = {}
+            for resource_id in range(first_id, last_id):
+                pointer = catalog[resource_id]
+                if pointer < 0x4000:
+                    self.assertIn(resource_id, expected_derived)
+                    continue
+                offset = bank * BANK_SIZE + pointer - 0x4000
+                decoded = decompress_resource(rom[offset:])
+                self.assertEqual(len(decoded.data), 560)
+                streams[pointer] = decoded.bytes_consumed
+
+            ordered = sorted(streams.items())
+            with self.subTest(bank=bank):
+                self.assertEqual(len(ordered), expected_stream_counts[bank])
+                self.assertEqual(ordered[0][0], expected_spans[bank][0])
+                self.assertEqual(
+                    ordered[-1][0] + ordered[-1][1] - 1,
+                    expected_spans[bank][1],
+                )
+                for (start, size), (next_start, _) in zip(ordered, ordered[1:]):
+                    self.assertEqual(start + size, next_start)
+
+        bank4_padding = rom[4 * BANK_SIZE + 0x3E48 : 5 * BANK_SIZE]
+        self.assertEqual(bank4_padding, bytes(len(bank4_padding)))
+
+    def test_large_graphics_descriptor_table_and_classified_streams(self):
+        if not ORIGINAL_ROM.is_file():
+            self.skipTest(f"{ORIGINAL_ROM.relative_to(PROJECT)} is not available")
+        rom = ORIGINAL_ROM.read_bytes()
+        bank6_offset = 6 * BANK_SIZE
+        thresholds = list(rom[0x3974:0x397B])
+        self.assertEqual(thresholds, [0x14, 0x28, 0x46, 0x60, 0x76, 0x8F, 0xFF])
+
+        aliases = [
+            (
+                rom[bank6_offset + index * 3],
+                int.from_bytes(
+                    rom[bank6_offset + index * 3 + 1 : bank6_offset + index * 3 + 3],
+                    "little",
+                ),
+            )
+            for index in range(8)
+        ]
+        self.assertEqual(
+            aliases,
+            [
+                (0x27, 0x41FB),
+                (0x27, 0x4233),
+                (0x2C, 0x426B),
+                (0x27, 0x42CB),
+                (0x0A, 0x4303),
+                (0x2C, 0x4343),
+                (0x2C, 0x43A3),
+                (0x00, 0x0000),
+            ],
+        )
+
+        descriptors = []
+        for resource_id in range(0x80):
+            offset = bank6_offset + 0x18 + resource_id * 3
+            descriptors.append(
+                (
+                    int.from_bytes(rom[offset : offset + 2], "little"),
+                    rom[offset + 2],
+                )
+            )
+        self.assertEqual(len(descriptors), 128)
+
+        def source_bank(resource_id):
+            return 6 + next(
+                index for index, threshold in enumerate(thresholds)
+                if resource_id < threshold
+            )
+
+        self.assertEqual(
+            [source_bank(resource_id) for resource_id in (0x00, 0x13, 0x14, 0x27, 0x28, 0x45, 0x46, 0x5F, 0x60, 0x75, 0x76, 0x7F)],
+            [6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11],
+        )
+        for resource_id in (0x14, 0x28, 0x46, 0x60, 0x76):
+            self.assertEqual(descriptors[resource_id][0], 0x4000)
+
+        expected_outputs = {
+            6: [960, 768, 896, 768, 768, 768, 896, 896, 896, 448, 448,
+                1024, 1920, 1536, 1536, 576, 576, 1536, 1536, 1536],
+            7: [768, 1536, 1536, 1152, 1536, 1536, 576, 1536, 1152, 1536, 960,
+                144, 768, 1024, 1024, 768, 1024, 1152, 1536, 1536],
+            8: [768] * 14 + [560] * 9 + [768] * 7,
+        }
+        for bank, first_id, last_id, expected_last in (
+            (6, 0x00, 0x14, 0x7EF1),
+            (7, 0x14, 0x28, 0x7F4D),
+            (8, 0x28, 0x46, 0x7FD0),
+        ):
+            streams = {}
+            for resource_id in range(first_id, last_id):
+                pointer, shape = descriptors[resource_id]
+                effective_shape = aliases[shape & 0x1F][0] if shape & 0x80 else shape
+                width = effective_shape & 0x0F
+                height = (effective_shape >> 4) + 6
+                self.assertGreater(width, 0)
+                self.assertLessEqual(width, 12)
+                self.assertGreaterEqual(height, 6)
+                self.assertLessEqual(height, 10)
+                offset = bank * BANK_SIZE + pointer - 0x4000
+                decoded = decompress_resource(rom[offset:])
+                self.assertEqual(
+                    len(decoded.data), expected_outputs[bank][resource_id - first_id]
+                )
+                streams[pointer] = decoded.bytes_consumed
+
+            ordered = sorted(streams.items())
+            with self.subTest(bank=bank):
+                self.assertEqual(ordered[0][0], 0x4403 if bank == 6 else 0x4000)
+                self.assertEqual(ordered[-1][0] + ordered[-1][1] - 1, expected_last)
+                for (start, size), (next_start, _) in zip(ordered, ordered[1:]):
+                    self.assertEqual(start + size, next_start)
+
+        bank6_padding = rom[6 * BANK_SIZE + 0x3EF2 : 7 * BANK_SIZE]
+        self.assertEqual(bank6_padding, bytes(270))
+        bank7_padding = rom[7 * BANK_SIZE + 0x3F4E : 8 * BANK_SIZE]
+        self.assertEqual(bank7_padding, bytes(178))
+        bank8_padding = rom[8 * BANK_SIZE + 0x3FD1 : 9 * BANK_SIZE]
+        self.assertEqual(bank8_padding, bytes(47))
+
+    def test_second_graphics_batch_size(self):
+        names = {
+            "Graphics resource shape-alias descriptors",
+            "Graphics resource source-pointer and shape descriptors",
+            "Large graphics resources $00-$13 compressed streams",
+            "Bank 6 trailing zero padding",
+            "Large graphics resources $14-$1E compressed streams",
+        }
+        size = sum(
+            parse_hex(region["rom_end"]) - parse_hex(region["rom_start"]) + 1
+            for region in self.analysis["regions"]
+            if region["name"] in names
+        )
+        self.assertEqual(size, 26_454)
+
+    def test_third_graphics_batch_size(self):
+        names = {
+            "Large graphics resources $1F-$27 compressed streams",
+            "Bank 7 trailing zero padding",
+            "Large graphics resources $28-$45 compressed streams",
+            "Bank 8 trailing zero padding",
+        }
+        size = sum(
+            parse_hex(region["rom_end"]) - parse_hex(region["rom_start"]) + 1
+            for region in self.analysis["regions"]
+            if region["name"] in names
+        )
+        self.assertEqual(size, 22_079)
+
+    def test_dynamic_pattern_records_match_bank6_resource_dimensions(self):
+        if not ORIGINAL_ROM.is_file():
+            self.skipTest(f"{ORIGINAL_ROM.relative_to(PROJECT)} is not available")
+        rom = ORIGINAL_ROM.read_bytes()
+        pointer_table = 0x4920
+        pointers = [
+            int.from_bytes(rom[offset : offset + 2], "little")
+            for offset in range(pointer_table, 0x4970, 2)
+        ]
+        self.assertEqual(len(pointers), 40)
+        self.assertEqual(pointers[-2:], [0x4C1B, 0x4C34])
+
+        bank6 = 6 * BANK_SIZE
+        for resource_id, start in enumerate(pointers):
+            descriptor = bank6 + 0x18 + resource_id * 3
+            shape = rom[descriptor + 2]
+            if shape & 0x80:
+                shape = rom[bank6 + (shape & 0x1F) * 3]
+            width = shape & 0x0F
+            height = (shape >> 4) + 6
+            payload_size = (width * height + 3) // 4
+            next_start = pointers[resource_id + 1] if resource_id < 39 else 0x4C4D
+            padding = next_start - (start + 1 + payload_size)
+            with self.subTest(resource_id=f"${resource_id:02X}"):
+                self.assertGreater(width, 0)
+                self.assertLessEqual(width, 20)
+                self.assertLessEqual(height, 18)
+                self.assertEqual(padding, 3 if resource_id == 0x20 else 0)
+                if padding:
+                    padding_start = start + 1 + payload_size
+                    self.assertEqual(rom[padding_start:next_start], b"\x55" * padding)
 
     def test_attribute_rectangle_record_inventory(self):
         records = [

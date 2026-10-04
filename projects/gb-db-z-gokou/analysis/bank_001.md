@@ -40,9 +40,8 @@ SHA-256 of the supplied original ROM before conclusions were recorded.
 | `01:471B-$4753` | `$0471B-$04753` | Data | 57-entry ID-to-pattern index map used by fixed-bank presentation code. | Confirmed |
 | `01:4754-$490B` | `$04754-$0490B` | Data | 44 fixed ten-byte records: one returned value and nine packed bytes describing a 5x7 two-bit pattern. | Confirmed |
 | `01:490C-$491F` | `$0490C-$0491F` | Data | Small presentation-selection/value tables. | Confirmed data; individual fields partial |
-| `01:4920-$496B` | `$04920-$0496B` | Pointer table | 38 little-endian pointers into `01:4970-$4C08`. | Confirmed |
-| `01:496C-$496F` | `$0496C-$0496F` | Unknown data | Four bytes between the pointer table and its first target. | Confirmed bytes; purpose unknown |
-| `01:4970-$4C4C` | `$04970-$04C4C` | Data | Variable presentation records selected through the pointer table at `01:4920`. | Confirmed data use; formats partial |
+| `01:4920-$496F` | `$04920-$0496F` | Pointer table | 40 little-endian pointers, one for each resource ID `$00-$27`, into `01:4970-$4C34`. | Confirmed |
+| `01:4970-$4C4C` | `$04970-$04C4C` | Data | 40 dynamic packed-pattern records: one returned layout value followed by a descriptor-sized two-bit rectangle payload; ID `$20` also has three padding bytes. | Confirmed |
 | `01:4C4D-$4E64` | `$04C4D-$04E64` | Data | 20 contiguous SGB attribute-map rectangle records using packed or repeated-fill forms. | Confirmed |
 | `01:4E65-$542B` | `$04E65-$0542B` | SGB transfer data | Remainder of the 4 KiB `PAL_TRN` image; narrower CPU-side structures remain unresolved. | Confirmed transfer extent; internal roles partial |
 | `01:5D3B-$6198` | `$05D3B-$06198` | Compressed graphics | Primary 160-glyph packed 1bpp font resource. | Confirmed |
@@ -153,10 +152,27 @@ seven bits, reads one table byte, multiplies it by ten, and selects a record at
 to the fixed-bank caller. The remaining nine bytes are passed to the attribute
 map decoder as a 5x7 packed pattern because `ceil(5 * 7 / 4) = 9`.
 
-`01:4920-$496B` contains 38 little-endian pointers. Every pointer targets the
-variable presentation-data area at `01:4970-$4C4C`; fixed-bank code selects
-these pointers for another family of dynamically positioned attribute-map
-records. Their complete higher-level format remains unresolved.
+`01:4920-$496F` contains 40 little-endian pointers, indexed directly by resource
+IDs `$00-$27`. The final two pointers at `01:496C-$496F` target `01:4C1B` and
+`01:4C34`; those four bytes are therefore part of the table rather than an
+unresolved gap.
+
+Each target in `01:4970-$4C4C` begins with a one-byte layout/result value. The
+remaining consumed bytes are a packed two-bit rectangle passed to the same
+attribute-map decoder used by the fixed 5x7 records. Width and height are not
+stored in Bank 1. The caller derives them from the corresponding three-byte
+resource descriptor at Bank 6 `06:4018 + ID * 3`: the low nibble of the shape
+byte is width and the high nibble plus six is height. Shape bytes with bit 7
+set select another Bank 6 descriptor through their low five bits, and the
+selected descriptor's first byte supplies the dimensions.
+
+For every ID, the consumed payload size is exactly
+`ceil(width * height / 4)`. Thirty-nine records end at the next pointer. ID
+`$20`, at `01:4BB8`, contains its expected 12-byte 8x6 payload followed by
+three `$55` bytes that are not consumed before the ID `$21` record at
+`01:4BC8`. The first bytes range from `$0D` through `$4B` and are returned to
+the fixed-bank caller for its layout-state updates; their complete semantic
+meaning remains unresolved.
 
 The contiguous rectangle records at `01:4C4D-$4E64` include repeated-fill
 rectangles, partial packed rectangles, and several complete 20x18 maps. Known
@@ -190,11 +206,9 @@ screen names are intentionally not assigned yet.
 
 ## Remaining Bank 1 work
 
-- Resolve the narrower formats of `01:442C-$471A`, `01:490C-$491F`,
-  `01:496C-$496F`, `01:4970-$4C4C`, and `01:4E65-$542B` without losing their
-  shared `PAL_TRN`-image role.
-- Determine the higher-level format selected by the pointer table at
-  `01:4920` and how its records feed dynamically positioned rectangles.
+- Resolve the narrower formats of `01:442C-$471A`, `01:490C-$491F`, and
+  `01:4E65-$542B` without losing their shared `PAL_TRN`-image role.
+- Determine the semantic meaning of the dynamic records' returned layout values and the reason for ID `$20`'s three padding bytes.
 - Confirm the two attribute-value remapping modes with runtime watchpoints on
   `$C6C5`, `$C82D`, and `$D6C5`.
 - Identify the visual destinations of each fixed-bank presentation caller.

@@ -126,7 +126,7 @@
       "confidence": "confirmed"
     },
     "01:4920": {
-      "name": "SGBPresentationRecordPointers",
+      "name": "SGBDynamicPatternRecordPointers",
       "kind": "pointer_table",
       "confidence": "confirmed"
     },
@@ -353,6 +353,71 @@
     "02:721C": {
       "name": "TitleMenu_Select",
       "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:3784": {
+      "name": "GraphicsResource_LoadById",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:3879": {
+      "name": "GraphicsResource_LoadAndPlace",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "04:4000": {
+      "name": "GraphicsResourceCatalog",
+      "kind": "pointer_and_derived_descriptor_table",
+      "confidence": "confirmed"
+    },
+    "04:4070": {
+      "name": "GraphicsDerivedDestinationBlockLists",
+      "kind": "data_table",
+      "confidence": "confirmed"
+    },
+    "04:407F": {
+      "name": "GraphicsDerivedAuxiliaryTiles",
+      "kind": "graphics",
+      "confidence": "confirmed"
+    },
+    "04:416F": {
+      "name": "GraphicsResource00_Compressed",
+      "kind": "compressed_graphics",
+      "confidence": "confirmed"
+    },
+    "05:4000": {
+      "name": "GraphicsResource28_Compressed",
+      "kind": "compressed_graphics",
+      "confidence": "confirmed"
+    },
+    "06:4000": {
+      "name": "GraphicsResourceShapeAliases",
+      "kind": "descriptor_table",
+      "confidence": "confirmed"
+    },
+    "06:4018": {
+      "name": "GraphicsResourceDescriptorTable",
+      "kind": "pointer_and_shape_descriptor_table",
+      "confidence": "confirmed"
+    },
+    "06:4403": {
+      "name": "GraphicsResource00Large_Compressed",
+      "kind": "compressed_graphics",
+      "confidence": "confirmed"
+    },
+    "07:4000": {
+      "name": "GraphicsResource14Large_Compressed",
+      "kind": "compressed_graphics",
+      "confidence": "confirmed"
+    },
+    "07:69C1": {
+      "name": "GraphicsResource1FLarge_Compressed",
+      "kind": "compressed_graphics",
+      "confidence": "confirmed"
+    },
+    "08:4000": {
+      "name": "GraphicsResource28Large_Compressed",
+      "kind": "compressed_graphics",
       "confidence": "confirmed"
     }
   },
@@ -721,21 +786,11 @@
     {
       "bank": 1,
       "cpu_start": "$4920",
-      "cpu_end": "$496B",
-      "rom_start": "$04920",
-      "rom_end": "$0496B",
-      "type": "pointer_table",
-      "name": "Super Game Boy presentation-record pointers",
-      "confidence": "confirmed"
-    },
-    {
-      "bank": 1,
-      "cpu_start": "$496C",
       "cpu_end": "$496F",
-      "rom_start": "$0496C",
+      "rom_start": "$04920",
       "rom_end": "$0496F",
-      "type": "data",
-      "name": "Unresolved PAL_TRN image data before pointer targets",
+      "type": "pointer_table",
+      "name": "Super Game Boy dynamic-pattern record pointers",
       "confidence": "confirmed"
     },
     {
@@ -745,8 +800,8 @@
       "rom_start": "$04970",
       "rom_end": "$04C4C",
       "type": "data",
-      "name": "Pointer-selected Super Game Boy presentation records",
-      "confidence": "strong_inference"
+      "name": "Super Game Boy dynamic packed-pattern records",
+      "confidence": "confirmed"
     },
     {
       "bank": 1,
@@ -856,6 +911,156 @@
       "rom_end": "$0FFA2",
       "type": "code",
       "name": "VBlank text/tilemap stream interpreter",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 4,
+      "cpu_start": "$4000",
+      "cpu_end": "$406F",
+      "rom_start": "$10000",
+      "rom_end": "$1006F",
+      "type": "pointer_table",
+      "name": "Graphics resource pointer and derived-resource catalog",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 4,
+      "cpu_start": "$4070",
+      "cpu_end": "$407E",
+      "rom_start": "$10070",
+      "rom_end": "$1007E",
+      "type": "data",
+      "name": "Derived graphics resource destination-block index lists",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 4,
+      "cpu_start": "$407F",
+      "cpu_end": "$416E",
+      "rom_start": "$1007F",
+      "rom_end": "$1016E",
+      "type": "graphics",
+      "name": "Derived graphics resource auxiliary 2bpp tiles",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 4,
+      "cpu_start": "$416F",
+      "cpu_end": "$7E47",
+      "rom_start": "$1016F",
+      "rom_end": "$13E47",
+      "type": "compressed_graphics",
+      "name": "Graphics resources $00-$27 compressed streams",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 4,
+      "cpu_start": "$7E48",
+      "cpu_end": "$7FFF",
+      "rom_start": "$13E48",
+      "rom_end": "$13FFF",
+      "type": "padding",
+      "name": "Bank 4 trailing zero padding",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 5,
+      "cpu_start": "$4000",
+      "cpu_end": "$5992",
+      "rom_start": "$14000",
+      "rom_end": "$15992",
+      "type": "compressed_graphics",
+      "name": "Graphics resources $28-$37 compressed streams",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 6,
+      "cpu_start": "$4000",
+      "cpu_end": "$4017",
+      "rom_start": "$18000",
+      "rom_end": "$18017",
+      "type": "data",
+      "name": "Graphics resource shape-alias descriptors",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 6,
+      "cpu_start": "$4018",
+      "cpu_end": "$4197",
+      "rom_start": "$18018",
+      "rom_end": "$18197",
+      "type": "pointer_table",
+      "name": "Graphics resource source-pointer and shape descriptors",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 6,
+      "cpu_start": "$4403",
+      "cpu_end": "$7EF1",
+      "rom_start": "$18403",
+      "rom_end": "$1BEF1",
+      "type": "compressed_graphics",
+      "name": "Large graphics resources $00-$13 compressed streams",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 6,
+      "cpu_start": "$7EF2",
+      "cpu_end": "$7FFF",
+      "rom_start": "$1BEF2",
+      "rom_end": "$1BFFF",
+      "type": "padding",
+      "name": "Bank 6 trailing zero padding",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 7,
+      "cpu_start": "$4000",
+      "cpu_end": "$69C0",
+      "rom_start": "$1C000",
+      "rom_end": "$1E9C0",
+      "type": "compressed_graphics",
+      "name": "Large graphics resources $14-$1E compressed streams",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 7,
+      "cpu_start": "$69C1",
+      "cpu_end": "$7F4D",
+      "rom_start": "$1E9C1",
+      "rom_end": "$1FF4D",
+      "type": "compressed_graphics",
+      "name": "Large graphics resources $1F-$27 compressed streams",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 7,
+      "cpu_start": "$7F4E",
+      "cpu_end": "$7FFF",
+      "rom_start": "$1FF4E",
+      "rom_end": "$1FFFF",
+      "type": "padding",
+      "name": "Bank 7 trailing zero padding",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 8,
+      "cpu_start": "$4000",
+      "cpu_end": "$7FD0",
+      "rom_start": "$20000",
+      "rom_end": "$23FD0",
+      "type": "compressed_graphics",
+      "name": "Large graphics resources $28-$45 compressed streams",
+      "confidence": "confirmed"
+    },
+    {
+      "bank": 8,
+      "cpu_start": "$7FD1",
+      "cpu_end": "$7FFF",
+      "rom_start": "$23FD1",
+      "rom_end": "$23FFF",
+      "type": "padding",
+      "name": "Bank 8 trailing zero padding",
       "confidence": "confirmed"
     }
   ],
@@ -1062,6 +1267,8 @@
     "The primary font tile map is recorded in projects/gb-db-z-gokou/analysis/font_tiles.tsv; bank-3 direct/composite stream bytes through $E1 are recorded in projects/gb-db-z-gokou/analysis/text_encoding.tsv and can be decoded with tools/bin/gb-text-decode.",
     "Bank-3 text enumeration finds 479 pointer-table references to 419 unique streams. The script-free reference index is projects/gb-db-z-gokou/analysis/bank3_text_reference_index.tsv; the local decoded catalog is projects/gb-db-z-gokou/analysis/bank3_text_tables.tsv, with methodology in projects/gb-db-z-gokou/analysis/bank_003_text.md.",
     "The five-character title subtitle and four post-START menu labels are fixed Bank 2 2bpp tile strips, not reusable 16x16 kanji font text; see projects/gb-db-z-gokou/analysis/title_screen_graphics.md.",
-    "Bank 1:$4000-$442B contains the Super Game Boy packet transport, initialization, presentation-buffer conversion, sound-effect dispatch, and their command/data tables; see projects/gb-db-z-gokou/analysis/bank_001.md."
+    "Bank 1:$4000-$442B contains the Super Game Boy packet transport, initialization, presentation-buffer conversion, sound-effect dispatch, and their command/data tables; see projects/gb-db-z-gokou/analysis/bank_001.md.",
+    "Bank 4 and Bank 5:$4000-$5992 contain the catalog and compressed 560-byte graphics resources loaded by 00:3784/00:3879. Direct pointers, shared streams, derived-resource descriptors, auxiliary tiles, stream boundaries, and padding are documented in projects/gb-db-z-gokou/analysis/banks_004_005_graphics.md.",
+    "Bank 6 contains the 128-entry large-graphics descriptor catalog, compressed streams for IDs $00-$13, and trailing zero padding. Bank 7 contains IDs $14-$27 and Bank 8 contains IDs $28-$45; both end in confirmed zero padding. Exact source-bank partitions, shape resolution, stream boundaries, and output sizes are documented in projects/gb-db-z-gokou/analysis/banks_006_008_graphics.md."
   ]
 }
