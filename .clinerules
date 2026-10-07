@@ -1,3 +1,31 @@
+# Cardinal Rules:
+When operating in Plan mode:
+- Do not treat the Plan as the final answer when the task requires actions that
+  can be performed in Act mode.
+- Identify unresolved claims that require empirical verification.
+- Explicitly include those verification steps in the proposed Act-mode plan.
+- If a fact can be established by a non-destructive command, build, test,
+  debugger, emulator, or repository tool, prefer verification over inference.
+- Do not conclude "cannot determine without running X" when X can reasonably
+  be run in Act mode. Instead, plan to run X.
+
+When continuing in Act mode:
+- Execute the verification steps identified during Plan mode.
+- Do not replace planned empirical verification with inference from
+  documentation, metadata, generated artifacts, or repository structure.
+- Continue until the requested question is answered or a concrete blocker is
+  encountered.
+
+Disassembly coverage is not analysis coverage.
+
+The existence of a disassembly representation for an address range proves only
+that the bytes are represented. It does not prove that the code or data has
+been semantically understood, classified, documented, or reverse-engineered.
+
+Never describe a bank, ROM, routine, data region, or project as "fully
+analyzed", "completely reverse-engineered", or equivalent unless the repository
+contains explicit evidence supporting that level of coverage.
+
 # Game Boy Reverse Engineering & Translation Project Rules
 
 ## 1. Project Mission

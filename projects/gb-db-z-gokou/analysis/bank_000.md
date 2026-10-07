@@ -29,9 +29,9 @@ has been resolved.
 | `$02D5-$0342` | Code | Small raster/value helpers followed by banked wrappers into banks 1 and 15. | Confirmed mechanics; high-level purpose unknown |
 | `$0343-$05AF` | Code | Top-level scene/state initialization and dispatch. Uses `$D7C7/$D7C8` as progression/state fields, invokes banks 1/2/5, configures LCD shadows, tilemaps, and palettes. | Strong inference |
 | `$05B0-$0F44` | Code + embedded records | Menu/UI/state handlers, frame waits, input-driven selection, bank-1 text/UI calls, object setup, and compact records referenced through fixed-bank tables. | Strong inference; individual states unresolved |
-| `$0F45-$1202` | Code + tables | Initializes a large gameplay session under `$D7xx-$DAxx`, builds UI/tilemaps, invokes banked data routines, and enters a per-entity loop. | Strong inference |
-| `$1203-$20D3` | Code + tables | Main battle/gameplay orchestration: entity iteration, selection screens, calculations, object/tile setup, transitions, and banked message/UI wrappers. Exact game terms are not yet assigned. | Strong inference |
-| `$20D4-$27D3` | Code + tables | Gameplay calculations and state mutation over two parallel WRAM structures near `$D9B8/$D9E8`; includes counters, comparisons, random-dependent decisions, and UI/event dispatch. | Strong inference |
+| `$0F45-$1202` | Code + tables | Initializes a battle session under `$D7xx-$DAxx`, builds the battle HUD/tilemaps, initializes paired fighter records, and enters the fighter/action loop. | Strong inference |
+| `$1203-$20D3` | Code + tables | Main battle orchestration: fighter iteration, command/technique selection screens, action calculations, object/tile setup, transitions, and banked message/UI wrappers. Individual command IDs remain unresolved. | Strong inference |
+| `$20D4-$27D3` | Code + tables | Battle calculations and state mutation. Includes initiative accumulation/selection, paired-record access, fighter-template initialization, derived BP calculation, and action dispatch preparation. | Strong inference; key record fields confirmed |
 | `$27D4-$2866` | Data with generated labels | Dense byte and little-endian pointer tables. Many bytes disassemble as implausible instructions and are indexed by nearby dispatch code. | Confirmed data presence; formats partly unknown |
 | `$2867-$2A31` | Code + tables | Event/message dispatch and condition checks using IDs, state bytes, and table-selected handlers. | Strong inference |
 | `$2A32-$2D11` | Code + embedded records | More event/UI dispatch, bank-1 presentation wrappers, and compact tables such as `$2C96`, `$2CB2`, and `$2CC7`. | Strong inference |
@@ -66,6 +66,20 @@ has been resolved.
 | `$3E72-$3F69` | Mostly data with some callable entries | Dense UI/layout records and pointer-like values; generated instruction labels inside this area are not reliable proof of executable code. | Confirmed data presence; boundaries partial |
 | `$3F6A-$3FB8` | Code + 8-byte table | Bank-1 UI/message wrappers, writes IDs `$5B-$5D` or table `$51-$54` to `$D726...`, and leaves bank 1 selected at `$3FB0`. | Strong inference |
 | `$3FB9-$3FFF` | Padding | 71 zero bytes to the end of bank 0. | Confirmed |
+
+## Battle-system findings
+
+Detailed evidence, formulas, record offsets, and remaining uncertainties are maintained in
+[`battle_system.md`](battle_system.md). The central confirmed facts are:
+
+- two parallel `$30`-byte transient fighter records begin at `$D9B8` and `$D9E8`;
+- the HUD reads current resource values at offsets `+$1C` and `+$1E`, a five-cell initiative
+  gauge from `+$20`, and a three-byte BP value from `+$22`;
+- `00:2116` derives each fighter's initiative increment from the 16-bit stat at `+$04` and
+  the percentage/status value at `+$12`, adds it to the 16-bit accumulator at `+$20`, and
+  selects the fighter that reaches the shared threshold first; and
+- `00:2577` computes 24-bit BP from the sum of the first three 16-bit base fields, divided by
+  two and multiplied by a scenario-indexed factor.
 
 ## Confirmed low-level interfaces
 

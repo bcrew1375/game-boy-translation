@@ -50,9 +50,69 @@
       "kind": "routine",
       "confidence": "strong_inference"
     },
+    "00:0F45": {
+      "name": "BattleSession_Initialize",
+      "kind": "routine",
+      "confidence": "strong_inference"
+    },
+    "00:141F": {
+      "name": "BattleHUD_ComputeInitiativeMeterCells",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:1474": {
+      "name": "BattleHUD_Render16BitValue",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:1485": {
+      "name": "BattleHUD_RenderBP",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:208C": {
+      "name": "Battle_GetSelectedFighterRecord",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:20D9": {
+      "name": "Battle_WaitForReadyFighter",
+      "kind": "routine",
+      "confidence": "strong_inference"
+    },
+    "00:2116": {
+      "name": "Battle_UpdateInitiativeAndSelectFighter",
+      "kind": "routine",
+      "confidence": "strong_inference"
+    },
+    "00:247A": {
+      "name": "Battle_InitializeFighterRecords",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:24D2": {
+      "name": "Battle_LoadFighterTemplate",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:24E7": {
+      "name": "Battle_InitializeCurrentStatsAndBP",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
+    "00:2577": {
+      "name": "Battle_ComputeBP",
+      "kind": "routine",
+      "confidence": "confirmed"
+    },
     "00:27D4": {
       "name": "GameplayDispatchTables",
       "kind": "data_table",
+      "confidence": "confirmed"
+    },
+    "00:2F47": {
+      "name": "Numeric_Convert24BitToFiveDigits",
+      "kind": "routine",
       "confidence": "confirmed"
     },
     "00:36C6": {
